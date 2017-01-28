@@ -18,6 +18,10 @@
     return pow(M_E, -x) / pow(1 + pow(M_E, -x), 2);
 }
 
++(void)fillMat:(NSMutableArray <NSMutableArray *>* __nonnull)mat h:(int)h w:(int)w{
+#warning lack implementation
+}
+
 +(NSMutableArray <NSMutableArray *>*)multiply:(NSMutableArray <NSMutableArray *>*)mat1 toMat:(NSMutableArray <NSMutableArray *>*)mat2{
     
     return nil;

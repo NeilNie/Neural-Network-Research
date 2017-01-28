@@ -8,18 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Node : NSObject
+@interface Neuron : NSObject
 
 #pragma mark - Instance Variables
 
 @property double value;
-@property (nonatomic, strong) NSString *key;
-@property (nonatomic, strong) NSMutableArray *connections; //@{@"key1": @"weight1"},
+@property (nonatomic, strong) NSMutableDictionary *connections; //@{@"key1": @"weight1"},
                                                            //@{@"key2": @"weight2"},
 
-#pragma mark - Constructors
-
-- (instancetype)initWithKey:(NSString *)key value:(float)v;
-- (instancetype)initWithKey:(NSString *)key;
+- (instancetype)initWithValue:(float)v;
 
 @end

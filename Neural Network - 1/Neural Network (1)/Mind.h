@@ -1,4 +1,4 @@
-//
+ //
 //  Mind.h
 //  Simple Neural Network
 //
@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Node.h"
+#import <math.h>
+#import "NeuralMath.h"
+#import "Neuron.h"
+
+struct Coordinate {
+    int x;
+    int y;
+};
 
 @interface Mind : NSObject
 
@@ -23,20 +30,18 @@
 
 @property double deltaOutputSum;
 
-@property (nonatomic, strong) NSMutableArray <Node *>*input;
-@property (nonatomic, strong) NSMutableArray <NSMutableArray <Node *>*>* hidden;
-@property (nonatomic, strong) NSMutableArray <Node *>*output;
+@property (nonatomic, strong) NSMutableArray <NSMutableArray <Neuron *>*>* network;
+
+@property (nonatomic, strong) NSMutableArray <NSMutableArray <NSNumber *>*>* adjMatrix;
 
 //instance methods
+
+- (instancetype)init:(NSArray *)array;
 
 -(void)forwardPropagation;
 
 -(void)backwardPropagation;
 
 -(void)insertLayer:(int)count;
-
--(void)addWeightFromVertex:(NSString *)key toLayer:(int)t withValues:(NSArray <NSNumber *>*)values;
-
--(void)updateWeightFromVertex:(NSString *)key toLayer:(int)t withValues:(NSArray <NSNumber *>*)values;
 
 @end

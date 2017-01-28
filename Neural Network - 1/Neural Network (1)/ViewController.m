@@ -14,12 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    Mind *m = [[Mind alloc] init];
-    m.targetValue = 0.00;
-    [m insertLayer:2];
-    [m insertLayer:3];
-    [m insertLayer:1];
-    [m addWeightFromVertex:@"0-1" toLayer:1 withValues:@[@0.8, @0.4, @0.3]];
+    Mind *m = [[Mind alloc] init:@[@2, @3, @1]];
     NSLog(@"%@", m);
     // Do any additional setup after loading the view.
 }

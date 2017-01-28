@@ -12,7 +12,7 @@
 		28E8D9DA1E38E10400F53881 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8D9D91E38E10400F53881 /* ViewController.m */; };
 		28E8D9DC1E38E10400F53881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E8D9DB1E38E10400F53881 /* Assets.xcassets */; };
 		28E8D9DF1E38E10400F53881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E8D9DD1E38E10400F53881 /* Main.storyboard */; };
-		28E8DA061E38E1DD00F53881 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8DA031E38E1DD00F53881 /* Node.m */; };
+		28E8DA061E38E1DD00F53881 /* Neuron.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8DA031E38E1DD00F53881 /* Neuron.m */; };
 		28E8DA0B1E38E27A00F53881 /* Mind.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8DA0A1E38E27A00F53881 /* Mind.m */; };
 		28E8DA0E1E38E2CF00F53881 /* NeuralMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8DA0D1E38E2CF00F53881 /* NeuralMath.m */; };
 /* End PBXBuildFile section */
@@ -46,8 +46,8 @@
 		28E8D9E01E38E10400F53881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28E8D9E51E38E10400F53881 /* Simple Neural NetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Neural NetworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28E8D9F01E38E10400F53881 /* Simple Neural NetworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Neural NetworkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		28E8DA021E38E1DD00F53881 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
-		28E8DA031E38E1DD00F53881 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		28E8DA021E38E1DD00F53881 /* Neuron.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Neuron.h; sourceTree = "<group>"; };
+		28E8DA031E38E1DD00F53881 /* Neuron.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Neuron.m; sourceTree = "<group>"; };
 		28E8DA091E38E27A00F53881 /* Mind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mind.h; sourceTree = "<group>"; };
 		28E8DA0A1E38E27A00F53881 /* Mind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mind.m; sourceTree = "<group>"; };
 		28E8DA0C1E38E2CF00F53881 /* NeuralMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeuralMath.h; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 		28E8DA081E38E26500F53881 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				28E8DA021E38E1DD00F53881 /* Node.h */,
-				28E8DA031E38E1DD00F53881 /* Node.m */,
+				28E8DA021E38E1DD00F53881 /* Neuron.h */,
+				28E8DA031E38E1DD00F53881 /* Neuron.m */,
 				28E8DA091E38E27A00F53881 /* Mind.h */,
 				28E8DA0A1E38E27A00F53881 /* Mind.m */,
 				28E8DA0C1E38E2CF00F53881 /* NeuralMath.h */,
@@ -270,7 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E8D9DA1E38E10400F53881 /* ViewController.m in Sources */,
-				28E8DA061E38E1DD00F53881 /* Node.m in Sources */,
+				28E8DA061E38E1DD00F53881 /* Neuron.m in Sources */,
 				28E8D9D71E38E10400F53881 /* main.m in Sources */,
 				28E8DA0B1E38E27A00F53881 /* Mind.m in Sources */,
 				28E8D9D41E38E10400F53881 /* AppDelegate.m in Sources */,
