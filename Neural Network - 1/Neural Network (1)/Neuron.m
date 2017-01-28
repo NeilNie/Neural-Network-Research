@@ -14,14 +14,13 @@
 {
     self = [super init];
     if (self) {
-        self.connections = [NSMutableDictionary dictionary];
         self.value = v;
     }
     return self;
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"connections: %@", [self.connections description]];
+    return [NSString stringWithFormat:@"index: %i value: %f", self.index, self.value];
 }
 
 @end

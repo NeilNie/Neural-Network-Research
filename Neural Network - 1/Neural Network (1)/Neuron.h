@@ -13,8 +13,7 @@
 #pragma mark - Instance Variables
 
 @property double value;
-@property (nonatomic, strong) NSMutableDictionary *connections; //@{@"key1": @"weight1"},
-                                                           //@{@"key2": @"weight2"},
+@property int index;
 
 - (instancetype)initWithValue:(float)v;
 

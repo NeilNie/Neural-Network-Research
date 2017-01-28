@@ -14,7 +14,7 @@
 
 +(float)sigmoidPrime:(float)x;
 
-+(void)fillMat:(NSMutableArray *__nonnull)mat h:(int)h w:(int)w;
++(NSMutableArray *__nonnull)fillMat:(int)h w:(int)w;
 
 +(NSMutableArray <NSMutableArray *>* __nonnull)multiply:(NSMutableArray <NSMutableArray *>* __nonnull)mat1 toMat:(NSMutableArray <NSMutableArray *>* __nonnull)mat2;
 

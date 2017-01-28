@@ -15,6 +15,10 @@
     [super viewDidLoad];
 
     Mind *m = [[Mind alloc] init:@[@2, @3, @1]];
+    m.targetValue = 0;
+    [m randomWeightAllLayers];
+    [m setIputs:@[@3, @1]];
+    
     NSLog(@"%@", m);
     // Do any additional setup after loading the view.
 }

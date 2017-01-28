@@ -38,6 +38,12 @@ struct Coordinate {
 
 - (instancetype)init:(NSArray *)array;
 
+-(void)setIputs:(NSArray *)inputs;
+
+-(void)randomWeightAllLayers;
+
+-(void)addInputLayer:(NSMutableArray *)array;
+
 -(void)forwardPropagation;
 
 -(void)backwardPropagation;
