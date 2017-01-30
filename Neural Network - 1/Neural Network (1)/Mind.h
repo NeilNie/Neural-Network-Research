@@ -16,6 +16,11 @@ struct Coordinate {
     int y;
 };
 
+struct tuple {
+    float input;
+    float output;
+};
+
 @interface Mind : NSObject
 
 //instance properties
