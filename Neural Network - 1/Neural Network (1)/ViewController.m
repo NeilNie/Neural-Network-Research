@@ -14,8 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    Mind *m = [[Mind alloc] init:@[@2, @3, @1]];
-    m.targetValue = 0;
+    Mind *m = [[Mind alloc] initWith:728 hidden:30 outputs:10 learningRate:3.0 momentum:0.5 weights:nil];
     [m randomWeightAllLayers];
     [m setIputs:@[@3, @1]];
     

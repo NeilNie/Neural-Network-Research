@@ -13,5 +13,8 @@
 
 @property BNNSFilter *hidden_layer;
 @property BNNSFilter *output_layer;
+@property BNNSFilter *input_layer;
+
+-(float)predict:(float[])inputs;
 
 @end
