@@ -73,9 +73,6 @@ class Network(object):
                 for k in range(0, len(training_data), mini_batch_size)]
 
             # loop through mini_batches, update with the batch
-            print("mini batch size: {}".format(mini_batch_size))
-            print("mini_batches size {}".format(len(mini_batches)))
-
             for mini_batch in mini_batches:
                 self.update_mini_batch(mini_batch, eta)
 

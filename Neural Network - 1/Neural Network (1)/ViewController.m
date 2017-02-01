@@ -15,9 +15,7 @@
     [super viewDidLoad];
 
     Mind *m = [[Mind alloc] initWith:728 hidden:30 outputs:10 learningRate:3.0 momentum:0.5 weights:nil];
-    [m randomWeightAllLayers];
-    [m setIputs:@[@3, @1]];
-    
+
     NSLog(@"%@", m);
     // Do any additional setup after loading the view.
 }
