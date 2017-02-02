@@ -14,8 +14,8 @@
     return 1 / (1 + pow(M_E, -x));
 }
 
-+(float)sigmoidPrime:(float)x{
-    return pow(M_E, -x) / pow(1 + pow(M_E, -x), 2);
++(float)sigmoidPrime:(float)y{
+    return y * (1 - y);
 }
 
 +(NSMutableArray *)fillMat:(int)h w:(int)w{

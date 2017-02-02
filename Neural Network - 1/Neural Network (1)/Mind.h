@@ -40,6 +40,10 @@ struct tuple {
     float output;
 };
 
+struct weights {
+    
+};
+
 @interface Mind : NSObject
 
 #pragma mark - Properties
@@ -81,7 +85,7 @@ struct tuple {
 @property (strong, nonatomic) NSMutableArray <NSNumber *>* outputWeights;
 /// The weights leading into all of the output nodes from the previous round of training, serialized in a single array. [Float]
 /// Used for applying momentum during backpropagation.
-@property (strong, nonatomic) NSArray <NSNumber *>* previousOutputWeights;
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* previousOutputWeights;
 
 ///// The most recent set of inputs applied to the network.  [Float]
 @property (strong, nonatomic) NSMutableArray <NSNumber *>* inputCache;
@@ -97,18 +101,18 @@ struct tuple {
 /// Temporary storage while calculating output errors, for use during backpropagation.  [Float]
 @property (strong, nonatomic) NSMutableArray <NSNumber *>* outputErrors;
 /// Temporary storage while updating hidden weights, for use during backpropagation. [Float]
-@property (strong, nonatomic) NSArray <NSNumber *>* nHiddenWeights; ///new hidden weights
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* hiddenWeightsNew; ///new hidden weights
 /// Temporary storage while updating output weights, for use during backpropagation.  [Float]
-@property (strong, nonatomic) NSArray <NSNumber *>* nOutputWeights; ///new hidden weights
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* outputWeightsNew; ///new hidden weights
 
-///// The output error indices corresponding to each output weight.  = [Int]()
-//@property (strong, nonatomic) NSMutableArray <NSNumber *>* outputErrorIndices;
-///// The hidden output indices corresponding to each output weight.  = [Int]()
-//@property (strong, nonatomic) NSMutableArray <NSNumber *>* hiddenOutputIndices;
-///// The hidden error indices corresponding to each hidden weight.  = [Int]()
-//@property (strong, nonatomic) NSMutableArray <NSNumber *>* hiddenErrorIndices;
-///// The input indices corresponding to each hidden weight.  = [Int]()
-//@property (strong, nonatomic) NSMutableArray <NSNumber *>* inputIndices;
+/// The output error indices corresponding to each output weight.  = [Int]()
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* outputErrorIndices;
+/// The hidden output indices corresponding to each output weight.  = [Int]()
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* hiddenOutputIndices;
+/// The hidden error indices corresponding to each hidden weight.  = [Int]()
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* hiddenErrorIndices;
+/// The input indices corresponding to each hidden weight.  = [Int]()
+@property (strong, nonatomic) NSMutableArray <NSNumber *>* inputIndices;
 
 
 #pragma mark - Instance Methods
@@ -150,6 +154,21 @@ struct tuple {
  @exception Answer and self.numOutputs has to be the same.
  */
 -(float)backwardPropagation:(NSMutableArray <NSNumber *>*)answer;
+
+/**
+ Train the network with data that you provides.
+ @param inputs inputs to train the network
+ @param answer the expected answer from the network. Used to backprop
+ @param testInputs test inputs that will evaluate the errors
+ @param testOutput expected output from the neural network, this will evaluate the errors
+ @param threshold When the network's error eaches this point, training will stop.
+ @exception inputs, answer, testInputs and testOutputs all have to correspond to the amount of neurons in the network. The error margin can not be > 0
+ */
+-(void)train:(NSArray <NSArray <NSNumber*>*>*)inputs
+      answer:(NSArray <NSArray <NSNumber *>*>*)answer
+  testInputs:(NSArray <NSArray <NSNumber*>*>*)testInputs
+ testOutputs:(NSArray <NSArray <NSNumber *>*>*)testOutput
+   threshold:(float)threshold;
 
 -(void)setIputs:(NSArray *)inputs;
 
