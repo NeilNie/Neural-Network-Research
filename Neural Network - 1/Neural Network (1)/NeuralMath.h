@@ -12,7 +12,7 @@
 
 +(float)sigmoid:(float)x;
 
-+(float)sigmoidPrime:(float)x;
++(float)sigmoidPrime:(float)y;
 
 +(NSMutableArray *__nonnull)fillMat:(int)h w:(int)w;
 

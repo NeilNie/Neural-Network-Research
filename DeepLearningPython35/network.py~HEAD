@@ -15,7 +15,8 @@ and omits many desirable features.
 #### Libraries
 # Standard library
 import random
-import time
+
+# Third-party libraries
 import numpy as np
 
 class Network(object):
@@ -44,7 +45,7 @@ class Network(object):
         return a
 
     def SGD(self, training_data, epochs, mini_batch_size, eta,
-            test_data):
+            test_data=None):
         """Train the neural network using mini-batch stochastic
         gradient descent.  The ``training_data`` is a list of tuples
         ``(x, y)`` representing the training inputs and the desired
@@ -55,53 +56,39 @@ class Network(object):
         tracking progress, but slows things down substantially."""
 
         training_data = list(training_data)
-        test_data = list(test_data)
-        n_test = len(test_data)
+        n = len(training_data)
 
-        print("There are {} epochs \n There are {} training data".format(epochs, len(training_data)))
+        if test_data:
+            test_data = list(test_data)
+            n_test = len(test_data)
 
         for j in range(epochs):
-
-            start = time.time()
-
-            # shuffle training_data
             random.shuffle(training_data)
-
-            # create mini batches
             mini_batches = [
                 training_data[k:k+mini_batch_size]
-                for k in range(0, len(training_data), mini_batch_size)]
-
-            # loop through mini_batches, update with the batch
+                for k in range(0, n, mini_batch_size)]
             for mini_batch in mini_batches:
                 self.update_mini_batch(mini_batch, eta)
-
-            print("Epoch {} : {} / {}".format(j, self.evaluate(test_data), n_test))
-            end = time.time()
-            print("execution time {}".format(end - start))
-
+            if test_data:
+                print("Epoch {} : {} / {}".format(j,self.evaluate(test_data),n_test));
+            else:
+                print("Epoch {} complete".format(j))
 
     def update_mini_batch(self, mini_batch, eta):
-
         """Update the network's weights and biases by applying
         gradient descent using backpropagation to a single mini batch.
         The ``mini_batch`` is a list of tuples ``(x, y)``, and ``eta``
         is the learning rate."""
-        nabla_b = [
-            np.zeros(b.shape) for b in self.biases]
-
-        nabla_w = [
-            np.zeros(w.shape) for w in self.weights]
-
+        nabla_b = [np.zeros(b.shape) for b in self.biases]
+        nabla_w = [np.zeros(w.shape) for w in self.weights]
         for x, y in mini_batch:
             delta_nabla_b, delta_nabla_w = self.backprop(x, y)
             nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
             nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
-
-        self.weights = [
-            w - (eta / len(mini_batch)) * nw for w, nw in zip(self.weights, nabla_w)]
-        self.biases = [
-            b - (eta / len(mini_batch)) * nb for b, nb in zip(self.biases, nabla_b)]
+        self.weights = [w-(eta/len(mini_batch))*nw
+                        for w, nw in zip(self.weights, nabla_w)]
+        self.biases = [b-(eta/len(mini_batch))*nb
+                       for b, nb in zip(self.biases, nabla_b)]
 
     def backprop(self, x, y):
         """Return a tuple ``(nabla_b, nabla_w)`` representing the
