@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90eb47a6-8652-4267-9078-d54b4eb41b36" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../neural-networks-and-deep-learning/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Neural Network Calculations.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/train-images-idx3-ubyte.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/MNIST-TrainingData/t10k-images-idx3-ubyte.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/MNIST-TrainingData/t10k-labels-idx1-ubyte" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/MNIST-TrainingData/train-images-idx3-ubyte.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/MNIST-TrainingData/train-labels-idx1-ubyte" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/YongyangNie.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/YongyangNie.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Simple Neural Network.xcodeproj/project.xcworkspace/xcuserdata/YongyangNie.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Neural Network - 1/Simple Neural Network.xcodeproj/project.xcworkspace/xcuserdata/YongyangNie.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Handwriting-Neural-Network.iml" afterPath="$PROJECT_DIR$/.idea/Handwriting-Neural-Network.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/network.py" afterPath="$PROJECT_DIR$/network.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Mind.h" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Mind.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Mind.m" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Mind.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/NeuralMath.h" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/NeuralMath.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/NeuralMath.m" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/NeuralMath.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Neuron.h" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Neuron.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Neuron.m" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Neuron.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/ViewController.m" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/ViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Simple Neural Network.xcodeproj/xcuserdata/YongyangNie.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../Neural Network - 1/Simple Neural Network.xcodeproj/xcuserdata/YongyangNie.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../neural-networks-and-deep-learning/.idea/misc.xml" afterPath="$PROJECT_DIR$/../neural-networks-and-deep-learning/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../neural-networks-and-deep-learning/.idea/neural-networks-and-deep-learning.iml" afterPath="$PROJECT_DIR$/../neural-networks-and-deep-learning/.idea/neural-networks-and-deep-learning.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../neural-networks-and-deep-learning/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../neural-networks-and-deep-learning/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/xcuserdata/YongyangNie.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/xcuserdata/YongyangNie.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/ViewController.h" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/ViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/ViewController.m" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/ViewController.m" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,8 +44,8 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="687">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="117">
+              <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -419,7 +411,7 @@
     <frame x="180" y="121" width="1702" height="934" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19095182" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19095182" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -466,16 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mnist_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -540,8 +522,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mnist_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/network.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

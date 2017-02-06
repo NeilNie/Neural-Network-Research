@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000233C61E4517FB002CE6DC /* train-images-idx3-ubyte.txt in Resources */ = {isa = PBXBuildFile; fileRef = 000233C51E4517FB002CE6DC /* train-images-idx3-ubyte.txt */; };
 		0017B5DE1E45067A002243D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B5DD1E45067A002243D8 /* AppDelegate.m */; };
 		0017B5E11E45067A002243D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B5E01E45067A002243D8 /* main.m */; };
 		0017B5E41E45067A002243D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B5E31E45067A002243D8 /* ViewController.m */; };
 		0017B5E61E45067A002243D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0017B5E51E45067A002243D8 /* Assets.xcassets */; };
 		0017B5E91E45067A002243D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0017B5E71E45067A002243D8 /* Main.storyboard */; };
 		0017B5F41E45067A002243D8 /* HandwritingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B5F31E45067A002243D8 /* HandwritingTests.m */; };
-		0017B5FF1E45067A002243D8 /* HandwritingUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B5FE1E45067A002243D8 /* HandwritingUITests.m */; };
 		0017B6101E45079C002243D8 /* Mind.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B60D1E45079C002243D8 /* Mind.m */; };
 		0017B6111E45079C002243D8 /* NeuralMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B60F1E45079C002243D8 /* NeuralMath.m */; };
+		009CFBA01E46B1AF00CB4EAA /* WritingTrainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 009CFB9F1E46B1AF00CB4EAA /* WritingTrainer.m */; };
+		00DA229B1E48E13F0086BFE7 /* MindStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA229A1E48E13F0086BFE7 /* MindStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000233C51E4517FB002CE6DC /* train-images-idx3-ubyte.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "train-images-idx3-ubyte.txt"; sourceTree = "<group>"; };
 		000233C71E45180D002CE6DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0017B5D91E45067A002243D8 /* Handwriting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Handwriting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0017B5DD1E45067A002243D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,12 +50,14 @@
 		0017B5F31E45067A002243D8 /* HandwritingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandwritingTests.m; sourceTree = "<group>"; };
 		0017B5F51E45067A002243D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0017B5FA1E45067A002243D8 /* HandwritingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandwritingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0017B5FE1E45067A002243D8 /* HandwritingUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandwritingUITests.m; sourceTree = "<group>"; };
-		0017B6001E45067A002243D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0017B60C1E45079C002243D8 /* Mind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mind.h; sourceTree = "<group>"; };
 		0017B60D1E45079C002243D8 /* Mind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mind.m; sourceTree = "<group>"; };
 		0017B60E1E45079C002243D8 /* NeuralMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeuralMath.h; sourceTree = "<group>"; };
 		0017B60F1E45079C002243D8 /* NeuralMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeuralMath.m; sourceTree = "<group>"; };
+		009CFB9E1E46B1AF00CB4EAA /* WritingTrainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WritingTrainer.h; path = ../WritingTrainer.h; sourceTree = "<group>"; };
+		009CFB9F1E46B1AF00CB4EAA /* WritingTrainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WritingTrainer.m; path = ../WritingTrainer.m; sourceTree = "<group>"; };
+		00DA22991E48E13F0086BFE7 /* MindStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MindStorage.h; sourceTree = "<group>"; };
+		00DA229A1E48E13F0086BFE7 /* MindStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MindStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +90,6 @@
 			children = (
 				0017B5DB1E45067A002243D8 /* Handwriting */,
 				0017B5F21E45067A002243D8 /* HandwritingTests */,
-				0017B5FD1E45067A002243D8 /* HandwritingUITests */,
 				0017B5DA1E45067A002243D8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,11 +107,12 @@
 		0017B5DB1E45067A002243D8 /* Handwriting */ = {
 			isa = PBXGroup;
 			children = (
-				000233C51E4517FB002CE6DC /* train-images-idx3-ubyte.txt */,
 				0017B5DD1E45067A002243D8 /* AppDelegate.m */,
 				000233C71E45180D002CE6DC /* AppDelegate.h */,
 				0017B5E21E45067A002243D8 /* ViewController.h */,
 				0017B5E31E45067A002243D8 /* ViewController.m */,
+				009CFB9E1E46B1AF00CB4EAA /* WritingTrainer.h */,
+				009CFB9F1E46B1AF00CB4EAA /* WritingTrainer.m */,
 				0017B5E71E45067A002243D8 /* Main.storyboard */,
 				0017B6121E4507A0002243D8 /* source */,
 				0017B5DF1E45067A002243D8 /* Supporting Files */,
@@ -138,20 +139,13 @@
 			path = HandwritingTests;
 			sourceTree = "<group>";
 		};
-		0017B5FD1E45067A002243D8 /* HandwritingUITests */ = {
-			isa = PBXGroup;
-			children = (
-				0017B5FE1E45067A002243D8 /* HandwritingUITests.m */,
-				0017B6001E45067A002243D8 /* Info.plist */,
-			);
-			path = HandwritingUITests;
-			sourceTree = "<group>";
-		};
 		0017B6121E4507A0002243D8 /* source */ = {
 			isa = PBXGroup;
 			children = (
 				0017B60C1E45079C002243D8 /* Mind.h */,
 				0017B60D1E45079C002243D8 /* Mind.m */,
+				00DA22991E48E13F0086BFE7 /* MindStorage.h */,
+				00DA229A1E48E13F0086BFE7 /* MindStorage.m */,
 				0017B60E1E45079C002243D8 /* NeuralMath.h */,
 				0017B60F1E45079C002243D8 /* NeuralMath.m */,
 			);
@@ -267,7 +261,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				000233C61E4517FB002CE6DC /* train-images-idx3-ubyte.txt in Resources */,
 				0017B5E61E45067A002243D8 /* Assets.xcassets in Resources */,
 				0017B5E91E45067A002243D8 /* Main.storyboard in Resources */,
 			);
@@ -296,6 +289,8 @@
 			files = (
 				0017B5E41E45067A002243D8 /* ViewController.m in Sources */,
 				0017B6101E45079C002243D8 /* Mind.m in Sources */,
+				009CFBA01E46B1AF00CB4EAA /* WritingTrainer.m in Sources */,
+				00DA229B1E48E13F0086BFE7 /* MindStorage.m in Sources */,
 				0017B5E11E45067A002243D8 /* main.m in Sources */,
 				0017B6111E45079C002243D8 /* NeuralMath.m in Sources */,
 				0017B5DE1E45067A002243D8 /* AppDelegate.m in Sources */,
@@ -314,7 +309,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0017B5FF1E45067A002243D8 /* HandwritingUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,12 +432,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8NZ8K5GNH8;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = Handwriting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yongyang.Handwriting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -451,12 +448,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8NZ8K5GNH8;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = Handwriting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yongyang.Handwriting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

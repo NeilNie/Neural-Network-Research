@@ -108,7 +108,6 @@ typedef struct {
 /*! The input indices corresponding to each hidden weight.  = [Int]() */
 @property (strong, nonatomic) NSMutableArray <NSNumber *>* inputIndices;
 
-
 #pragma mark - Instance Methods
 
 /*!

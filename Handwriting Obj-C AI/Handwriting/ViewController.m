@@ -10,21 +10,20 @@
 
 @implementation ViewController
 
--(void)loadData{
+-(void)updateImage:(NSImage *)image{
+    self.image.image = image;
+}
 
-    
-    NSString *path = [[NSBundle mainBundle] executablePath];
-    NSURL *url = [[[NSURL fileURLWithPath:path] URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"train-images-idx3-ubyte"];
-    
-    //NSData *trainData = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz"]];
-    NSData *trainData = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"train-images-idx3-ubyte" ofType:@"txt"]];
-    NSLog(@"%@", trainData);
+- (IBAction)action:(id)sender {
+    self.image.image = self.wt.image;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [self loadData];
+    self.wt = [[WritingTrainer alloc] init];
+    self.wt.delegate = self;
+    [self.wt train:2000 epochs:0 correctRate:90.0];
     // Do any additional setup after loading the view.
 }
 

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/DeepLearningPython35.iml" filepath="$PROJECT_DIR$/.idea/DeepLearningPython35.iml" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/.idea/DeepLearningPython35-master.iml" filepath="$PROJECT_DIR$/.idea/DeepLearningPython35-master.iml" />
->>>>>>> origin/master
     </modules>
   </component>
 </project>
