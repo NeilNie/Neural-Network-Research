@@ -21,9 +21,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.wt = [[WritingTrainer alloc] init];
+    self.wt = [[WritingTrainer alloc] initTrainer];
+    NSLog(@"%f", [self.wt evaluate:5000] * 100);
     self.wt.delegate = self;
-    [self.wt train:2000 epochs:0 correctRate:90.0];
+    //[self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
+    //NSLog(@"%f", [self.wt evaluate:5000] * 100);
+    [self.wt train:3500 epochs:0 correctRate:90.0];
+    
     // Do any additional setup after loading the view.
 }
 

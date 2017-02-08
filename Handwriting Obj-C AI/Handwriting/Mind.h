@@ -76,7 +76,7 @@ typedef struct {
 
 /*! The 'learning rate' parameter to apply during backpropagation. */
 /*! This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
-@property float learningRate;
+@property (nonatomic) float learningRate;
 
 /*! The 'momentum factor' to apply during backpropagation. This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
 @property float momentumFactor;
@@ -118,7 +118,7 @@ typedef struct {
  @param outputs number of outpus
  @param learningRate the learning rate of the network, a good start is 0.7
  @param momentum the momentum of the learing, play around with this number, a good estimate is
- @param weights initialize the network with weights from other network or from the past. If initializing new network, set it as null
+ @param hws initialize the network with weights from other network or from the past. If initializing new network, set it as null
  
  @return instancetype
  
@@ -129,7 +129,8 @@ typedef struct {
                  outputs:(int)outputs
             learningRate:(float)learningRate
                 momentum:(float)momentum
-                 weights:(NSArray <NSNumber *>*)weights;
+           hiddenWeights:(float *)hws
+           outputWeights:(float *)opws;
 
 /*!
  @brief Use the network to evaluate some output.
@@ -170,5 +171,9 @@ typedef struct {
 -(void)randomWeightAllLayers;
 
 -(void)print:(float *)array count:(int)count;
+
+-(void)ResetLearningRate:(float)learningRate;
+
+-(void)ResetMomentum:(float)momentum;
 
 @end

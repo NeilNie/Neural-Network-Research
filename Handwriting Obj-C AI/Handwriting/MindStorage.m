@@ -11,12 +11,17 @@
 
 @implementation MindStorage
 
--(BOOL)storeMind:(Mind *)mind path:(NSString *)path{
++(BOOL)storeMind:(Mind *)mind path:(NSString *)path{
     
-    NSMutableArray *hiddenWeights = [self convertToArray:mind.weights->hiddenWeights count:mind.numHiddenWeights];
-    NSMutableArray *outputWeights = [self convertToArray:mind.weights->outputWeights count:mind.numOutputWeights];
+    NSMutableArray *hiddenWeights = [MindStorage convertToArray:mind.weights->hiddenWeights count:mind.numHiddenWeights];
+    NSMutableArray *outputWeights = [MindStorage convertToArray:mind.weights->outputWeights count:mind.numOutputWeights];
     NSDictionary *dic = @{@"hiddenWeights": hiddenWeights,
-                          @"outputWeights": outputWeights};
+                          @"outputWeights": outputWeights,
+                          @"inputCount": [NSNumber numberWithInt:mind.numInputs],
+                          @"hiddenCount" : [NSNumber numberWithInt:mind.numHidden],
+                          @"outputCount": [NSNumber numberWithInt:mind.numOutputs],
+                          @"rate": [NSNumber numberWithFloat:mind.learningRate],
+                          @"momentum": [NSNumber numberWithInt:mind.momentumFactor]};
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dic];
     NSError *error;
@@ -27,12 +32,43 @@
     return YES;
 }
 
--(NSDictionary *)getMind:(NSString *)path{
-    return nil;
++(Mind *)getMind:(NSString *)path{
+    
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    NSMutableArray *hiddenWeights = [dic objectForKey:@"hiddenWeights"];
+    NSMutableArray *outputWeight = [dic objectForKey:@"outputWeights"];
+    
+    float *hws = [MindStorage convertToFloats:hiddenWeights count:hiddenWeights.count];
+    float *opws = [MindStorage convertToFloats:outputWeight count:outputWeight.count];
+    
+    Mind *mind = [[Mind alloc] initWith:[[dic objectForKey:@"inputCount"] intValue]
+                                 hidden:[[dic objectForKey:@"hiddenCount"] intValue]
+                                outputs:[[dic objectForKey:@"outputCount"] intValue]
+                           learningRate:[[dic objectForKey:@"rate"] floatValue]
+                               momentum:[[dic objectForKey:@"momentum"] floatValue]
+                          hiddenWeights:hws
+                          outputWeights:opws];
+    return mind;
 }
 
--(NSMutableArray *)convertToArray:(float *)array count:(int)count{
-    return nil;
++(NSMutableArray *)convertToArray:(float *)array count:(int)count{
+    
+    NSMutableArray *objects = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        [objects addObject:[NSNumber numberWithFloat:array[i]]];
+    }
+    return objects;
+}
+
++(float *)convertToFloats:(NSMutableArray *)array count:(NSUInteger)count{
+    
+    float *f = calloc(count, sizeof(float));
+    for (int i = 0; i < array.count; i++) {
+        f[i] = [array[i] floatValue];
+    }
+    return f;
 }
 
 @end

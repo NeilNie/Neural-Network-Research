@@ -193,7 +193,7 @@
         }
         
         float error = [self evaluate:testInputs expected:testOutput];
-        printf("calcuated error %f \n ", error);
+        printf("error %f\n", error);
         if (fabs(error) < threshold) {
             NSLog(@"number of epochs: %i", i);
             break;

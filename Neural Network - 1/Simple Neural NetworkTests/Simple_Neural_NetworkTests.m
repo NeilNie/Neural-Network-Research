@@ -98,7 +98,7 @@
                         nil];
     
     [self measureBlock:^{
-        [m train:inputs answer:answers testInputs:inputs testOutputs:answers threshold:0.005];
+        [m train:inputs answer:answers testInputs:inputs testOutputs:answers threshold:0.004];
     }];
 
     float r1 = [m forwardPropagation:[NSMutableArray arrayWithArray:inputs[0]]][0];

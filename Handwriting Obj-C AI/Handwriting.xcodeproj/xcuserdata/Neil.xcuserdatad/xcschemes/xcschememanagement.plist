@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Neural Network (1).xcscheme</key>
+		<key>Handwriting.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,22 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00BA573F1E44220600E683CD</key>
+		<key>0017B5D81E45067A002243D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>28E8D9CE1E38E10400F53881</key>
+		<key>0017B5EE1E45067A002243D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>28E8D9E41E38E10400F53881</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>28E8D9EF1E38E10400F53881</key>
+		<key>0017B5F91E45067A002243D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -107,8 +107,8 @@
 		0017B5DB1E45067A002243D8 /* Handwriting */ = {
 			isa = PBXGroup;
 			children = (
-				0017B5DD1E45067A002243D8 /* AppDelegate.m */,
 				000233C71E45180D002CE6DC /* AppDelegate.h */,
+				0017B5DD1E45067A002243D8 /* AppDelegate.m */,
 				0017B5E21E45067A002243D8 /* ViewController.h */,
 				0017B5E31E45067A002243D8 /* ViewController.m */,
 				009CFB9E1E46B1AF00CB4EAA /* WritingTrainer.h */,

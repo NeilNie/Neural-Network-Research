@@ -6,13 +6,13 @@
 //  Copyright © 2017 Yongyang Nie. All rights reserved.
 //
 
-#import "Mind.h"
 #import <Foundation/Foundation.h>
+#import "Mind.h"
 
 @interface MindStorage : NSObject
 
--(BOOL)storeMind:(Mind *)mind path:(NSString *)path;
++(BOOL)storeMind:(Mind *)mind path:(NSString *)path;
 
--(NSDictionary *)getMind:(NSString *)path;
++(Mind *)getMind:(NSString *)path;
 
 @end

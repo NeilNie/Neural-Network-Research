@@ -16,15 +16,15 @@
 
 @implementation WritingTrainer
 
-- (instancetype)init
+- (instancetype)initTrainer
 {
     self = [super init];
     if (self) {
         
-        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-images-idx3-ubyte"];
-        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-labels-idx1-ubyte"];
-        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-images-idx3-ubyte"];
-        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-labels-idx1-ubyte"];
+        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-images-idx3-ubyte"];
+        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-labels-idx1-ubyte"];
+        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-images-idx3-ubyte"];
+        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-labels-idx1-ubyte"];
         
         if (!trainLabels || !trainImages || !testImages || !testLabels)
             @throw [NSException exceptionWithName:@"Constructor Failed" reason:@"Error retrieving data" userInfo:nil];
@@ -85,14 +85,14 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:30 outputs:10 learningRate:0.1 momentum:0.9 weights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:30 outputs:10 learningRate:0.1 momentum:0.9 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate{
-    
-    int x = 0;
+
+    int cnt = 0;
     float rate = 0.00;
     while (rate < correctRate) {
         
@@ -107,10 +107,18 @@
             [answer replaceObjectAtIndex:[self.labelArray[i] intValue] withObject:self.labelArray[i]];
             [self.mind backwardPropagation:answer];
         }
-        x++;
-        rate = [self evaluate:100] * 100;
-        MDLog(@"%i: %.1f%%", x, rate);
+        rate = [self evaluate:300] * 100;
+        MDLog(@"%.1f%%", rate);
+        cnt ++;
+        
+        if (rate >= 85.0 && self.mind.momentumFactor > 0.6){
+            [self.mind ResetMomentum:self.mind.momentumFactor - 0.1];
+            [self.mind ResetLearningRate:self.mind.learningRate - 0.02];
+            NSLog(@"updated momentumFactor");
+        }
     }
+    [self showNotification];
+    [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
 }
 
 -(float)evaluate:(int)ntest{
@@ -130,6 +138,22 @@
     }
     [self shuffle:self.testImageArray withArray:self.testLabelArray];
     return (float)correct / (float)ntest;
+}
+
+-(void)getMindWithPath:(NSString *)path{
+    
+    self.mind = [MindStorage getMind:path];
+}
+
+#pragma mark - Private Helpers
+
+- (void)showNotification{
+    NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = @"Finished Training";
+    notification.informativeText = @"The neural network has finished training";
+    notification.soundName = NSUserNotificationDefaultSoundName;
+    
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 }
 
 -(int)largestIndex:(float *)array count:(int)count{

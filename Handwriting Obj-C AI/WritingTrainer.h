@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
 #import "Mind.h"
+#import "MindStorage.h"
 
 @interface WritingTrainer : NSObject
 
@@ -21,7 +22,11 @@
 @property (nonatomic, strong) id delegate;
 @property (nonatomic, strong) Mind *mind;
 
--(instancetype)init;
+-(instancetype)initTrainer;
+
+-(void)getMindWithPath:(NSString *)path;
+
+-(float)evaluate:(int)ntest;
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate;
 

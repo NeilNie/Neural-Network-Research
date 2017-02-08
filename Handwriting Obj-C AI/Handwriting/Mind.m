@@ -19,7 +19,7 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWith:(int)inputs hidden:(int)hidden outputs:(int)outputs learningRate:(float)learningRate momentum:(float)momentum weights:(NSArray <NSNumber *>*)weights
+- (instancetype)initWith:(int)inputs hidden:(int)hidden outputs:(int)outputs learningRate:(float)learningRate momentum:(float)momentum hiddenWeights:(float *)hws outputWeights:(float *)opws
 {
     self = [super init];
     if (self) {
@@ -70,17 +70,11 @@
             [self.inputIndices addObject:[NSNumber numberWithFloat:weightIndex % self.numInputNodes]];
         }
         
-        if (weights) {
-            if (weights.count != self.numHiddenWeights + self.numOutputWeights){
-                NSLog(@"FFNN initialization error: Incorrect number of weights provided. Randomized weights will be used instead.");
-                [self randomWeightAllLayers];
-                return nil;
-            }
-            //self.hiddenWeights = Array(weights[0..<self.numHiddenWeights])
-            //self.outputWeights = Array(weights[self.numHiddenWeights..<weights.count])
-        } else {
+        if (hws && opws) {
+            self.weights->hiddenWeights = hws;
+            self.weights->outputWeights = opws;
+        } else
             [self randomWeightAllLayers];
-        }
     }
     return self;
 }
@@ -229,7 +223,6 @@
         uint32_t rangeInt = 2000000 * range;
         float randomFloat = (float)arc4random_uniform(rangeInt) - (rangeInt / 2);
         self.weights->hiddenWeights[i] = randomFloat / 1000000;
-        //[self.hiddenWeights addObject:[NSNumber numberWithFloat:randomFloat / 1000000]];
     }
     
     for (int i = 0; i < self.numOutputWeights; i++) {
@@ -238,12 +231,20 @@
         uint32_t rangeInt = 2000000 * range;
         float randomFloat = (float)arc4random_uniform(rangeInt) - (rangeInt / 2);
         self.weights->outputWeights[i] = randomFloat / 1000000;
-        //[self.outputWeights addObject:[NSNumber numberWithFloat:randomFloat / 1000000]];
     }
 }
 
 #pragma mark - Private Helper
 
+-(void)ResetLearningRate:(float)learningRate{
+    self.learningRate = learningRate;
+    self.mfLR = (1.0 - self.momentumFactor) * learningRate;
+}
+
+-(void)ResetMomentum:(float)momentum{
+    self.momentumFactor = momentum;
+    self.mfLR = (1.0 - self.momentumFactor) * self.learningRate;
+}
 
 -(void)applyActivitionIsOutput:(BOOL)isOutput{
     
