@@ -85,13 +85,13 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:30 outputs:10 learningRate:0.1 momentum:0.9 hiddenWeights:nil outputWeights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:35 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate{
-
+    
     int cnt = 0;
     float rate = 0.00;
     while (rate < correctRate) {
@@ -107,18 +107,65 @@
             [answer replaceObjectAtIndex:[self.labelArray[i] intValue] withObject:self.labelArray[i]];
             [self.mind backwardPropagation:answer];
         }
-        rate = [self evaluate:300] * 100;
+        rate = [self evaluate:1000] * 100;
         MDLog(@"%.1f%%", rate);
         cnt ++;
-        
-        if (rate >= 85.0 && self.mind.momentumFactor > 0.6){
-            [self.mind ResetMomentum:self.mind.momentumFactor - 0.1];
-            [self.mind ResetLearningRate:self.mind.learningRate - 0.02];
-            NSLog(@"updated momentumFactor");
+    
+        if (rate >= 80) {
+            [self.mind ResetLearningRate:self.mind.learningRate * 0.85];
+            [self.mind ResetMomentum:self.mind.momentumFactor * 0.85];
         }
     }
     [self showNotification];
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
+}
+
+-(void)SGD:(NSMutableArray *)training_data epochs:(int)epochs mini_batch_size:(int)mini_batch_size eta:(float)eta test_data:(NSMutableArray *)test_data{
+    
+    /*Train the neural network using mini-batch stochastic
+     gradient descent.  The "training_data" is a list of tuples
+     "(x, y)" representing the training inputs and the desired
+     outputs.  The other non-optional parameters are
+     self-explanatory.  If "test_data" is provided then the
+     network will be evaluated against the test data after each
+     epoch, and partial progress printed out.  This is useful for
+     tracking progress, but slows things down substantially.*/
+    
+    
+    int n_test = (int)test_data.count;
+    int n = (int)training_data.count;
+    for (int i = 0; i < epochs; i++) {
+        
+        [self shuffle:training_data];
+        NSMutableArray *mini_batches = [NSMutableArray array];
+        for (int z = 0; z < 60000; z+=mini_batch_size) {
+            //NSMutableArray *array
+        }
+        
+        for (NSMutableArray *mini_batch in mini_batches){
+            [self update_mini_batch:mini_batch eta:eta];
+            NSLog(@"Epoch %i: %f", i, [self evaluate:500]);
+        }
+    }
+}
+
+-(void)update_mini_batch:(NSMutableArray *)mini_batch eta:(float)eta{
+    
+    /*Update the network's weights and biases by applying
+    gradient descent using backpropagation to a single mini batch.
+    The "mini_batch" is a list of tuples "(x, y)", and "eta"
+    is the learning rate.
+    
+    nabla_b = [np.zeros(b.shape) for b in self.biases]
+    nabla_w = [np.zeros(w.shape) for w in self.weights]
+    for x, y in mini_batch:
+        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+        nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+        nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+        self.weights = [w-(eta/len(mini_batch))*nw
+                        for w, nw in zip(self.weights, nabla_w)]
+        self.biases = [b-(eta/len(mini_batch))*nb
+                       for b, nb in zip(self.biases, nabla_b)] */
 }
 
 -(float)evaluate:(int)ntest{
@@ -129,8 +176,8 @@
     int correct = 0;
     for (int i = 0; i < ntest; i++) {
         
-        NSMutableArray *batch = [NSMutableArray arrayWithArray:self.testImageArray[i]];
-        int result = [self largestIndex:[self.mind forwardPropagation:batch] count:10];
+        NSMutableArray *image = [NSMutableArray arrayWithArray:self.testImageArray[i]];
+        int result = [self largestIndex:[self.mind forwardPropagation:image] count:10];
         int answer = [self.testLabelArray[i] intValue];
         
         if (result == answer)
@@ -168,6 +215,18 @@
         }
     }
     return index;
+}
+
+- (void)shuffle:(NSMutableArray *)array
+{
+
+    NSUInteger count = [array count];
+    if (count <= 1) return;
+    for (NSUInteger i = 0; i < count - 1; ++i) {
+        NSInteger remainingCount = count - i;
+        NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+        [array exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+    }
 }
 
 - (void)shuffle:(NSMutableArray *)array1 withArray:(NSMutableArray *)array2

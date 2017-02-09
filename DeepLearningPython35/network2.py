@@ -203,12 +203,12 @@ class Network(object):
                 if accuracy > best_accuracy:
                     best_accuracy = accuracy
                     no_accuracy_change = 0
-                    #print("Early-stopping: Best so far {}".format(best_accuracy))
+                    print("Early-stopping: Best so far {}".format(best_accuracy))
                 else:
                     no_accuracy_change += 1
 
                 if (no_accuracy_change == early_stopping_n):
-                    #print("Early-stopping: No accuracy change in last epochs: {}".format(early_stopping_n))
+                    print("Early-stopping: No accuracy change in last epochs: {}".format(early_stopping_n))
                     return evaluation_cost, evaluation_accuracy, training_cost, training_accuracy
 
         return evaluation_cost, evaluation_accuracy, \
