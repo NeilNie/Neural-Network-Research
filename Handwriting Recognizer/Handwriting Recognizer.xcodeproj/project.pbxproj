@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		288442111E4D5DA000E09C0E /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 2884420E1E4D5DA000E09C0E /* Black.png */; };
+		288442121E4D5DA000E09C0E /* Eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 2884420F1E4D5DA000E09C0E /* Eraser.png */; };
+		288442131E4D5DA000E09C0E /* Grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 288442101E4D5DA000E09C0E /* Grey.png */; };
 		28B1DDEC1E4C21580052A188 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDEB1E4C21580052A188 /* main.m */; };
 		28B1DDEF1E4C21580052A188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDEE1E4C21580052A188 /* AppDelegate.m */; };
 		28B1DDF21E4C21580052A188 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDF11E4C21580052A188 /* ViewController.m */; };
@@ -38,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2884420E1E4D5DA000E09C0E /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
+		2884420F1E4D5DA000E09C0E /* Eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eraser.png; sourceTree = "<group>"; };
+		288442101E4D5DA000E09C0E /* Grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grey.png; sourceTree = "<group>"; };
 		28B1DDE71E4C21580052A188 /* Handwriting Recognizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Handwriting Recognizer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B1DDEB1E4C21580052A188 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28B1DDED1E4C21580052A188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +93,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2884420D1E4D5C1C00E09C0E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				28B1DE1F1E4C21740052A188 /* Mind.h */,
+				28B1DE201E4C21740052A188 /* Mind.m */,
+				28B1DE211E4C21740052A188 /* MindStorage.h */,
+				28B1DE221E4C21740052A188 /* MindStorage.m */,
+				28B1DE231E4C21740052A188 /* NeuralMath.h */,
+				28B1DE241E4C21740052A188 /* NeuralMath.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		288442141E4D5DCC00E09C0E /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				28B1DDF61E4C21580052A188 /* Assets.xcassets */,
+				2884420E1E4D5DA000E09C0E /* Black.png */,
+				2884420F1E4D5DA000E09C0E /* Eraser.png */,
+				288442101E4D5DA000E09C0E /* Grey.png */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
 		28B1DDDE1E4C21580052A188 = {
 			isa = PBXGroup;
 			children = (
@@ -114,16 +144,9 @@
 				28B1DDEE1E4C21580052A188 /* AppDelegate.m */,
 				28B1DDF01E4C21580052A188 /* ViewController.h */,
 				28B1DDF11E4C21580052A188 /* ViewController.m */,
-				28B1DE1F1E4C21740052A188 /* Mind.h */,
-				28B1DE201E4C21740052A188 /* Mind.m */,
-				28B1DE211E4C21740052A188 /* MindStorage.h */,
-				28B1DE221E4C21740052A188 /* MindStorage.m */,
-				28B1DE231E4C21740052A188 /* NeuralMath.h */,
-				28B1DE241E4C21740052A188 /* NeuralMath.m */,
 				28B1DDF31E4C21580052A188 /* Main.storyboard */,
-				28B1DDF61E4C21580052A188 /* Assets.xcassets */,
-				28B1DDF81E4C21580052A188 /* LaunchScreen.storyboard */,
-				28B1DDFB1E4C21580052A188 /* Info.plist */,
+				288442141E4D5DCC00E09C0E /* Media */,
+				2884420D1E4D5C1C00E09C0E /* Classes */,
 				28B1DDEA1E4C21580052A188 /* Supporting Files */,
 			);
 			path = "Handwriting Recognizer";
@@ -132,6 +155,8 @@
 		28B1DDEA1E4C21580052A188 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28B1DDF81E4C21580052A188 /* LaunchScreen.storyboard */,
+				28B1DDFB1E4C21580052A188 /* Info.plist */,
 				28B1DDEB1E4C21580052A188 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -264,9 +289,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288442131E4D5DA000E09C0E /* Grey.png in Resources */,
 				28B1DDFA1E4C21580052A188 /* LaunchScreen.storyboard in Resources */,
+				288442111E4D5DA000E09C0E /* Black.png in Resources */,
 				28B1DDF71E4C21580052A188 /* Assets.xcassets in Resources */,
 				28B1DDF51E4C21580052A188 /* Main.storyboard in Resources */,
+				288442121E4D5DA000E09C0E /* Eraser.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +564,7 @@
 				28B1DE161E4C21590052A188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28B1DE171E4C21590052A188 /* Build configuration list for PBXNativeTarget "Handwriting RecognizerTests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +573,7 @@
 				28B1DE191E4C21590052A188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		28B1DE1A1E4C21590052A188 /* Build configuration list for PBXNativeTarget "Handwriting RecognizerUITests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +582,7 @@
 				28B1DE1C1E4C21590052A188 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

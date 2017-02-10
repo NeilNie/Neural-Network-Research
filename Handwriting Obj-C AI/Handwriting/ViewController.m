@@ -25,11 +25,10 @@
     NSLog(@"%f", [self.wt evaluate:5000] * 100);
     self.wt.delegate = self;
     //[self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
-    [self.wt train:100 epochs:0 correctRate:92.0];
+    [self.wt train:60000 epochs:0 correctRate:92.0];
     
     // Do any additional setup after loading the view.
 }
-
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];

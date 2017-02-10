@@ -14,6 +14,8 @@
 #define MDLog(format, ...) CFShow([NSString stringWithFormat:format, ## __VA_ARGS__]);
 #endif
 
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"execution time: %f", -[startTime timeIntervalSinceNow])
 
 @implementation Mind
 
@@ -119,7 +121,7 @@
     return self.io->outputs;
 }
 
--(float)backwardPropagation:(NSMutableArray <NSNumber *>*)answer{
+-(void)backwardPropagation:(NSMutableArray <NSNumber *>*)answer{
     
     //varify data
     if (answer.count != self.numOutputs)
@@ -145,14 +147,11 @@
     for (int x = 0; x < self.numOutputWeights; x++) {
         
         float offset = self.weights->outputWeights[x] + (self.momentumFactor * (self.weights->outputWeights[x] - self.weights->previousOutputWeights[x]));
-        
         int errorIndex = [self.outputErrorIndices[x] intValue];
         int hiddenOutputIndex = [self.hiddenOutputIndices[x] intValue];
         float mfLRErrIn = self.mfLR * self.errors->outputErrors[errorIndex] * self.io->hiddenOutputs[hiddenOutputIndex];
-        float l = (1.0 - self.learningRate) * (self.lmbda / (float)self.numOutputs);
-        self.weights->outputWeightsNew[x] = offset + mfLRErrIn + l;
+        self.weights->outputWeightsNew[x] = offset + mfLRErrIn;
     }
-    
     vDSP_mmov(self.weights->outputWeights, self.weights->previousOutputWeights, 1, self.numOutputWeights, 1, 1);
     vDSP_mmov(self.weights->outputWeightsNew, self.weights->outputWeights, 1, self.numOutputWeights, 1, 1);
     
@@ -165,29 +164,10 @@
         int inputIndex = [self.inputIndices[i] intValue];
         // Note: +1 on errorIndex to offset for bias 'error', which is ignored
         float mfLRErrIn = self.mfLR * self.errors->hiddenErrors[errorIndex + 1] * self.io->inputs[inputIndex];
-        float l = (1.0 - self.learningRate) * (self.lmbda / (float)self.numHiddenNodes);
-        self.weights->hiddenWeightsNew[i] = offset + mfLRErrIn + l;
+        self.weights->hiddenWeightsNew[i] = offset + mfLRErrIn;
     }
-    
     vDSP_mmov(self.weights->hiddenWeights, self.weights->previousHiddenWeights, 1, self.numHiddenWeights, 1, 1);
     vDSP_mmov(self.weights->hiddenWeightsNew, self.weights->hiddenWeights, 1, self.numHiddenWeights, 1, 1);
-    
-     // in what direction is the target value? were we really sure? if so, don't change too much.
-     //self.errors->hiddenErrors = layer_2_error * sigmoid_output_to_derivative(layer_2)
-     /*
-     // how much did each l1 value contribute to the l2
-     error (according to the weights)?
-     layer_1_error = layer_2_delta.dot(synapse_1.T)
-     
-     // in what direction is the target l1?
-     // were we really sure? if so, don't change too much.
-     layer_1_delta = layer_1_error *
-     sigmoid_output_to_derivative(layer_1)
-     
-     synapse_1 -= alpha * (layer_1.T.dot(layer_2_delta))
-     synapse_0 -= alpha * (layer_0.T.dot(layer_1_delta))
-     */
-    return 0.00;
 }
 
 -(void)train:(NSArray <NSArray <NSNumber*>*>*)inputs

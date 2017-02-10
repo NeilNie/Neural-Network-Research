@@ -150,7 +150,7 @@ typedef struct {
  @returns float calculated error
  @exception Answer and self.numOutputs has to be the same.
  */
--(float)backwardPropagation:(NSMutableArray <NSNumber *>*)answer;
+-(void)backwardPropagation:(NSMutableArray <NSNumber *>*)answer;
 
 /*!
  Train the network with data that you provides.
