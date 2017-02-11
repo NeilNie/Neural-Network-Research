@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Mind.h"
+#import "WritingTrainer.h"
 
 @interface ViewController : UIViewController <UIActionSheetDelegate> {
     
@@ -20,13 +21,13 @@
     BOOL mouseSwiped;
 }
 
-@property (strong, nonatomic) Mind *mind;
+@property (strong, nonatomic) WritingTrainer *wt;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
+@property (weak, nonatomic) IBOutlet UILabel *result;
 
 - (IBAction)pencilPressed:(id)sender;
 - (IBAction)eraserPressed:(id)sender;
 - (IBAction)reset:(id)sender;
-- (IBAction)save:(id)sender;
 
 @end

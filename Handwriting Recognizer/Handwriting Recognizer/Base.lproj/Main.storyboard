@@ -72,9 +72,11 @@
                                     <action selector="recognize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cZI-Xd-39C"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="It's likely to be:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6l-HL-NMg">
-                                <rect key="frame" x="130" y="538" width="114" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's likely to be:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6l-HL-NMg">
+                                <rect key="frame" x="117" y="538" width="140" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="MA5-eH-mGA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -83,20 +85,31 @@
                                 <rect key="frame" x="0.0" y="114" width="375" height="375"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBl-9v-h6h">
+                                <rect key="frame" x="168" y="608" width="39" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8wf-Sp-sXg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wLa-GY-gYm" secondAttribute="trailing" id="0pd-s4-Jfa"/>
                             <constraint firstItem="yVs-2S-Cp3" firstAttribute="centerX" secondItem="wLa-GY-gYm" secondAttribute="centerX" id="0rh-5g-RZM"/>
                             <constraint firstAttribute="trailing" secondItem="nEp-VG-zm1" secondAttribute="trailing" id="3Xy-VA-H2l"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kBl-9v-h6h" secondAttribute="bottom" constant="29" id="HAk-rO-MNQ"/>
                             <constraint firstItem="IIn-EA-O5o" firstAttribute="top" secondItem="Mcd-jp-DLl" secondAttribute="bottom" constant="8" id="K9P-Lo-4vd"/>
+                            <constraint firstItem="H6l-HL-NMg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nw3-VP-IKz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="IIn-EA-O5o" secondAttribute="bottom" id="RC3-XU-ajM"/>
                             <constraint firstItem="wLa-GY-gYm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Uv1-0S-5TO"/>
                             <constraint firstItem="Mcd-jp-DLl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="114" id="VsL-DM-dwh"/>
                             <constraint firstItem="IIn-EA-O5o" firstAttribute="top" secondItem="wLa-GY-gYm" secondAttribute="bottom" constant="8" id="XWl-yy-Wtw"/>
+                            <constraint firstItem="H6l-HL-NMg" firstAttribute="top" secondItem="wLa-GY-gYm" secondAttribute="bottom" constant="49" id="ZPF-Q4-ARQ"/>
                             <constraint firstItem="IIn-EA-O5o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="anz-C8-HU5"/>
                             <constraint firstItem="yVs-2S-Cp3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="b9k-UO-qmd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nEp-VG-zm1" secondAttribute="bottom" id="hah-VJ-CFH"/>
+                            <constraint firstItem="kBl-9v-h6h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jzV-Fu-91w"/>
                             <constraint firstItem="Mcd-jp-DLl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oVg-0P-NvT"/>
                             <constraint firstAttribute="trailing" secondItem="Mcd-jp-DLl" secondAttribute="trailing" id="vKg-x2-Zew"/>
                             <constraint firstItem="wLa-GY-gYm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="114" id="yi6-eu-hfX"/>
@@ -104,6 +117,7 @@
                     </view>
                     <connections>
                         <outlet property="mainImage" destination="Mcd-jp-DLl" id="THt-J3-raY"/>
+                        <outlet property="result" destination="H6l-HL-NMg" id="gML-r0-HTS"/>
                         <outlet property="tempDrawImage" destination="wLa-GY-gYm" id="oIs-Nk-yMQ"/>
                     </connections>
                 </viewController>

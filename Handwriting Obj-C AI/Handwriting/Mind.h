@@ -147,7 +147,6 @@ typedef struct {
 /*!
  Backward propagation method in this feed forward neural network. Trains the network by comparing its most recent output to the given 'answers', adjusting the network's weights as needed.
  @param answer The desired output for the most recent update to the network, as an array<nsnumber<float>>.
- @returns float calculated error
  @exception Answer and self.numOutputs has to be the same.
  */
 -(void)backwardPropagation:(NSMutableArray <NSNumber *>*)answer;

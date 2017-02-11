@@ -30,11 +30,11 @@
         self.numHidden = hidden;
         self.numOutputs = outputs;
         
-        self.numHiddenWeights = (hidden * (inputs + 1));
-        self.numOutputWeights = (outputs * (hidden + 1));
+        self.numHiddenWeights = (hidden * (inputs ));//+ 1
+        self.numOutputWeights = (outputs * (hidden ));//+ 1
         
-        self.numInputNodes = inputs + 1;
-        self.numHiddenNodes = hidden + 1;
+        //self.numInputNodes = inputs + 1;
+        //self.numHiddenNodes = hidden + 1;
         
         self.learningRate = learningRate;
         self.momentumFactor = momentum;
@@ -85,20 +85,20 @@
 #pragma mark - Instance Method
 
 
--(float *)forwardPropagation:(NSMutableArray <NSNumber *>*)inputs{
+-(float *)forwardPropagation:(NSMutableArray <NSNumber *>*)ins{
     
     //--------------------------------------------------
     //varify valid data
-    if(self.numInputs != (int)inputs.count)
+    if(self.numInputs != (int)ins.count)
         @throw [NSException exceptionWithName:@"Neural networkd data inconsistancy" reason:@"inputs.cout != self.numInputs" userInfo:nil];
     
-    [inputs insertObject:[NSNumber numberWithFloat:1.00f] atIndex:0];
+    NSMutableArray *inputs = [ins mutableCopy];
+   // [inputs insertObject:[NSNumber numberWithFloat:1.00f] atIndex:0];
     for (int i = 0; i < self.numInputNodes; i++) {
         self.io->inputs[i] = [inputs[i] floatValue];
     }
     //--------------------------------------------------
     // Calculate the weighted sums for the hidden layer
-    
     vDSP_mmul(self.weights->hiddenWeights, 1,                        //input mat _A
               self.io->inputs, 1,                           //input mat _B
               self.io->hiddenOutputs, 1,                    //result mat _C
@@ -253,7 +253,7 @@
     }else{
         for (int i = self.numHidden; i > 0; i--)
             self.io->hiddenOutputs[i] = [NeuralMath sigmoid:self.io->hiddenOutputs[i - 1]];
-        self.io->hiddenOutputs[0] = 1.00;
+        //self.io->hiddenOutputs[0] = 1.00;
     }
 }
 

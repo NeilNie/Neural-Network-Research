@@ -39,6 +39,17 @@
         self.labelArray = [NSMutableArray array];
         self.testImageArray = [NSMutableArray array];
         self.testLabelArray = [NSMutableArray array];
+        self.nums = [[NSMutableArray alloc] initWithObjects:
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],
+                     [NSMutableArray array],nil];
         
         // Store image/label byte indices
         int imagePosition = 16; // Start after header info
@@ -57,14 +68,14 @@
             for (int i = 0; i < nPixels; i++)
                 [pixels addObject:[NSNumber numberWithFloat:(float)ints[i] / 255]];
             
-            ints = NULL;
-            [self.imageArray addObject:pixels];
-            
             //extract labels1
             uint8 *trainLabel = calloc(1, sizeof(uint8));
             [trainLabels getBytes:trainLabel range:NSMakeRange(labelPosition, 1)];
+            [[self.nums objectAtIndex:trainLabel[0]] addObject:pixels];
             [self.labelArray addObject:[NSNumber numberWithInt:trainLabel[0]]];
+            [self.imageArray addObject:pixels];
             trainLabel = NULL;
+            ints = NULL;
             
             // Extract test image/label if we're still in range
             if (i < 10000) {
@@ -88,7 +99,7 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:35 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:36 outputs:10 learningRate:0 momentum:0 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
@@ -98,15 +109,10 @@
     int cnt = 0;
     float rate = 0.00;
     while (rate < correctRate) {
-        
-        TICK;
-        
+
         [self shuffle:self.imageArray withArray:self.labelArray];
         
         for (int i = 0; i < batchSize; i++) {
-
-            if (i%10000 == 0 || i == 60000 - 1)
-                NSLog(@"%.2f %%", (float)i / 600.0);
             
             NSMutableArray *batch = [NSMutableArray arrayWithArray:self.imageArray[i]];
             [self.mind forwardPropagation:batch];
@@ -116,16 +122,44 @@
         }
         rate = [self evaluate:10000] * 100;
         cnt ++;
-        
-//        if (rate >= 80) {
-//            [self.mind ResetLearningRate:self.mind.learningRate * 0.75];
-//            [self.mind ResetMomentum:self.mind.momentumFactor * 0.75];
-//        }
-        TOCK;
     }
     [self showNotification];
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
 }
+
+/*
+-(void)trainNum:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate{
+    
+    for (int i = 0; i < self.nums.count; i++) {
+        
+        NSLog(@"training %i", i);
+        for (int x = 0; x < self.nums[i].count; x++) {
+            NSMutableArray *batch = [NSMutableArray arrayWithArray:self.nums[i][x]];
+            [self.mind forwardPropagation:batch];
+            
+            NSMutableArray *answer = [NSMutableArray arrayWithObjects:@0,@0,@0,@0,@0,@0,@0,@0,@0,@0, nil];
+            [answer replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:1]];
+            [self.mind backwardPropagation:answer];
+        }
+        
+        int correct = 0;
+        NSLog(@"testing %i", i);
+        for (int t = 0; t < 1000; t++) {
+            NSMutableArray *image = [NSMutableArray arrayWithArray:self.nums[i][t]];
+            float *f = [self.mind forwardPropagation:image];
+            int result = [self largestIndex:f count:10];
+            int answer = i;
+            
+            if (result == answer)
+                correct++;
+        }
+        NSLog(@"number specific result %i / %i", correct, 1000);
+    }
+    [self evaluate:10000] * 100;
+    [self showNotification];
+    [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
+}*/
+
 
 -(void)SGD:(NSMutableArray *)training_data epochs:(int)epochs mini_batch_size:(int)mini_batch_size eta:(float)eta test_data:(NSMutableArray *)test_data{
     
@@ -173,7 +207,6 @@
         if (result == answer)
             correct++;
     }
-    [self shuffle:self.testImageArray withArray:self.testLabelArray];
     NSLog(@"%i / %i", correct, ntest);
     return (float)correct / (float)ntest;
 }
@@ -233,43 +266,6 @@
         [array1 exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
         [array2 exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
     }
-}
-
-- (NSImage *)getImage:(uint8 *)buffer width:(int)width height:(int)height{
-    
-    char* rgba = (char*)malloc(width*height*4);
-    for(int i=0; i < width*height; ++i) {
-        rgba[4*i] = buffer[3*i];
-        rgba[4*i+1] = buffer[3*i+1];
-        rgba[4*i+2] = buffer[3*i+2];
-        rgba[4*i+3] = 0;
-    }
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef bitmapContext = CGBitmapContextCreate(buffer,
-                                                       width,
-                                                       height,
-                                                       8, // bitsPerComponent
-                                                       4*width, // bytesPerRow
-                                                       colorSpace,
-                                                       kCGImageAlphaNoneSkipLast);
-    
-    CFRelease(colorSpace);
-    
-    CGImageRef cgImage = CGBitmapContextCreateImage(bitmapContext);
-    CFURLRef url = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, CFSTR("image.png"), kCFURLPOSIXPathStyle, false);
-    
-    NSImage *image = [[NSImage alloc] initWithCGImage:cgImage size:CGSizeMake(28, 28)];
-    
-    CFStringRef type = kUTTypePNG; // or kUTTypeBMP if you like
-    CGImageDestinationRef dest = CGImageDestinationCreateWithURL(url, type, 1, 0);
-    
-    CGImageDestinationAddImage(dest, cgImage, 0);
-    
-    CFRelease(cgImage);
-    CFRelease(bitmapContext);
-    CGImageDestinationFinalize(dest);
-    free(rgba);
-    return image;
 }
 
 @end

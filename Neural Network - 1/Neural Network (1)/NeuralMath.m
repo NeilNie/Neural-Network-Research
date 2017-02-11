@@ -15,7 +15,7 @@
 }
 
 +(float)sigmoidPrime:(float)y{
-    return y * (1 - y);
+    return [NeuralMath sigmoid:y] * (1 - [NeuralMath sigmoid:y]);
 }
 
 +(NSMutableArray *)fillMat:(int)h w:(int)w{

@@ -14,7 +14,6 @@
 #define MDLog(format, ...) CFShow([NSString stringWithFormat:format, ## __VA_ARGS__]);
 #endif
 
-
 @implementation Mind
 
 #pragma mark - Constructors
@@ -28,25 +27,22 @@
         self.numHidden = hidden;
         self.numOutputs = outputs;
         
-        self.numHiddenWeights = (hidden * (inputs + 1));
-        self.numOutputWeights = (outputs * (hidden + 1));
-        
-        self.numInputNodes = inputs + 1;
-        self.numHiddenNodes = hidden + 1;
+        self.numHiddenWeights = (hidden * (inputs));
+        self.numOutputWeights = (outputs * (hidden));
         
         self.learningRate = learningRate;
         self.momentumFactor = momentum;
         self.mfLR = (1.0 - momentum) * learningRate;
         
-        self.io = calloc(self.numInputNodes + self.numOutputs + self.numHiddenNodes, sizeof(float));
-        self.io->inputs = calloc(self.numInputNodes, sizeof(float));
+        self.io = calloc(self.numInputs + self.numOutputs + self.numHidden, sizeof(float));
+        self.io->inputs = calloc(self.numInputs, sizeof(float));
         self.io->outputs = calloc(self.numOutputs, sizeof(float));
-        self.io->hiddenOutputs = calloc(self.numHiddenNodes, sizeof(float));
+        self.io->hiddenOutputs = calloc(self.numHidden, sizeof(float));
         
-        self.errors = calloc(self.numOutputs + self.numHiddenNodes * 2, sizeof(float));
+        self.errors = calloc(self.numOutputs + self.numHidden * 2, sizeof(float));
         self.errors->outputErrors = calloc(self.numOutputs, sizeof(float));
-        self.errors->hiddenErrors = calloc(self.numHiddenNodes, sizeof(float));
-        self.errors->hiddenErrorSums = calloc(self.numHiddenNodes, sizeof(float));
+        self.errors->hiddenErrors = calloc(self.numHidden, sizeof(float));
+        self.errors->hiddenErrorSums = calloc(self.numHidden, sizeof(float));
 
         self.weights = calloc(self.numHiddenWeights * 2 + self.numOutputWeights * 2, sizeof(float));
         self.weights->hiddenWeights = calloc(self.numHiddenWeights, sizeof(float));
@@ -59,15 +55,15 @@
         self.outputErrorIndices = [NSMutableArray array];
         self.hiddenOutputIndices = [NSMutableArray array];
         for (int weightIndex = 0; weightIndex < self.numOutputWeights; weightIndex++){
-            [self.outputErrorIndices addObject:[NSNumber numberWithFloat:weightIndex / self.numHiddenNodes]];
-            [self.hiddenOutputIndices addObject:[NSNumber numberWithFloat:weightIndex % self.numHiddenNodes]];
+            [self.outputErrorIndices addObject:[NSNumber numberWithFloat:weightIndex / self.numHidden]];
+            [self.hiddenOutputIndices addObject:[NSNumber numberWithFloat:weightIndex % self.numHidden]];
         }
         
         self.hiddenErrorIndices = [NSMutableArray array];
         self.inputIndices = [NSMutableArray array];
         for (int weightIndex = 0; weightIndex < self.numHiddenWeights; weightIndex++) {
-            [self.hiddenErrorIndices addObject:[NSNumber numberWithFloat:weightIndex / self.numInputNodes]];
-            [self.inputIndices addObject:[NSNumber numberWithFloat:weightIndex % self.numInputNodes]];
+            [self.hiddenErrorIndices addObject:[NSNumber numberWithFloat:weightIndex / self.numInputs]];
+            [self.inputIndices addObject:[NSNumber numberWithFloat:weightIndex % self.numInputs]];
         }
         
         if (weights) {
@@ -76,8 +72,6 @@
                 [self randomWeightAllLayers];
                 return nil;
             }
-            //self.hiddenWeights = Array(weights[0..<self.numHiddenWeights])
-            //self.outputWeights = Array(weights[self.numHiddenWeights..<weights.count])
         } else {
             [self randomWeightAllLayers];
         }
@@ -95,8 +89,7 @@
     if(self.numInputs != (int)inputs.count)
         @throw [NSException exceptionWithName:@"Neural networkd data inconsistancy" reason:@"inputs.cout != self.numInputs" userInfo:nil];
     
-    [inputs insertObject:[NSNumber numberWithFloat:1.00f] atIndex:0];
-    for (int i = 0; i < self.numInputNodes; i++) {
+    for (int i = 0; i < self.numInputs; i++) {
         self.io->inputs[i] = [inputs[i] floatValue];
     }
     //--------------------------------------------------
@@ -105,7 +98,7 @@
     vDSP_mmul(self.weights->hiddenWeights, 1,                        //input mat _A
               self.io->inputs, 1,                           //input mat _B
               self.io->hiddenOutputs, 1,                    //result mat _C
-              self.numHidden, 1, self.numInputNodes);   //size constraints
+              self.numHidden, 1, self.numInputs);   //size constraints
 
     
     //--------------------------------------------------
@@ -117,14 +110,14 @@
     vDSP_mmul(self.weights->outputWeights, 1,
               self.io->hiddenOutputs, 1,
               self.io->outputs, 1,
-              self.numOutputs, 1, self.numHiddenNodes);
+              self.numOutputs, 1, self.numInputs);
     
     [self applyActivitionIsOutput:YES];
     
     return self.io->outputs;
 }
 
--(float)backwardPropagation:(NSMutableArray <NSNumber *>*)answer{
+-(void)backwardPropagation:(NSMutableArray <NSNumber *>*)answer{
     
     //varify data
     if (answer.count != self.numOutputs)
@@ -140,9 +133,9 @@
     vDSP_mmul(self.errors->outputErrors, 1,
               self.weights->outputWeights, 1,
               self.errors->hiddenErrorSums, 1,
-              1, self.numHiddenNodes, self.numOutputs);
+              1, self.numHidden, self.numOutputs);
 
-    for (int errorIndex = 0; errorIndex < self.numHiddenNodes; errorIndex++)
+    for (int errorIndex = 0; errorIndex < self.numHidden; errorIndex++)
         self.errors->hiddenErrors[errorIndex] = [NeuralMath sigmoidPrime:self.io->hiddenOutputs[errorIndex]] * self.errors->hiddenErrorSums[errorIndex];
     
     //----------------------------------------------------
@@ -167,14 +160,48 @@
         int errorIndex = [self.hiddenErrorIndices[i] intValue];
         int inputIndex = [self.inputIndices[i] intValue];
         // Note: +1 on errorIndex to offset for bias 'error', which is ignored
-        float mfLRErrIn = self.mfLR * self.errors->hiddenErrors[errorIndex + 1] * self.io->inputs[inputIndex];
+        float mfLRErrIn = self.mfLR * self.errors->hiddenErrors[errorIndex] * self.io->inputs[inputIndex];
         self.weights->hiddenWeightsNew[i] = offset + mfLRErrIn;
     }
 
     vDSP_mmov(self.weights->hiddenWeights, self.weights->previousHiddenWeights, 1, self.numHiddenWeights, 1, 1);
     vDSP_mmov(self.weights->hiddenWeightsNew, self.weights->hiddenWeights, 1, self.numHiddenWeights, 1, 1);
+}
+
+-(float)costFunction:(NSMutableArray <NSNumber *>*)forward desired:(NSMutableArray *)desired{
     
-    return 0.00;
+    [self forwardPropagation:forward];
+    float sum = 0.00;
+    for (int i = 0; self.numHidden; i++) {
+        sum += pow([desired[i] floatValue] - self.io->outputs[i], 2.0);
+    }
+    float J = 0.5*sum;
+    return J;
+}
+
+-(void)costFunctionPrime:(NSMutableArray <NSNumber *>*)inputs desired:(NSMutableArray *)desired{
+    
+    //Compute derivative with respect to W and W2 for a given X and y:
+    [self forwardPropagation:inputs];
+    
+    for (int i = 0; <#condition#>; i++) {
+        <#statements#>
+    }
+    delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
+    dJdW2 = np.dot(self.a2.T, delta3)
+    
+    delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
+    dJdW1 = np.dot(X.T, delta2)
+    
+    return dJdW1, dJdW2
+}
+
+-(void)sigmoid:(float *)array{
+    
+}
+
+-(void)sigmoidPrime:(float *)array{
+    
 }
 
 -(void)train:(NSArray <NSArray <NSNumber*>*>*)inputs
@@ -225,20 +252,18 @@
 
     for (int i = 0; i < self.numHiddenWeights; i++) {
         
-        float range = 1 / sqrt(self.numInputNodes);
+        float range = 1 / sqrt(self.numInputs);
         uint32_t rangeInt = 2000000 * range;
         float randomFloat = (float)arc4random_uniform(rangeInt) - (rangeInt / 2);
         self.weights->hiddenWeights[i] = randomFloat / 1000000;
-        //[self.hiddenWeights addObject:[NSNumber numberWithFloat:randomFloat / 1000000]];
     }
     
     for (int i = 0; i < self.numOutputWeights; i++) {
         
-        float range = 1 / sqrt(self.numInputNodes);
+        float range = 1 / sqrt(self.numInputs);
         uint32_t rangeInt = 2000000 * range;
         float randomFloat = (float)arc4random_uniform(rangeInt) - (rangeInt / 2);
         self.weights->outputWeights[i] = randomFloat / 1000000;
-        //[self.outputWeights addObject:[NSNumber numberWithFloat:randomFloat / 1000000]];
     }
 }
 
@@ -253,52 +278,40 @@
     }else{
         for (int i = self.numHidden; i > 0; i--)
             self.io->hiddenOutputs[i] = [NeuralMath sigmoid:self.io->hiddenOutputs[i - 1]];
-        self.io->hiddenOutputs[0] = 1.00;
+        //self.io->hiddenOutputs[0] = 1.00;
     }
 }
 
 -(void)convertToObjects:(float *)floats count:(int)n array:(NSMutableArray <NSNumber *>*)array{
-    
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
         [array replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:floats[i]]];
-    }
 }
 
 -(NSMutableArray <NSNumber *>*)fillArray:(int)count value:(float)value{
     
     NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
         [array addObject:[NSNumber numberWithFloat:value]];
-    }
     return array;
 }
 
 -(int)matSize:(NSArray *)array{
     
     int total = 0;
-    for (NSNumber *n in array) {
+    for (NSNumber *n in array)
         total += n.intValue;
-    }
     return total;
 }
 
 -(void)print:(float *)array count:(int)count{
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
         MDLog(@"%f", array[i]);
-    }
 }
 
 #pragma mark - Override
 
 -(NSString *)description{
     return nil;
-}
-
-#pragma mark - Dealloc
-
--(void)deallocMind{
-    self.io = NULL;
-    self.weights = NULL;
 }
 
 @end

@@ -84,10 +84,10 @@ typedef struct {
 /*! (1 - momentumFactor) * learningRate. Used frequently during backpropagation. */
 @property float mfLR;
 
-/*! The number of input nodes, INCLUDING the bias node. */
-@property int numInputNodes;
-/*! The number of hidden nodes, INCLUDING the bias node. */
-@property int numHiddenNodes;
+///*! The number of input nodes, INCLUDING the bias node. */
+//@property int numInputNodes;
+///*! The number of hidden nodes, INCLUDING the bias node. */
+//@property int numHiddenNodes;
 /*! The total number of weights connecting all input nodes to all hidden nodes. */
 @property int numHiddenWeights;
 /*! The total number of weights connecting all hidden nodes to all output nodes. */
@@ -144,10 +144,9 @@ typedef struct {
 /*!
  Backward propagation method in this feed forward neural network. Trains the network by comparing its most recent output to the given 'answers', adjusting the network's weights as needed.
  @param answer The desired output for the most recent update to the network, as an array<nsnumber<float>>.
- @returns float calculated error
  @exception Answer and self.numOutputs has to be the same.
  */
--(float)backwardPropagation:(NSMutableArray <NSNumber *>*)answer;
+-(void)backwardPropagation:(NSMutableArray <NSNumber *>*)answer;
 
 /*!
  Train the network with data that you provides.

@@ -23,7 +23,7 @@
 
 -(void)test{
     
-    Mind *m = [[Mind alloc] initWith:2 hidden:3 outputs:1 learningRate:0.99 momentum:0.5 weights:nil];
+    Mind *m = [[Mind alloc] initWith:2 hidden:3 outputs:1 learningRate:0.1 momentum:0.9 weights:nil];
     
     NSArray *inputs = @[
                         @[@0.0, @0.0],
