@@ -13,7 +13,6 @@
 
 @interface WritingTrainer : NSObject
 
-@property (nonatomic, strong) NSMutableArray <NSMutableArray *>*nums;
 @property (nonatomic, strong) NSMutableArray *imageArray;
 @property (nonatomic, strong) NSMutableArray *labelArray;
 @property (nonatomic, strong) NSMutableArray *testImageArray;
@@ -29,7 +28,7 @@
 
 -(float)evaluate:(int)ntest;
 
--(void)trainNum:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate;
+//-(void)trainNum:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate;
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate;
 

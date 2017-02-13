@@ -30,11 +30,11 @@
         self.numHidden = hidden;
         self.numOutputs = outputs;
         
-        self.numHiddenWeights = (hidden * (inputs ));//+ 1
-        self.numOutputWeights = (outputs * (hidden ));//+ 1
+        self.numHiddenWeights = (hidden * (inputs + 1));
+        self.numOutputWeights = (outputs * (hidden + 1));
         
-        //self.numInputNodes = inputs + 1;
-        //self.numHiddenNodes = hidden + 1;
+        self.numInputNodes = inputs + 1;
+        self.numHiddenNodes = hidden + 1;
         
         self.learningRate = learningRate;
         self.momentumFactor = momentum;
@@ -93,10 +93,11 @@
         @throw [NSException exceptionWithName:@"Neural networkd data inconsistancy" reason:@"inputs.cout != self.numInputs" userInfo:nil];
     
     NSMutableArray *inputs = [ins mutableCopy];
-   // [inputs insertObject:[NSNumber numberWithFloat:1.00f] atIndex:0];
+    [inputs insertObject:[NSNumber numberWithFloat:1.00f] atIndex:0];
     for (int i = 0; i < self.numInputNodes; i++) {
         self.io->inputs[i] = [inputs[i] floatValue];
     }
+    
     //--------------------------------------------------
     // Calculate the weighted sums for the hidden layer
     vDSP_mmul(self.weights->hiddenWeights, 1,                        //input mat _A
@@ -110,7 +111,6 @@
     [self applyActivitionIsOutput:NO];
     
     //--------------------------------------------------
-    
     vDSP_mmul(self.weights->outputWeights, 1,
               self.io->hiddenOutputs, 1,
               self.io->outputs, 1,
@@ -126,6 +126,8 @@
     //varify data
     if (answer.count != self.numOutputs)
         @throw [NSException exceptionWithName:@"Neural network data inconsistancy" reason:[NSString stringWithFormat:@"answer.count != self.numOutputs. answer.count should equal to %i", self.numOutputs] userInfo:nil];
+    
+    //MDLog(@"%f", [self costFunction:answer]);
     
     //----------------------------------------------------
     //calculate all the delta output sum, or output errors
@@ -146,10 +148,10 @@
     //update all output the weights
     for (int x = 0; x < self.numOutputWeights; x++) {
         
-        float offset = self.weights->outputWeights[x] + (self.momentumFactor * (self.weights->outputWeights[x] - self.weights->previousOutputWeights[x]));
+        float offset = self.weights->outputWeights[x]; //+ (self.momentumFactor * (self.weights->outputWeights[x] - self.weights->previousOutputWeights[x]));
         int errorIndex = [self.outputErrorIndices[x] intValue];
         int hiddenOutputIndex = [self.hiddenOutputIndices[x] intValue];
-        float mfLRErrIn = self.mfLR * self.errors->outputErrors[errorIndex] * self.io->hiddenOutputs[hiddenOutputIndex];
+        float mfLRErrIn = self.errors->outputErrors[errorIndex] * self.io->hiddenOutputs[hiddenOutputIndex] * self.learningRate;
         self.weights->outputWeightsNew[x] = offset + mfLRErrIn;
     }
     vDSP_mmov(self.weights->outputWeights, self.weights->previousOutputWeights, 1, self.numOutputWeights, 1, 1);
@@ -159,15 +161,25 @@
     //update all hidden the weights
     for (int i = 0; i < self.numHiddenWeights; i++) {
         
-        float offset = self.weights->hiddenWeights[i] + (self.momentumFactor * (self.weights->hiddenWeights[i] - self.weights->previousHiddenWeights[i]));
+        float offset = self.weights->hiddenWeights[i]; //+ (self.momentumFactor * (self.weights->hiddenWeights[i] - self.weights->previousHiddenWeights[i]));
         int errorIndex = [self.hiddenErrorIndices[i] intValue];
         int inputIndex = [self.inputIndices[i] intValue];
         // Note: +1 on errorIndex to offset for bias 'error', which is ignored
-        float mfLRErrIn = self.mfLR * self.errors->hiddenErrors[errorIndex + 1] * self.io->inputs[inputIndex];
+        float mfLRErrIn = self.errors->hiddenErrors[errorIndex + 1] * self.io->inputs[inputIndex] * self.learningRate;
         self.weights->hiddenWeightsNew[i] = offset + mfLRErrIn;
     }
     vDSP_mmov(self.weights->hiddenWeights, self.weights->previousHiddenWeights, 1, self.numHiddenWeights, 1, 1);
     vDSP_mmov(self.weights->hiddenWeightsNew, self.weights->hiddenWeights, 1, self.numHiddenWeights, 1, 1);
+}
+
+-(float)costFunction:(NSMutableArray *)desired{
+    
+    float sum = 0.00;
+    for (int i = 0; i < self.numOutputs; i++) {
+        sum += pow([desired[i] floatValue] - self.io->outputs[i], 2.0);
+    }
+    float J = 0.5*sum;
+    return J;
 }
 
 -(void)train:(NSArray <NSArray <NSNumber*>*>*)inputs
@@ -253,7 +265,7 @@
     }else{
         for (int i = self.numHidden; i > 0; i--)
             self.io->hiddenOutputs[i] = [NeuralMath sigmoid:self.io->hiddenOutputs[i - 1]];
-        //self.io->hiddenOutputs[0] = 1.00;
+        self.io->hiddenOutputs[0] = 1.00;
     }
 }
 

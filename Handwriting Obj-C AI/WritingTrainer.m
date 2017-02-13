@@ -39,17 +39,6 @@
         self.labelArray = [NSMutableArray array];
         self.testImageArray = [NSMutableArray array];
         self.testLabelArray = [NSMutableArray array];
-        self.nums = [[NSMutableArray alloc] initWithObjects:
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],
-                     [NSMutableArray array],nil];
         
         // Store image/label byte indices
         int imagePosition = 16; // Start after header info
@@ -71,7 +60,6 @@
             //extract labels1
             uint8 *trainLabel = calloc(1, sizeof(uint8));
             [trainLabels getBytes:trainLabel range:NSMakeRange(labelPosition, 1)];
-            [[self.nums objectAtIndex:trainLabel[0]] addObject:pixels];
             [self.labelArray addObject:[NSNumber numberWithInt:trainLabel[0]]];
             [self.imageArray addObject:pixels];
             trainLabel = NULL;
@@ -99,7 +87,7 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:36 outputs:10 learningRate:0 momentum:0 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:36 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
@@ -126,39 +114,6 @@
     [self showNotification];
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
 }
-
-/*
--(void)trainNum:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate{
-    
-    for (int i = 0; i < self.nums.count; i++) {
-        
-        NSLog(@"training %i", i);
-        for (int x = 0; x < self.nums[i].count; x++) {
-            NSMutableArray *batch = [NSMutableArray arrayWithArray:self.nums[i][x]];
-            [self.mind forwardPropagation:batch];
-            
-            NSMutableArray *answer = [NSMutableArray arrayWithObjects:@0,@0,@0,@0,@0,@0,@0,@0,@0,@0, nil];
-            [answer replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:1]];
-            [self.mind backwardPropagation:answer];
-        }
-        
-        int correct = 0;
-        NSLog(@"testing %i", i);
-        for (int t = 0; t < 1000; t++) {
-            NSMutableArray *image = [NSMutableArray arrayWithArray:self.nums[i][t]];
-            float *f = [self.mind forwardPropagation:image];
-            int result = [self largestIndex:f count:10];
-            int answer = i;
-            
-            if (result == answer)
-                correct++;
-        }
-        NSLog(@"number specific result %i / %i", correct, 1000);
-    }
-    [self evaluate:10000] * 100;
-    [self showNotification];
-    [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
-}*/
 
 
 -(void)SGD:(NSMutableArray *)training_data epochs:(int)epochs mini_batch_size:(int)mini_batch_size eta:(float)eta test_data:(NSMutableArray *)test_data{

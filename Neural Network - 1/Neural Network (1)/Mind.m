@@ -182,18 +182,18 @@
 -(void)costFunctionPrime:(NSMutableArray <NSNumber *>*)inputs desired:(NSMutableArray *)desired{
     
     //Compute derivative with respect to W and W2 for a given X and y:
-    [self forwardPropagation:inputs];
-    
-    for (int i = 0; <#condition#>; i++) {
-        <#statements#>
-    }
-    delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
-    dJdW2 = np.dot(self.a2.T, delta3)
-    
-    delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
-    dJdW1 = np.dot(X.T, delta2)
-    
-    return dJdW1, dJdW2
+//    [self forwardPropagation:inputs];
+//    
+//    for (int i = 0; <#condition#>; i++) {
+//        <#statements#>
+//    }
+//    delta3 = np.multiply(-(y-self.yHat), self.sigmoidPrime(self.z3))
+//    dJdW2 = np.dot(self.a2.T, delta3)
+//    
+//    delta2 = np.dot(delta3, self.W2.T)*self.sigmoidPrime(self.z2)
+//    dJdW1 = np.dot(X.T, delta2)
+//    
+//    return dJdW1, dJdW2
 }
 
 -(void)sigmoid:(float *)array{

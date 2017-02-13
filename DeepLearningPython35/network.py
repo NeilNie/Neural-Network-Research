@@ -1,5 +1,3 @@
-# %load network.py
-
 """
 network.py
 IT WORKS
@@ -10,9 +8,6 @@ using backpropagation.  Note that I have focused on making the code
 simple, easily readable, and easily modifiable.  It is not optimized,
 and omits many desirable features.
 """
-
-# Libraries
-# Standard library
 import random
 import time
 import numpy as np
@@ -35,6 +30,9 @@ class Network(object):
         self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
         self.weights = [np.random.randn(y, x)
                         for x, y in zip(sizes[:-1], sizes[1:])]
+        for x, y in zip(sizes[:-1], sizes[1:]):
+            print("{} / {}".format(x, y))
+        print("{}".format(len(self.weights)))
 
     def feedforward(self, a):
         """Return the output of the network if ``a`` is input."""
