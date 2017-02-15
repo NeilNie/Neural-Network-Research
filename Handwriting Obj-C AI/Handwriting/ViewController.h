@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 #import <malloc/malloc.h>
 
-@interface ViewController : NSViewController <WritingTrainerDelegate>
+@interface ViewController : NSViewController
 
 @property (nonatomic, strong) WritingTrainer *wt;
 @property (weak) IBOutlet NSImageView *image;

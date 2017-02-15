@@ -14,10 +14,14 @@
 {
     self = [super init];
     if (self) {
-        self.object1 = object1;
-        self.object2 = object2;
+        self.first= object1;
+        self.second = object2;
     }
     return self;
+}
+
+-(NSString *)description{
+    return [NSString stringWithFormat:@"first: %@, second: %@", [self.first description], [self.second description]];
 }
 
 @end

@@ -105,7 +105,7 @@
             NSMutableArray *batch = [NSMutableArray arrayWithArray:self.imageArray[i]];
             [self.mind forwardPropagation:batch];
             NSMutableArray *answer = [NSMutableArray arrayWithObjects:@0,@0,@0,@0,@0,@0,@0,@0,@0,@0, nil];
-            [answer replaceObjectAtIndex:[self.labelArray[i] intValue] withObject:self.labelArray[i]];
+            [answer replaceObjectAtIndex:[self.labelArray[i] intValue] withObject:@1];
             [self.mind backwardPropagation:answer];
         }
         rate = [self evaluate:10000] * 100;
@@ -113,38 +113,6 @@
     }
     [self showNotification];
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
-}
-
-
--(void)SGD:(NSMutableArray *)training_data epochs:(int)epochs mini_batch_size:(int)mini_batch_size eta:(float)eta test_data:(NSMutableArray *)test_data{
-    
-    /*Train the neural network using mini-batch stochastic
-     gradient descent.  The "training_data" is a list of tuples
-     "(x, y)" representing the training inputs and the desired
-     outputs.  The other non-optional parameters are
-     self-explanatory.  If "test_data" is provided then the
-     network will be evaluated against the test data after each
-     epoch, and partial progress printed out.  This is useful for
-     tracking progress, but slows things down substantially.*/
-}
-
--(void)update_mini_batch:(NSMutableArray *)mini_batch eta:(float)eta{
-    
-    /*Update the network's weights and biases by applying
-     gradient descent using backpropagation to a single mini batch.
-     The "mini_batch" is a list of tuples "(x, y)", and "eta"
-     is the learning rate.
-     
-     nabla_b = [np.zeros(b.shape) for b in self.biases]
-     nabla_w = [np.zeros(w.shape) for w in self.weights]
-     for x, y in mini_batch:
-     delta_nabla_b, delta_nabla_w = self.backprop(x, y)
-     nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
-     nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
-     self.weights = [w-(eta/len(mini_batch))*nw
-     for w, nw in zip(self.weights, nabla_w)]
-     self.biases = [b-(eta/len(mini_batch))*nb
-     for b, nb in zip(self.biases, nabla_b)] */
 }
 
 -(float)evaluate:(int)ntest{
@@ -196,8 +164,7 @@
     return index;
 }
 
-- (void)shuffle:(NSMutableArray *)array
-{
+- (void)shuffle:(NSMutableArray *)array{
     
     NSUInteger count = [array count];
     if (count <= 1) return;
@@ -208,8 +175,8 @@
     }
 }
 
-- (void)shuffle:(NSMutableArray *)array1 withArray:(NSMutableArray *)array2
-{
+- (void)shuffle:(NSMutableArray *)array1 withArray:(NSMutableArray *)array2{
+    
     if (array1.count != array2.count)
         @throw [NSException exceptionWithName:@"Invalid parameter" reason:@"array1 count differs from array2 count" userInfo:nil];
     

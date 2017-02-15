@@ -28,14 +28,7 @@
 
 -(float)evaluate:(int)ntest;
 
-//-(void)trainNum:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate;
-
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate;
 
 @end
 
-@protocol WritingTrainerDelegate <NSObject>
-
--(void)updateImage:(NSImage *)image;
-
-@end

@@ -171,8 +171,6 @@ typedef struct {
  Set random weights for all weights. The random weights are between {1, -1}
  */
 
--(float)costFunction:(NSMutableArray *)desired;
-
 -(void)randomWeightAllLayers;
 
 -(void)print:(float *)array count:(int)count;

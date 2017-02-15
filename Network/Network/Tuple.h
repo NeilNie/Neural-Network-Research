@@ -10,7 +10,9 @@
 
 @interface Tuple : NSObject
 
-@property id object1;
-@property id object2;
+@property id first;
+@property id second;
+
+- (instancetype)init:(id)object1 object2:(id)object2;
 
 @end

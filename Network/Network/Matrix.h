@@ -67,6 +67,16 @@ typedef enum refMode {
 + (instancetype)matrixOfRows:(int)m columns:(int)n value:(double)val;
 
 /**
+ Initializes and returns a new matrix of |m| rows and |n| columns, each containing a random value distribution of mean 0 and variance 1.
+ 
+ @param m   The number of rows.
+ @param n   The number of columns.
+ 
+ @return A new matrix of |m| rows and |n| columns.
+ */
++ (instancetype)randMatrixOfRows:(int)m columns:(int)n;
+
+/**
  Initializes and returns a new matrix of |m| rows and |n| columns, with value |diagonal|
  representing values in the matrix diagonal, and each other cell containing value |val|.
  
@@ -448,6 +458,7 @@ typedef enum refMode {
  */
 - (BOOL)isEqualToMatrix:(Matrix *)aMatrix tolerance:(double)tolerance;
 
+-(void)null;
 /**
  Returns the data array of the receiver.
  */

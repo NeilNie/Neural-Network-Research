@@ -14,66 +14,48 @@
 #define MDLog(format, ...) CFShow([NSString stringWithFormat:format, ## __VA_ARGS__]);
 #endif
 
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"execution time: %f", -[startTime timeIntervalSinceNow])
+
 @implementation Network
 
 /*
- 
  A module to implement the stochastic gradient descent learning
  algorithm for a feedforward neural network.  Gradients are calculated
  using backpropagation.  Note that I have focused on making the code
  simple, easily readable, and easily modifiable.  It is not optimized,
  and omits many desirable features.*/
 
-- (instancetype)init:(NSMutableArray *)sizes{
+- (instancetype)init:(NSArray *)sizes{
     
     self = [super init];
     if (self) {
-        /*The list ``sizes`` contains the number of neurons in the
-         respective layers of the network.  For example, if the list
-         was [2, 3, 1] then it would be a three-layer network, with the
-         first layer containing 2 neurons, the second layer 3 neurons,
-         and the third layer 1 neuron.  The biases and weights for the
-         network are initialized randomly, using a Gaussian
-         distribution with mean 0, and variance 1.  Note that the first
-         layer is assumed to be an input layer, and by convention we
-         won't set any biases for those neurons, since biases are only
-         ever used in computing the outputs from later layers.*/
+
         self.num_layers = (int)sizes.count;
         self.sizes = sizes;
+        self.num_bias = self.num_layers - 1;
         
-        self.bias = calloc(self.num_layers - 1, sizeof(double));
-        self.bias->bias = calloc(self.num_layers - 1, sizeof(double));
-        for (int i = 0; i < self.num_layers-1; i++)
-            self.bias->bias[i] = [self randf];
-    
+        self.bias = [NSMutableArray array];
+        for (int i = 1; i < self.num_layers; i++)
+            [self.bias addObject:[Matrix randMatrixOfRows:[sizes[i] intValue] columns:1]];
+        
         self.weights = [NSMutableArray array];
         for (int i = 0; i < sizes.count-1; i++){
-            Matrix *weight = [Matrix matrixOfRows:[sizes[i+1] intValue] columns:[sizes[i] intValue]];
-            [self weightMat:weight];
-            [self.weights addObject:weight];
+            [self.weights addObject:[Matrix randMatrixOfRows:[sizes[i+1] intValue] columns:[sizes[i] intValue]]];
         }
     }
     return self;
 }
 
--(NSMutableArray *)feedforward:(NSMutableArray *)a{
+-(Matrix *)feedforward:(Matrix *)a{
     //Return the output of the network if ``a`` is input.
-//    for (b, w in zip(self.biases, self.weights)){
-//        a = sigmoid(np.dot(w, a)+b);
-//    }
+    for (int i = 0; i < self.weights.count; i++)
+        a = [self applySigmoid:[[self.weights[i] matrixByMultiplyingWithRight:a] matrixByAdding:self.bias[i]]];
+    
     return a;
 }
 
 -(void)SGD:(NSMutableArray *)training_data epochs:(int)epochs mb_size:(int)mini_batch_size eta:(double)eta test_data:(NSMutableArray *)test_data{
-    
-    /*Train the neural network using mini-batch stochastic
-     gradient descent.  The ``training_data`` is a list of tuples
-     ``(x, y)`` representing the training inputs and the desired
-     outputs.  The other non-optional parameters are
-     self-explanatory.  If ``test_data`` is provided then the
-     network will be evaluated against the test data after each
-     epoch, and partial progress printed out.  This is useful for
-     tracking progress, but slows things down substantially.*/
     
     int n_test = (int)test_data.count;
     
@@ -84,8 +66,8 @@
         
         // create mini batches
         NSMutableArray *mini_batches = [NSMutableArray array];
-        for (int i = 0; i < training_data.count; i+=mini_batch_size) {
-            [mini_batches addObject:[training_data subarrayWithRange:NSMakeRange(i, mini_batch_size)]];
+        for (int x = 0; x < training_data.count; x+=mini_batch_size) {
+            [mini_batches addObject:[training_data subarrayWithRange:NSMakeRange(x, mini_batch_size)]];
         }
         // loop through mini_batches, update with the batch
         for (NSMutableArray *mini_batch in mini_batches){
@@ -97,132 +79,104 @@
 
 -(void)update_mini_batch:(NSMutableArray *)mini_batch eta:(double)eta{
     
-    /*Update the network's weights and biases by applying
-     gradient descent using backpropagation to a single mini batch.
-     The ``mini_batch`` is a list of tuples ``(x, y)``, and ``eta``
-     is the learning rate.
-    NSMutableArray *nabla_b = [
-               np.zeros(b.shape) for b in self.biases]
+    //nabla_b = [np.zeros(b.shape) for b in self.biases]
+    NSMutableArray *nabla_b = [NSMutableArray array];
+    for (int i = 0; i < self.bias.count; i++)
+        [nabla_b addObject:[Matrix matrixOfRows:[(Matrix *)self.bias[i] rows] columns:[(Matrix *)self.bias[i] columns] value:0.00]];
     
-    NSMutableArray *nabla_w = [
-               np.zeros(w.shape) for w in self.weights]
+    //nabla_w = [np.zeros(w.shape) for w in self.weights]
+    NSMutableArray *nabla_w = [NSMutableArray array];
+    for (Matrix *w in self.weights)
+        [nabla_w addObject:[Matrix matrixOfRows:[w rows] columns:[w columns] value:0.00]];
     
-    for (x, y in mini_batch){
-        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
-        nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
-        nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+    
+    for (int x = 0; x < mini_batch.count; x++) {
+        Tuple *t = [self backprop:[(Tuple *)mini_batch[x] first] y:[(Tuple *)mini_batch[x] second]];
+        NSArray *delta_nabla_w = t.first;
+        NSArray *delta_nabla_b = t.second;
         
-        self.weights = [w - (eta / len(mini_batch)) * nw for w, nw in zip(self.weights, nabla_w)]
-        self.biases = [b - (eta / len(mini_batch)) * nb for b, nb in zip(self.biases, nabla_b)]
-    }*/
+        for (int j = 0; j < nabla_b.count; j++) //nb, dnb in zip(nabla_b, delta_nabla_b)
+            [nabla_b[j] add:delta_nabla_b[j]];
+        
+        for (int z = 0; z < nabla_w.count; z++) //nw, dnw in zip(nabla_w, delta_nabla_w)
+            [nabla_w[z] add:delta_nabla_w[z]];
+        
+        for (int l = 0; l < nabla_w.count; l++) //w, nw in zip(self.weights, nabla_w)
+            [self.weights[l] subtract:[nabla_w[l] matrixByMultiplyingWithScalar:eta / (double)mini_batch.count]];
+        
+        //b, nb in zip(self.biases, nabla_b)
+        //[b - (eta / (double)mini_batch.count) * nb];
+        for (int w = 0; w < self.bias.count; w++)
+            [self.bias[w] subtract:[nabla_b[w] matrixByMultiplyingWithScalar:eta / (double)mini_batch.count]];
+    }
 }
 
--(NSMutableArray *)backprop:(NSMutableArray *)x y:(NSMutableArray *)y{
+-(Tuple *)backprop:(Matrix *)x y:(Matrix *)y{
     
-    /*Return a tuple ``(nabla_b, nabla_w)`` representing the
-     gradient for the cost function C_x.  ``nabla_b`` and
-     ``nabla_w`` are layer-by-layer lists of numpy arrays, similar
-     to ``self.biases`` and ``self.weights``."
-    NSMutableArray *nabla_b = [np.zeros(b.shape) for b in self.biases]
-    NSMutableArray *nabla_w = [np.zeros(w.shape) for w in self.weights]
+    //nabla_b = [np.zeros(b.shape) for b in self.biases]
+    NSMutableArray *nabla_b = [NSMutableArray array];
+    for (Matrix *b in self.bias)
+        [nabla_b addObject:[Matrix matrixOfRows:[b rows] columns:[b columns] value:0.00]];
+    
+    //nabla_w = [np.zeros(w.shape) for w in self.weights]
+    NSMutableArray *nabla_w = [NSMutableArray array];
+    for (Matrix *w in self.weights)
+        [nabla_w addObject:[Matrix matrixOfRows:[w rows] columns:[w columns] value:0.00]];
+    
     
     // feedforward
-    activation = x
-    activations = [x] // list to store all the activations, layer by layer
-    zs = []           // list to store all the z vectors, layer by layer
-    for b, w in zip(self.biases, self.weights){
-        z = np.dot(w, activation)+b
-        zs.append(z)
-        activation = sigmoid(z)
-        activations.append(activation)
-        
-        // backward pass
-        delta = self.cost_derivative(activations[-1], y) * sigmoid_prime(zs[-1])
-        nabla_b[-1] = delta
-        nabla_w[-1] = np.dot(delta, activations[-2].transpose())
-        // Note that the variable l in the loop below is used a little
-        // differently to the notation in Chapter 2 of the book.  Here,
-        // l = 1 means the last layer of neurons, l = 2 is the
-        // second-last layer, and so on.  It's a renumbering of the
-        // scheme in the book, used here to take advantage of the fact
-        // that Python can use negative indices in lists.
-        for (l in range(2, self.num_layers)){
-            z = zs[-l];
-            sp = sigmoid_prime(z);
-            delta = np.dot(self.weights[-l+1].transpose(), delta) * sp;
-            nabla_b[-l] = delta;
-            nabla_w[-l] = np.dot(delta, activations[-l-1].transpose());
-            
-        }
+    Matrix *activation = x;
+    NSMutableArray <Matrix *>*activations = [NSMutableArray array]; // list to store all the activations, layer by layer
+    NSMutableArray <Matrix *>*zs = [NSMutableArray array];          // list to store all the z vectors, layer by layer
+    for (int i = 0; i < self.weights.count; i++){ //b, w in zip(self.biases, self.weights)
+        Matrix *z = [[self.weights[i] matrixByMultiplyingWithRight:activation] matrixByAdding:self.bias[i]]; //z = np.dot(w, activation)+b
+        [zs addObject:z];
+        activation = [self applySigmoid:z];
+        [activations addObject:activation];
     }
-    return nabla_b, nabla_w;*/
-    return nil;
+    
+    // backward pass
+    //delta = self.cost_derivative(activations[-1], y) * sigmoid_prime(zs[-1])
+    //nabla_b[-1] = delta
+    //nabla_w[-1] = np.dot(delta, activations[-2].transpose();
+    Matrix *delta = [self :[self cost_derivative:activations.lastObject y:y] times:[self applySigmoidPrime:[zs objectAtIndex:zs.count-1]]];
+    [nabla_b replaceObjectAtIndex:nabla_b.count-1 withObject:delta];
+    [nabla_w replaceObjectAtIndex:nabla_w.count-1 withObject:[delta matrixByMultiplyingWithRight:[[activations objectAtIndex:activations.count-2] matrixByTransposing]]];
+    
+    // Note that the variable l in the loop below is used a little
+    // Here, l = 1 means the last layer of neurons, l = 2 is the second-last layer, and so on.  It's a renumbering of the
+    // scheme in the book, used here to take advantage of the fact that Python can use negative indices in lists.
+    for (int i = self.num_layers-2; i <= 0; i--){
+        Matrix *sp = [self applySigmoidPrime:zs[i]];
+        //delta = self.weights[-l+1].transpose(), delta) * sp
+        delta = [self :[[self.weights[i + 1] matrixByTransposing] matrixByMultiplyingWithRight:delta] times:sp];
+        //nabla_b[-l] = delta
+        [nabla_b replaceObjectAtIndex:i withObject:delta];
+        //nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
+        [nabla_w replaceObjectAtIndex:i withObject:[delta matrixByMultiplyingWithRight:[activations[i-1] matrixByTransposing]]];
+    }
+    return [[Tuple alloc] init:nabla_w object2:nabla_b];
 }
 
 -(int)evaluate:(NSMutableArray *)test_data{
-    /*Return the number of test inputs for which the neural
-     network outputs the correct result. Note that the neural
-     network's output is assumed to be the index of whichever
-     neuron in the final layer has the highest activation.
-    test_results = [(np.argmax(self.feedforward(x)), y)
-                    for (x, y) in test_data]
-    return sum(int(x == y) for (x, y) in test_results)*/
-    return 0;
+    
+    int correct = 0;
+    for (int i = 0; i < test_data.count; i++){
+        Matrix *m = [self feedforward:[[test_data objectAtIndex:i] first]];
+        int result = [self largestIndex:[m array] count:10];
+        int realResult = [self largestIndex:[(Matrix *)[(Tuple *)test_data[i] second] array] count:10];
+        if (result == realResult) {
+            correct++;
+        }
+    }
+    return correct;
 }
 
 #pragma mark - Private Helpers
 
--(double) cost_derivative:(double)output_activations y:(double)y{
+-(Matrix *) cost_derivative:(Matrix *)output_activations y:(Matrix *)y{
     //Return the vector of partial derivatives partial C_x partial a for the output activations.
-    return (output_activations-y);
-}
-
--(void)weightMat:(Matrix *)mat{
-    
-    for (int x = 0; x < mat.rows; x++) {
-        for (int y = 0; y < mat.columns; y++)
-            [mat setValue:[self randf] row:x column:y];
-    }
-}
-
--(void)printMat:(double *)mat size:(CGSize)size{
-    
-    for (int i = 0; size.height; i++) {
-        double *r = &mat[i];
-        [self print:r count:size.width];
-    }
-}
-
-- (NSArray *)flatten:(NSArray *)array1 withArray:(NSArray *)array2
-{
-    NSMutableArray *flattened = [NSMutableArray new];
-    NSUInteger array1Count = [array1 count];
-    NSUInteger array2Count = [array2 count];
-    NSUInteger i;
-    for (i = 0; i < array1Count && i < array2Count; i++) {
-        [flattened addObject:array1[i]];
-        [flattened addObject:array2[i]];
-    }
-    NSArray *overflow = nil;
-    NSUInteger overflowCount = 0;
-    if (array1Count >= i) {
-        overflow = array1;
-        overflowCount = array1Count;
-    } else if (array2Count >= i) {
-        overflow = array2;
-        overflowCount = array2Count;
-    }
-    if (overflow) {
-        for (; i < overflowCount; i++)
-            [flattened addObject:overflow[i]];
-    }
-    return flattened;
-}
-
--(void)print:(double *)array count:(int)count{
-    for (int i = 0; i < count; i++) {
-        MDLog(@"%f", array[i]);
-    }
+    return [output_activations matrixBySubtracting:y];
 }
 
 - (void)shuffle:(NSMutableArray *)array
@@ -237,6 +191,34 @@
 }
 
 #pragma mark - Math helpers
+
+-(int)largestIndex:(double *)array count:(int)count{
+    
+    float n = array[0];
+    int index = 0;
+    
+    for (int i = 0; i < count; i++) {
+        if (array[i] > n){
+            index = i;
+            n = array[i];
+        }
+    }
+    return index;
+}
+
+-(Matrix *):(Matrix *)m1 times:(Matrix *)m2{
+    
+    if(m1.rows != m2.rows || m1.columns != m2.columns)
+        @throw [NSException exceptionWithName:@"Matrices size error" reason:@"parameter matrices sizes have to be equal" userInfo:nil];
+    
+    Matrix *m = [Matrix matrixOfRows:m1.rows columns:m1.columns value:0.00];
+    for (int i = 0; i < m1.rows; i++) {
+        for (int x = 0; x < m1.columns; x++) {
+            [m setValue:[m1 valueAtRow:i column:x] * [m2 valueAtRow:i column:x] row:i column:x];
+        }
+    }
+    return m;
+}
 
 -(double)randf{
     
@@ -260,6 +242,34 @@
         product += [array[i] doubleValue] * [array[i+1] doubleValue];
     return product;
 }
+
+-(Matrix *)applyBias:(Matrix *)mat bias:(double)bias{
+    
+    for (int i = 0; i < mat.rows; i++) {
+        for (int x = 0; x < mat.columns; x++)
+            [mat setValue:[mat valueAtRow:i column:x] + bias row:i column:x];
+    }
+    return mat;
+}
+
+-(Matrix *)applySigmoid:(Matrix *)mat{
+    
+    for (int i = 0; i < mat.rows; i++) {
+        for (int x = 0; x < mat.columns; x++)
+            [mat setValue:[self sigmoid:[mat valueAtRow:i column:x]] row:i column:x];
+    }
+    return mat;
+}
+
+-(Matrix *)applySigmoidPrime:(Matrix *)mat{
+    
+    for (int i = 0; i < mat.rows; i++) {
+        for (int x = 0; x < mat.columns; x++)
+            [mat setValue:[self sigmoid_prime:[mat valueAtRow:i column:x]] row:i column:x];
+    }
+    return mat;
+}
+
 // Miscellaneous functions
 -(double) sigmoid:(double)z{
     //The sigmoid function.

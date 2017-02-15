@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "Network.h"
+#import "Training.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        NSLog(@"Hello, World!");
-        Network *n = [[Network alloc] init:@[@2, @3, @1]];
+        Training *t = [[Training alloc] initTrainer];
+        NSLog(@"%@", t);
+        [t train:30 epochs:30 learningRate:3.0];
     }
     return 0;
 }

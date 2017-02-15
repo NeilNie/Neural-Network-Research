@@ -46,10 +46,6 @@
 /* Begin PBXFileReference section */
 		2860F4A31E4DEDC90005283F /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		2860F4A51E4DF2FA0005283F /* mindData */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mindData; sourceTree = "<group>"; };
-		2860F4A71E4DF3110005283F /* t10k-images-idx3-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; path = "t10k-images-idx3-ubyte"; sourceTree = "<group>"; };
-		2860F4A81E4DF3110005283F /* t10k-labels-idx1-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; path = "t10k-labels-idx1-ubyte"; sourceTree = "<group>"; };
-		2860F4A91E4DF3110005283F /* train-images-idx3-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; path = "train-images-idx3-ubyte"; sourceTree = "<group>"; };
-		2860F4AA1E4DF3110005283F /* train-labels-idx1-ubyte */ = {isa = PBXFileReference; lastKnownFileType = file; path = "train-labels-idx1-ubyte"; sourceTree = "<group>"; };
 		2860F4AB1E4DF3380005283F /* WritingTrainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingTrainer.h; sourceTree = "<group>"; };
 		2860F4AC1E4DF3380005283F /* WritingTrainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingTrainer.m; sourceTree = "<group>"; };
 		2884420E1E4D5DA000E09C0E /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
@@ -169,10 +165,6 @@
 		28B1DDEA1E4C21580052A188 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2860F4A71E4DF3110005283F /* t10k-images-idx3-ubyte */,
-				2860F4A81E4DF3110005283F /* t10k-labels-idx1-ubyte */,
-				2860F4A91E4DF3110005283F /* train-images-idx3-ubyte */,
-				2860F4AA1E4DF3110005283F /* train-labels-idx1-ubyte */,
 				2860F4A51E4DF2FA0005283F /* mindData */,
 				28B1DDF81E4C21580052A188 /* LaunchScreen.storyboard */,
 				28B1DDFB1E4C21580052A188 /* Info.plist */,

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2872AB631E533F4E001A6DFE /* Training.m in Sources */ = {isa = PBXBuildFile; fileRef = 2872AB621E533F4E001A6DFE /* Training.m */; };
 		28739C0C1E50F7ED0053BB6A /* Tuple.m in Sources */ = {isa = PBXBuildFile; fileRef = 28739C0B1E50F7ED0053BB6A /* Tuple.m */; };
 		28A166B31E5118020095ABFB /* Matrix.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A166A71E5118020095ABFB /* Matrix.m */; };
 		28A166B51E5118020095ABFB /* Matrix+Manipulate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A166AB1E5118020095ABFB /* Matrix+Manipulate.m */; };
@@ -28,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2872AB611E533F4E001A6DFE /* Training.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Training.h; sourceTree = "<group>"; };
+		2872AB621E533F4E001A6DFE /* Training.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Training.m; sourceTree = "<group>"; };
 		28739C0A1E50F7ED0053BB6A /* Tuple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tuple.h; sourceTree = "<group>"; };
 		28739C0B1E50F7ED0053BB6A /* Tuple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tuple.m; sourceTree = "<group>"; };
 		287B7B301E512E9F000EE4D0 /* YCMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YCMatrix.h; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 			children = (
 				28B32F201E50D181004FC819 /* Network.h */,
 				28B32F211E50D181004FC819 /* Network.m */,
+				2872AB611E533F4E001A6DFE /* Training.h */,
+				2872AB621E533F4E001A6DFE /* Training.m */,
 				28739C0A1E50F7ED0053BB6A /* Tuple.h */,
 				28739C0B1E50F7ED0053BB6A /* Tuple.m */,
 				28B32F191E50D176004FC819 /* main.m */,
@@ -157,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2872AB631E533F4E001A6DFE /* Training.m in Sources */,
 				28A166B51E5118020095ABFB /* Matrix+Manipulate.m in Sources */,
 				28739C0C1E50F7ED0053BB6A /* Tuple.m in Sources */,
 				28A166B31E5118020095ABFB /* Matrix.m in Sources */,

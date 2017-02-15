@@ -127,8 +127,6 @@
     if (answer.count != self.numOutputs)
         @throw [NSException exceptionWithName:@"Neural network data inconsistancy" reason:[NSString stringWithFormat:@"answer.count != self.numOutputs. answer.count should equal to %i", self.numOutputs] userInfo:nil];
     
-    //MDLog(@"%f", [self costFunction:answer]);
-    
     //----------------------------------------------------
     //calculate all the delta output sum, or output errors
     for (int i = 0; i < self.numOutputs; i++)
@@ -172,16 +170,6 @@
     vDSP_mmov(self.weights->hiddenWeightsNew, self.weights->hiddenWeights, 1, self.numHiddenWeights, 1, 1);
 }
 
--(float)costFunction:(NSMutableArray *)desired{
-    
-    float sum = 0.00;
-    for (int i = 0; i < self.numOutputs; i++) {
-        sum += pow([desired[i] floatValue] - self.io->outputs[i], 2.0);
-    }
-    float J = 0.5*sum;
-    return J;
-}
-
 -(void)train:(NSArray <NSArray <NSNumber*>*>*)inputs
       answer:(NSArray <NSArray <NSNumber *>*>*)answers
   testInputs:(NSArray <NSArray <NSNumber*>*>*)testInputs
@@ -215,9 +203,8 @@
         NSMutableArray *input = [NSMutableArray arrayWithArray:[testInputs objectAtIndex:x]];
         float *result = [self forwardPropagation:[NSMutableArray arrayWithArray:input]];
         float error = 0.0;
-        for (int i = 0; i < self.numOutputs; i++) {
+        for (int i = 0; i < self.numOutputs; i++)
             error = (result[i] - [[[answer objectAtIndex:x] objectAtIndex:i] floatValue]) + error;
-        }
         error = error / self.numOutputs;
         total = total + fabs(error);
     }
@@ -271,33 +258,29 @@
 
 -(void)convertToObjects:(float *)floats count:(int)n array:(NSMutableArray <NSNumber *>*)array{
     
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
         [array replaceObjectAtIndex:i withObject:[NSNumber numberWithFloat:floats[i]]];
-    }
 }
 
 -(NSMutableArray <NSNumber *>*)fillArray:(int)count value:(float)value{
     
     NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
         [array addObject:[NSNumber numberWithFloat:value]];
-    }
     return array;
 }
 
 -(int)matSize:(NSArray *)array{
     
     int total = 0;
-    for (NSNumber *n in array) {
+    for (NSNumber *n in array)
         total += n.intValue;
-    }
     return total;
 }
 
 -(void)print:(float *)array count:(int)count{
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
         MDLog(@"%f", array[i]);
-    }
 }
 
 #pragma mark - Override

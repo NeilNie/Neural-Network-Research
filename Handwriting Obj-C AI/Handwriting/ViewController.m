@@ -24,8 +24,9 @@
     self.wt = [[WritingTrainer alloc] initTrainer];
     [self.wt evaluate:5000];
     self.wt.delegate = self;
-    //[self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
-    [self.wt train:20000 epochs:20 correctRate:92.0];
+    [self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
+    //[self.wt evaluate:5000];
+    [self.wt train:5000 epochs:20 correctRate:95.0];
     
     // Do any additional setup after loading the view.
 }

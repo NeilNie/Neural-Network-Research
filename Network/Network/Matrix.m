@@ -46,6 +46,20 @@
     return [self matrixOfRows:m columns:n valuesInDiagonal:nil value:val];
 }
 
++ (instancetype)randMatrixOfRows:(int)m columns:(int)n{
+    
+    double *new_m = malloc(m*n*sizeof(double));
+    Matrix *mt = [self matrixFromArray:new_m rows:m columns:n mode:YCMWeak];
+    mt->freeData = YES;
+    int len = m*n;
+    double v = 1.0;
+    vDSP_vfillD(&v, mt->matrix, 1, len);
+    
+    for (int i=0; i<len; i++)
+        mt->matrix[i] = [Matrix randf];
+    return mt;
+}
+
 + (instancetype)matrixOfRows:(int)m columns:(int)n valueInDiagonal:(double)diagonal value:(double)val{
     double *new_m = malloc(m*n*sizeof(double));
     Matrix *mt = [self matrixFromArray:new_m rows:m columns:n mode:YCMWeak];
@@ -596,10 +610,20 @@
     return s;
 }
 
++(double)randf{
+    
+    double u1 = (double)arc4random() / UINT32_MAX; // uniform distribution
+    double u2 = (double)arc4random() / UINT32_MAX; // uniform distribution
+    double f1 = sqrt(-2 * log(u1));
+    double f2 = 2 * M_PI * u2;
+    double g1 = f1 * cos(f2); // gaussian distribution
+    return g1;
+}
+
 #pragma mark Object Destruction
 
-- (void)dealloc {
-    if (self->freeData) free(self->matrix);
+- (void)dealloc{
+    free(self->matrix);
 }
 
 #pragma mark NSCoding Implementation
@@ -648,6 +672,10 @@
                                            rows:self->rows
                                         columns:self->columns];
     return newMatrix;
+}
+
+-(void)null{
+    matrix = NULL;
 }
 
 @end

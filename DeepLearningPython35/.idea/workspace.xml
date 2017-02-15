@@ -2,27 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfa3dfc6-8bdc-4705-adbc-a5af68385bb3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.pbxproj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.xcworkspace/contents.xcworkspacedata" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/xcuserdata/Neil.xcuserdatad/xcschemes/Network.xcscheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/xcuserdata/Neil.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Network.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Network.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Tuple.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Tuple.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/main.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Training.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Training.m" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/MyNetwork" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/t10k-images-idx3-ubyte" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/t10k-labels-idx1-ubyte" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/train-images-idx3-ubyte" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/train-labels-idx1-ubyte" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/project.pbxproj" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/xcuserdata/Neil.xcuserdatad/xcschemes/Sigmoid.xcscheme" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/xcuserdata/Neil.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid/main.m" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Simple Neural Network.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Neural Network - 1/Simple Neural Network.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/network.py" afterPath="$PROJECT_DIR$/network.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/Mind.h" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/Mind.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/Mind.m" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/Mind.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/NeuralMath.m" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/NeuralMath.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/ViewController.m" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/ViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/WritingTrainer.h" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/WritingTrainer.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/WritingTrainer.m" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/WritingTrainer.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Mind.m" afterPath="$PROJECT_DIR$/../Neural Network - 1/Neural Network (1)/Mind.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Matrix.h" afterPath="$PROJECT_DIR$/../Network/Network/Matrix.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Matrix.m" afterPath="$PROJECT_DIR$/../Network/Network/Matrix.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Network.h" afterPath="$PROJECT_DIR$/../Network/Network/Network.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Network.m" afterPath="$PROJECT_DIR$/../Network/Network/Network.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Tuple.h" afterPath="$PROJECT_DIR$/../Network/Network/Tuple.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Tuple.m" afterPath="$PROJECT_DIR$/../Network/Network/Tuple.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/main.m" afterPath="$PROJECT_DIR$/../Network/Network/main.m" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,7 +39,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/DeepLearningPython35-master$network_test.coverage" NAME="network_test Coverage Results" MODIFIED="1485784607997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DeepLearningPython35$network_test.coverage" NAME="network_test Coverage Results" MODIFIED="1486930780783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DeepLearningPython35$network_test.coverage" NAME="network_test Coverage Results" MODIFIED="1487131967166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DeepLearningPython35$network.coverage" NAME="network Coverage Results" MODIFIED="1486525403644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DeepLearningPython35-master$test.coverage" NAME="test Coverage Results" MODIFIED="1485780485498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -46,21 +52,11 @@
       <file leaf-file-name="network.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="34" column="45" lean-forward="false" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+            <state relative-caret-position="346">
+              <caret line="116" column="23" lean-forward="true" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
               <folding>
                 <element signature="e#335#348#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="network_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/network_test.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -161,6 +157,11 @@
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.network_test">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -473,7 +474,7 @@
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30226904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32333875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -501,7 +502,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -739,13 +742,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyNetwork">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/MyNetwork" />
     <entry file="file://$PROJECT_DIR$/mnist_loader.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1110">
@@ -829,13 +826,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MyNetwork">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="0" column="927" lean-forward="false" selection-start-line="0" selection-start-column="927" selection-end-line="0" selection-end-column="927" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/MyNetwork" />
     <entry file="file://$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/Mind.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -847,7 +838,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
           <caret line="58" column="25" lean-forward="false" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,15 +852,15 @@
     <entry file="file://$PROJECT_DIR$/network_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="7" column="26" lean-forward="false" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="34" column="45" lean-forward="false" selection-start-line="34" selection-start-column="45" selection-end-line="34" selection-end-column="45" />
+        <state relative-caret-position="346">
+          <caret line="116" column="23" lean-forward="true" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
           <folding>
             <element signature="e#335#348#0" expanded="true" />
           </folding>
