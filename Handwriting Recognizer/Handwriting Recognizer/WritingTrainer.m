@@ -27,8 +27,8 @@
         
         NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-images-idx3-ubyte"];
         NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-labels-idx1-ubyte"];
-        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-images-idx3-ubyte"];
-        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-labels-idx1-ubyte"];
+        NSData *testImages = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"train-images-idx3-ubyte" ofType:nil]];
+        NSData *testLabels = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"train-labels-idx1-ubyte" ofType:nil]];
         
         if (!trainLabels || !trainImages || !testImages || !testLabels)
             @throw [NSException exceptionWithName:@"Constructor Failed" reason:@"Error retrieving data" userInfo:nil];

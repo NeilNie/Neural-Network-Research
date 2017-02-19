@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00BA57431E44220600E683CD /* Simple_Neural_NetworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00BA57421E44220600E683CD /* Simple_Neural_NetworkTests.m */; };
+		28E8D9D41E38E10400F53881 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8D9D31E38E10400F53881 /* AppDelegate.m */; };
+		28E8D9D71E38E10400F53881 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8D9D61E38E10400F53881 /* main.m */; };
+		28E8D9DA1E38E10400F53881 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8D9D91E38E10400F53881 /* ViewController.m */; };
+		28E8D9DC1E38E10400F53881 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28E8D9DB1E38E10400F53881 /* Assets.xcassets */; };
+		28E8D9DF1E38E10400F53881 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28E8D9DD1E38E10400F53881 /* Main.storyboard */; };
+		28E8DA0B1E38E27A00F53881 /* Mind.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8DA0A1E38E27A00F53881 /* Mind.m */; };
+		28E8DA0E1E38E2CF00F53881 /* NeuralMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E8DA0D1E38E2CF00F53881 /* NeuralMath.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		00BA57451E44220600E683CD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 28E8D9C71E38E10400F53881 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28E8D9CE1E38E10400F53881;
+			remoteInfo = "Simple Neural Network";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00BA57401E44220600E683CD /* Simple Neural NetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Neural NetworkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00BA57421E44220600E683CD /* Simple_Neural_NetworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simple_Neural_NetworkTests.m; sourceTree = "<group>"; };
+		00BA57441E44220600E683CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E8D9CF1E38E10400F53881 /* Simple Neural Network.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Neural Network.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		28E8D9D21E38E10400F53881 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		28E8D9D31E38E10400F53881 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		28E8D9D61E38E10400F53881 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		28E8D9D81E38E10400F53881 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		28E8D9D91E38E10400F53881 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		28E8D9DB1E38E10400F53881 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28E8D9DE1E38E10400F53881 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		28E8D9E01E38E10400F53881 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28E8DA091E38E27A00F53881 /* Mind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mind.h; sourceTree = "<group>"; };
+		28E8DA0A1E38E27A00F53881 /* Mind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mind.m; sourceTree = "<group>"; };
+		28E8DA0C1E38E2CF00F53881 /* NeuralMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeuralMath.h; sourceTree = "<group>"; };
+		28E8DA0D1E38E2CF00F53881 /* NeuralMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeuralMath.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00BA573D1E44220600E683CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E8D9CC1E38E10400F53881 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00BA57411E44220600E683CD /* Simple Neural NetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				00BA57421E44220600E683CD /* Simple_Neural_NetworkTests.m */,
+				00BA57441E44220600E683CD /* Info.plist */,
+			);
+			path = "Simple Neural NetworkTests";
+			sourceTree = "<group>";
+		};
+		28E8D9C61E38E10400F53881 = {
+			isa = PBXGroup;
+			children = (
+				28E8D9D11E38E10400F53881 /* Neural Network (1) */,
+				00BA57411E44220600E683CD /* Simple Neural NetworkTests */,
+				28E8D9D01E38E10400F53881 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28E8D9D01E38E10400F53881 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28E8D9CF1E38E10400F53881 /* Simple Neural Network.app */,
+				00BA57401E44220600E683CD /* Simple Neural NetworkTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28E8D9D11E38E10400F53881 /* Neural Network (1) */ = {
+			isa = PBXGroup;
+			children = (
+				28E8D9D21E38E10400F53881 /* AppDelegate.h */,
+				28E8D9D31E38E10400F53881 /* AppDelegate.m */,
+				28E8D9D81E38E10400F53881 /* ViewController.h */,
+				28E8D9D91E38E10400F53881 /* ViewController.m */,
+				28E8DA081E38E26500F53881 /* Classes */,
+				28E8D9DB1E38E10400F53881 /* Assets.xcassets */,
+				28E8D9DD1E38E10400F53881 /* Main.storyboard */,
+				28E8D9E01E38E10400F53881 /* Info.plist */,
+				28E8D9D51E38E10400F53881 /* Supporting Files */,
+			);
+			path = "Neural Network (1)";
+			sourceTree = "<group>";
+		};
+		28E8D9D51E38E10400F53881 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				28E8D9D61E38E10400F53881 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		28E8DA081E38E26500F53881 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				28E8DA091E38E27A00F53881 /* Mind.h */,
+				28E8DA0A1E38E27A00F53881 /* Mind.m */,
+				28E8DA0C1E38E2CF00F53881 /* NeuralMath.h */,
+				28E8DA0D1E38E2CF00F53881 /* NeuralMath.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		00BA573F1E44220600E683CD /* Simple Neural NetworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00BA57471E44220600E683CD /* Build configuration list for PBXNativeTarget "Simple Neural NetworkTests" */;
+			buildPhases = (
+				00BA573C1E44220600E683CD /* Sources */,
+				00BA573D1E44220600E683CD /* Frameworks */,
+				00BA573E1E44220600E683CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00BA57461E44220600E683CD /* PBXTargetDependency */,
+			);
+			name = "Simple Neural NetworkTests";
+			productName = "Simple Neural NetworkTests";
+			productReference = 00BA57401E44220600E683CD /* Simple Neural NetworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		28E8D9CE1E38E10400F53881 /* Simple Neural Network */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28E8D9F91E38E10400F53881 /* Build configuration list for PBXNativeTarget "Simple Neural Network" */;
+			buildPhases = (
+				28E8D9CB1E38E10400F53881 /* Sources */,
+				28E8D9CC1E38E10400F53881 /* Frameworks */,
+				28E8D9CD1E38E10400F53881 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Simple Neural Network";
+			productName = "Neural Network (1)";
+			productReference = 28E8D9CF1E38E10400F53881 /* Simple Neural Network.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28E8D9C71E38E10400F53881 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Yongyang Nie";
+				TargetAttributes = {
+					00BA573F1E44220600E683CD = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 8NZ8K5GNH8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 28E8D9CE1E38E10400F53881;
+					};
+					28E8D9CE1E38E10400F53881 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 8NZ8K5GNH8;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 28E8D9CA1E38E10400F53881 /* Build configuration list for PBXProject "Simple Neural Network" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28E8D9C61E38E10400F53881;
+			productRefGroup = 28E8D9D01E38E10400F53881 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28E8D9CE1E38E10400F53881 /* Simple Neural Network */,
+				00BA573F1E44220600E683CD /* Simple Neural NetworkTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		00BA573E1E44220600E683CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E8D9CD1E38E10400F53881 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E8D9DC1E38E10400F53881 /* Assets.xcassets in Resources */,
+				28E8D9DF1E38E10400F53881 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		00BA573C1E44220600E683CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00BA57431E44220600E683CD /* Simple_Neural_NetworkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		28E8D9CB1E38E10400F53881 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28E8D9DA1E38E10400F53881 /* ViewController.m in Sources */,
+				28E8D9D71E38E10400F53881 /* main.m in Sources */,
+				28E8DA0B1E38E27A00F53881 /* Mind.m in Sources */,
+				28E8D9D41E38E10400F53881 /* AppDelegate.m in Sources */,
+				28E8DA0E1E38E2CF00F53881 /* NeuralMath.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		00BA57461E44220600E683CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28E8D9CE1E38E10400F53881 /* Simple Neural Network */;
+			targetProxy = 00BA57451E44220600E683CD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		28E8D9DD1E38E10400F53881 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28E8D9DE1E38E10400F53881 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		00BA57481E44220600E683CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8NZ8K5GNH8;
+				INFOPLIST_FILE = "Simple Neural NetworkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.Simple-Neural-NetworkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Neural Network.app/Contents/MacOS/Simple Neural Network";
+			};
+			name = Debug;
+		};
+		00BA57491E44220600E683CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8NZ8K5GNH8;
+				INFOPLIST_FILE = "Simple Neural NetworkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.Simple-Neural-NetworkTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Neural Network.app/Contents/MacOS/Simple Neural Network";
+			};
+			name = Release;
+		};
+		28E8D9F71E38E10400F53881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		28E8D9F81E38E10400F53881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		28E8D9FA1E38E10400F53881 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8NZ8K5GNH8;
+				INFOPLIST_FILE = "Neural Network (1)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.Neural-Network-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		28E8D9FB1E38E10400F53881 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8NZ8K5GNH8;
+				INFOPLIST_FILE = "Neural Network (1)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yongyang.Neural-Network-1";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		00BA57471E44220600E683CD /* Build configuration list for PBXNativeTarget "Simple Neural NetworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00BA57481E44220600E683CD /* Debug */,
+				00BA57491E44220600E683CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		28E8D9CA1E38E10400F53881 /* Build configuration list for PBXProject "Simple Neural Network" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E8D9F71E38E10400F53881 /* Debug */,
+				28E8D9F81E38E10400F53881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		28E8D9F91E38E10400F53881 /* Build configuration list for PBXNativeTarget "Simple Neural Network" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28E8D9FA1E38E10400F53881 /* Debug */,
+				28E8D9FB1E38E10400F53881 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28E8D9C71E38E10400F53881 /* Project object */;
+}

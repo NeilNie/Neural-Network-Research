@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
 @property (weak, nonatomic) IBOutlet UILabel *result;
+@property CGRect boundingBox;
 
 - (IBAction)pencilPressed:(id)sender;
 - (IBAction)eraserPressed:(id)sender;

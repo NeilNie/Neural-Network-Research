@@ -24,13 +24,11 @@
     
     self.wt = [[WritingTrainer alloc] init];
     [self.wt getMindWithPath:[[NSBundle mainBundle] pathForResource:@"mindData" ofType:nil]];
-    //NSLog(@"%f", [self.wt evaluate:5000] * 100);
     
     [super viewDidLoad];
 }
 - (IBAction)recognize:(id)sender {
-    
-    //self.mainImage.image = [self convertImageToGrayScale:self.mainImage.image];
+
     NSMutableArray *pixels = [self getPixelsFromImage];
 
     float *result = [self.wt.mind forwardPropagation:pixels];
@@ -56,14 +54,6 @@
 - (IBAction)reset:(id)sender {
     
     self.mainImage.image = nil;
-    
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    mouseSwiped = NO;
-    UITouch *touch = [touches anyObject];
-    lastPoint = [touch locationInView:self.tempDrawImage];
 }
 
 - (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size {
@@ -73,46 +63,6 @@
     UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return destImage;
-}
-
-+ (NSMutableArray*)getRGBAsFromImage:(UIImage*)image atX:(int)x andY:(int)y count:(int)count
-{
-    NSMutableArray *result = [NSMutableArray arrayWithCapacity:count];
-    
-    // First get the image into your data buffer
-    CGImageRef imageRef = [image CGImage];
-    NSUInteger width = CGImageGetWidth(imageRef);
-    NSUInteger height = CGImageGetHeight(imageRef);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-    unsigned char *rawData = (unsigned char*) calloc(height * width, sizeof(unsigned char));
-    NSUInteger bytesPerPixel = 4;
-    NSUInteger bytesPerRow = bytesPerPixel * width;
-    NSUInteger bitsPerComponent = 8;
-    CGContextRef context = CGBitmapContextCreate(rawData, width, height,
-                                                 bitsPerComponent, bytesPerRow, colorSpace,
-                                                 kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
-    CGColorSpaceRelease(colorSpace);
-    
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
-    CGContextRelease(context);
-    
-    // Now your rawData contains the image data in the RGBA8888 pixel format.
-    NSUInteger byteIndex = 0;
-    for (int i = 0 ; i < count ; ++i)
-    {
-        CGFloat alpha = ((CGFloat) rawData[i] ) / 255.0f;
-//        CGFloat red   = ((CGFloat) rawData[byteIndex]     ) / alpha;
-//        CGFloat green = ((CGFloat) rawData[byteIndex + 1] ) / alpha;
-//        CGFloat blue  = ((CGFloat) rawData[byteIndex + 2] ) / alpha;
-        byteIndex += bytesPerPixel;
-        
-        //UIColor *acolor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
-        [result addObject:[NSNumber numberWithFloat:alpha]];
-    }
-    
-    free(rawData);
-    
-    return result;
 }
 
 -(NSMutableArray *)getPixelsFromImage{
@@ -128,7 +78,6 @@
     
     self.mainImage.image = character;
     
-    //CGImageGetDataProvider(character.CGImage)
     CFDataRef pixelData = CGDataProviderCopyData(CGImageGetDataProvider(character.CGImage));
     UInt8 * data = (UInt8 *) CFDataGetBytePtr(pixelData);
     unsigned long bytesPerRow = CGImageGetBytesPerRow(character.CGImage);
@@ -159,9 +108,16 @@
     return newImage;
 }
 
+-(UIImage *)cropImage:(UIImage *)image toRect:(CGRect)rect{
+    
+    rect = CGRectMake(self.boundingBox.origin.x, self.boundingBox.origin.y + 114, self.boundingBox.size.width, self.boundingBox.size.height);
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], rect);
+    UIImage *newImage = [UIImage imageWithCGImage:imageRef];
+    CGImageRelease(imageRef);
+    return newImage;
+}
 
 - (UIImage *)convertImageToGrayScale:(UIImage *)image {
-    
     
     // Create image rectangle with current image width/height
     CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
@@ -191,11 +147,41 @@
     return newImage;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    mouseSwiped = NO;
+    UITouch *touch = [touches anyObject];
+    lastPoint = [touch locationInView:self.tempDrawImage];
+    
+    if (CGRectIsEmpty(self.boundingBox))
+        self.boundingBox = CGRectMake(lastPoint.x - 1 / 2, lastPoint.y - 1 / 2, 1, 1);
+}
+
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:self.tempDrawImage];
+    
+    if (currentPoint.x < CGRectGetMinX(self.boundingBox)) {
+        self.boundingBox = [self updateRect:currentPoint.x - 5 - 20 maxX:0 minY:0 maxY:0 rect:self.boundingBox];
+        
+    } else if (currentPoint.x > CGRectGetMaxX(self.boundingBox)) {
+        //self.updateRect(rect: &self.boundingBox!, minX: nil, maxX: currentPoint.x + self.brushWidth + 20, minY: nil, maxY: nil)
+        self.boundingBox = [self updateRect:0 maxX:currentPoint.x + 5 + 20 minY:0 maxY:0 rect:self.boundingBox];
+    }
+    if (currentPoint.y < CGRectGetMinY(self.boundingBox)) {
+        //self.updateRect(rect: &self.boundingBox!, minX: nil, maxX: nil, minY: currentPoint.y - self.brushWidth - 20, maxY: nil)
+        self.boundingBox = [self updateRect:0 maxX:0 minY:currentPoint.y - 5 - 20 maxY:0 rect:self.boundingBox];
+    } else if (currentPoint.y > CGRectGetMaxY(self.boundingBox)) {
+        //self.updateRect(rect: &self.boundingBox!, minX: nil, maxX: nil, minY: nil, maxY: currentPoint.y + self.brushWidth + 20)
+        self.boundingBox = [self updateRect:0 maxX:0 minY:0 maxY:currentPoint.y + 5 + 20 rect:self.boundingBox];
+    }
+    
+    UIView *rect = [[UIView alloc] initWithFrame:self.boundingBox];
+    rect.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:rect];
     
     UIGraphicsBeginImageContext(self.tempDrawImage.frame.size);
     [self.tempDrawImage.image drawInRect:CGRectMake(0, 0, self.tempDrawImage.frame.size.width, self.tempDrawImage.frame.size.height)];
@@ -238,4 +224,16 @@
     UIGraphicsEndImageContext();
 }
 
+-(CGRect)updateRect:(CGFloat)minX maxX:(CGFloat)maxX minY:(CGFloat)minY maxY:(CGFloat)maxY rect:(CGRect)rect{
+    
+    CGFloat width;
+    CGFloat height;
+    width = ((maxX > CGRectGetMaxX(rect)) ? maxX : CGRectGetMaxX(rect)) - ((minX > CGRectGetMinX(rect)) ? minX : CGRectGetMinX(rect));
+    height = ((maxY > CGRectGetMaxY(rect)) ? maxY : CGRectGetMaxY(rect)) - ((minY > CGRectGetMinY(rect)) ? minY : CGRectGetMinY(rect));
+    
+    CGRect newRect = CGRectMake((minX > CGRectGetMinX(rect)) ? minX : CGRectGetMinX(rect),
+                                (minY > CGRectGetMinY(rect)) ? minY : CGRectGetMinY(rect),
+                                width, height);
+    return newRect;
+}
 @end
