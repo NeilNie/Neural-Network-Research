@@ -19,16 +19,19 @@
     CGFloat brush;
     CGFloat opacity;
     BOOL mouseSwiped;
+    NSTimer *timer;
+    int time;
 }
 
 @property (strong, nonatomic) WritingTrainer *wt;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImage;
 @property (weak, nonatomic) IBOutlet UIImageView *tempDrawImage;
 @property (weak, nonatomic) IBOutlet UILabel *result;
+@property (weak, nonatomic) IBOutlet UILabel *percentage;
+@property (weak, nonatomic) IBOutlet UIView *rec;
+@property (weak, nonatomic) IBOutlet UIImageView *processedImage;
 @property CGRect boundingBox;
 
-- (IBAction)pencilPressed:(id)sender;
-- (IBAction)eraserPressed:(id)sender;
 - (IBAction)reset:(id)sender;
 
 @end

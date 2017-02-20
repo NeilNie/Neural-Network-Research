@@ -24,10 +24,10 @@
     self = [super init];
     if (self) {
         
-        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-images-idx3-ubyte"];
-        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-labels-idx1-ubyte"];
-        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-images-idx3-ubyte"];
-        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/t10k-labels-idx1-ubyte"];
+        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-images-idx3-ubyte"];
+        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-labels-idx1-ubyte"];
+        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-images-idx3-ubyte"];
+        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-labels-idx1-ubyte"];
         
         if (!trainLabels || !trainImages || !testImages || !testLabels)
             @throw [NSException exceptionWithName:@"Constructor Failed" reason:@"Error retrieving data" userInfo:nil];
@@ -87,7 +87,7 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:36 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:30 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
@@ -131,7 +131,6 @@
         if (result == answer)
             correct++;
     }
-    //NSLog(@"%i / %i", correct, ntest);
     return (float)correct / (float)ntest;
 }
 

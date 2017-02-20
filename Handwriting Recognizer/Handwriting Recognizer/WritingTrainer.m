@@ -24,11 +24,10 @@
     self = [super init];
     if (self) {
         
-        
-        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-images-idx3-ubyte"];
-        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Obj-C AI/MNIST Data/train-labels-idx1-ubyte"];
-        NSData *testImages = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"train-images-idx3-ubyte" ofType:nil]];
-        NSData *testLabels = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"train-labels-idx1-ubyte" ofType:nil]];
+        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-images-idx3-ubyte"];
+        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-labels-idx1-ubyte"];
+        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-images-idx3-ubyte"];
+        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-labels-idx1-ubyte"];
         
         if (!trainLabels || !trainImages || !testImages || !testLabels)
             @throw [NSException exceptionWithName:@"Constructor Failed" reason:@"Error retrieving data" userInfo:nil];
@@ -89,7 +88,7 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:35 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:30 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
@@ -112,51 +111,17 @@
             NSMutableArray *batch = [NSMutableArray arrayWithArray:self.imageArray[i]];
             [self.mind forwardPropagation:batch];
             NSMutableArray *answer = [NSMutableArray arrayWithObjects:@0,@0,@0,@0,@0,@0,@0,@0,@0,@0, nil];
-            [answer replaceObjectAtIndex:[self.labelArray[i] intValue] withObject:self.labelArray[i]];
+            [answer replaceObjectAtIndex:[self.labelArray[i] intValue] withObject:@1];
             [self.mind backwardPropagation:answer];
         }
         rate = [self evaluate:10000] * 100;
         cnt ++;
-        
-//        if (rate >= 80) {
-//            [self.mind ResetLearningRate:self.mind.learningRate * 0.75];
-//            [self.mind ResetMomentum:self.mind.momentumFactor * 0.75];
-//        }
+
         TOCK;
     }
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
 }
 
--(void)SGD:(NSMutableArray *)training_data epochs:(int)epochs mini_batch_size:(int)mini_batch_size eta:(float)eta test_data:(NSMutableArray *)test_data{
-    
-    /*Train the neural network using mini-batch stochastic
-     gradient descent.  The "training_data" is a list of tuples
-     "(x, y)" representing the training inputs and the desired
-     outputs.  The other non-optional parameters are
-     self-explanatory.  If "test_data" is provided then the
-     network will be evaluated against the test data after each
-     epoch, and partial progress printed out.  This is useful for
-     tracking progress, but slows things down substantially.*/
-}
-
--(void)update_mini_batch:(NSMutableArray *)mini_batch eta:(float)eta{
-    
-    /*Update the network's weights and biases by applying
-     gradient descent using backpropagation to a single mini batch.
-     The "mini_batch" is a list of tuples "(x, y)", and "eta"
-     is the learning rate.
-     
-     nabla_b = [np.zeros(b.shape) for b in self.biases]
-     nabla_w = [np.zeros(w.shape) for w in self.weights]
-     for x, y in mini_batch:
-     delta_nabla_b, delta_nabla_w = self.backprop(x, y)
-     nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
-     nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
-     self.weights = [w-(eta/len(mini_batch))*nw
-     for w, nw in zip(self.weights, nabla_w)]
-     self.biases = [b-(eta/len(mini_batch))*nb
-     for b, nb in zip(self.biases, nabla_b)] */
-}
 
 -(float)evaluate:(int)ntest{
     
@@ -199,8 +164,7 @@
     return index;
 }
 
-- (void)shuffle:(NSMutableArray *)array
-{
+- (void)shuffle:(NSMutableArray *)array{
     
     NSUInteger count = [array count];
     if (count <= 1) return;

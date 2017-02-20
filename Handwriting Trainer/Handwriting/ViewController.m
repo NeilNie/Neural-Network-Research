@@ -24,9 +24,10 @@
     self.wt = [[WritingTrainer alloc] initTrainer];
     [self.wt evaluate:5000];
     self.wt.delegate = self;
-    //[self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
-    //[self.wt evaluate:5000];
-    [self.wt train:500 epochs:20 correctRate:95.0];
+    [self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
+    float rate = [self.wt evaluate:10000] * 100;
+    NSLog(@"%.2f", rate);
+    //[self.wt train:10000 epochs:20 correctRate:97.0];
     
     // Do any additional setup after loading the view.
 }

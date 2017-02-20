@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2839090A1E5A51BA007BBDE6 /* mnist.png in Resources */ = {isa = PBXBuildFile; fileRef = 283909091E5A51BA007BBDE6 /* mnist.png */; };
 		2860F4A41E4DEDC90005283F /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 2860F4A31E4DEDC90005283F /* white.png */; };
 		2860F4A61E4DF2FA0005283F /* mindData in Resources */ = {isa = PBXBuildFile; fileRef = 2860F4A51E4DF2FA0005283F /* mindData */; };
 		2860F4AD1E4DF3380005283F /* WritingTrainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860F4AC1E4DF3380005283F /* WritingTrainer.m */; };
 		288442111E4D5DA000E09C0E /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 2884420E1E4D5DA000E09C0E /* Black.png */; };
 		288442121E4D5DA000E09C0E /* Eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 2884420F1E4D5DA000E09C0E /* Eraser.png */; };
-		288442131E4D5DA000E09C0E /* Grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 288442101E4D5DA000E09C0E /* Grey.png */; };
 		28B1DDEC1E4C21580052A188 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDEB1E4C21580052A188 /* main.m */; };
 		28B1DDEF1E4C21580052A188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDEE1E4C21580052A188 /* AppDelegate.m */; };
 		28B1DDF21E4C21580052A188 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDF11E4C21580052A188 /* ViewController.m */; };
@@ -24,6 +24,8 @@
 		28B1DE251E4C21740052A188 /* Mind.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DE201E4C21740052A188 /* Mind.m */; };
 		28B1DE261E4C21740052A188 /* MindStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DE221E4C21740052A188 /* MindStorage.m */; };
 		28B1DE271E4C21740052A188 /* NeuralMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DE241E4C21740052A188 /* NeuralMath.m */; };
+		28EFF0451E5A68D80023817B /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EFF0431E5A68D80023817B /* 4.png */; };
+		28EFF0461E5A68D80023817B /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 28EFF0441E5A68D80023817B /* 6.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,13 +46,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		283909091E5A51BA007BBDE6 /* mnist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mnist.png; sourceTree = "<group>"; };
 		2860F4A31E4DEDC90005283F /* white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white.png; sourceTree = "<group>"; };
 		2860F4A51E4DF2FA0005283F /* mindData */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mindData; sourceTree = "<group>"; };
 		2860F4AB1E4DF3380005283F /* WritingTrainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingTrainer.h; sourceTree = "<group>"; };
 		2860F4AC1E4DF3380005283F /* WritingTrainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingTrainer.m; sourceTree = "<group>"; };
 		2884420E1E4D5DA000E09C0E /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
 		2884420F1E4D5DA000E09C0E /* Eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eraser.png; sourceTree = "<group>"; };
-		288442101E4D5DA000E09C0E /* Grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Grey.png; sourceTree = "<group>"; };
 		28B1DDE71E4C21580052A188 /* Handwriting Recognizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Handwriting Recognizer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B1DDEB1E4C21580052A188 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28B1DDED1E4C21580052A188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -73,6 +75,8 @@
 		28B1DE221E4C21740052A188 /* MindStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MindStorage.m; sourceTree = "<group>"; };
 		28B1DE231E4C21740052A188 /* NeuralMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeuralMath.h; sourceTree = "<group>"; };
 		28B1DE241E4C21740052A188 /* NeuralMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeuralMath.m; sourceTree = "<group>"; };
+		28EFF0431E5A68D80023817B /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		28EFF0441E5A68D80023817B /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +126,6 @@
 				28B1DDF61E4C21580052A188 /* Assets.xcassets */,
 				2884420E1E4D5DA000E09C0E /* Black.png */,
 				2884420F1E4D5DA000E09C0E /* Eraser.png */,
-				288442101E4D5DA000E09C0E /* Grey.png */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -165,6 +168,9 @@
 		28B1DDEA1E4C21580052A188 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				28EFF0431E5A68D80023817B /* 4.png */,
+				28EFF0441E5A68D80023817B /* 6.png */,
+				283909091E5A51BA007BBDE6 /* mnist.png */,
 				2860F4A51E4DF2FA0005283F /* mindData */,
 				28B1DDF81E4C21580052A188 /* LaunchScreen.storyboard */,
 				28B1DDFB1E4C21580052A188 /* Info.plist */,
@@ -300,14 +306,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				288442131E4D5DA000E09C0E /* Grey.png in Resources */,
+				28EFF0451E5A68D80023817B /* 4.png in Resources */,
 				28B1DDFA1E4C21580052A188 /* LaunchScreen.storyboard in Resources */,
 				2860F4A61E4DF2FA0005283F /* mindData in Resources */,
 				288442111E4D5DA000E09C0E /* Black.png in Resources */,
+				28EFF0461E5A68D80023817B /* 6.png in Resources */,
 				28B1DDF71E4C21580052A188 /* Assets.xcassets in Resources */,
 				28B1DDF51E4C21580052A188 /* Main.storyboard in Resources */,
 				2860F4A41E4DEDC90005283F /* white.png in Resources */,
 				288442121E4D5DA000E09C0E /* Eraser.png in Resources */,
+				2839090A1E5A51BA007BBDE6 /* mnist.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

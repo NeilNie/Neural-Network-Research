@@ -2,33 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfa3dfc6-8bdc-4705-adbc-a5af68385bb3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Training.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Network/Network/Training.m" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyNetwork" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/t10k-images-idx3-ubyte" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/t10k-labels-idx1-ubyte" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/train-images-idx3-ubyte" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/train-labels-idx1-ubyte" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/project.pbxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/xcuserdata/Neil.xcuserdatad/xcschemes/Sigmoid.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid.xcodeproj/xcuserdata/Neil.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../Sigmoid/Sigmoid/main.m" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/Grey.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/mindData" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/mindData" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Trainer/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../Handwriting Trainer/Handwriting.xcodeproj/project.xcworkspace/xcuserdata/Neil.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Neural Network research.xlsx" afterPath="$PROJECT_DIR$/../Neural Network research.xlsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/network.py" afterPath="$PROJECT_DIR$/network.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../Network/Network.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Matrix.h" afterPath="$PROJECT_DIR$/../Network/Network/Matrix.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Matrix.m" afterPath="$PROJECT_DIR$/../Network/Network/Matrix.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Network.h" afterPath="$PROJECT_DIR$/../Network/Network/Network.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Network.m" afterPath="$PROJECT_DIR$/../Network/Network/Network.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Tuple.h" afterPath="$PROJECT_DIR$/../Network/Network/Tuple.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/Tuple.m" afterPath="$PROJECT_DIR$/../Network/Network/Tuple.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Network/Network/main.m" afterPath="$PROJECT_DIR$/../Network/Network/main.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/Base.lproj/Main.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/ViewController.h" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/ViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/ViewController.m" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/ViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/WritingTrainer.m" afterPath="$PROJECT_DIR$/../Handwriting Recognizer/Handwriting Recognizer/WritingTrainer.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Trainer/Handwriting/ViewController.m" afterPath="$PROJECT_DIR$/../Handwriting Trainer/Handwriting/ViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Handwriting Trainer/WritingTrainer.m" afterPath="$PROJECT_DIR$/../Handwriting Trainer/WritingTrainer.m" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,13 +35,25 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="network.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="network.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="116" column="23" lean-forward="true" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
+            <state relative-caret-position="-975">
+              <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
               <folding>
                 <element signature="e#335#348#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mnist_loader.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mnist_loader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="61">
+              <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+              <folding>
+                <element signature="e#348#361#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,32 +120,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DeepLearningPython35" />
+              <option name="myItemId" value="Deep Learning Python" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="External Libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DeepLearningPython35" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DeepLearningPython35" />
+              <option name="myItemId" value="Deep Learning Python" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -474,25 +462,25 @@
     <frame x="4" y="23" width="1276" height="777" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32333875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32820097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32776934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -827,13 +815,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MyNetwork" />
-    <entry file="file://$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/Mind.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Handwriting Obj-C AI/Handwriting/Mind.h" />
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
@@ -841,28 +823,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mnist_loader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="9" lean-forward="false" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/network_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="7" column="27" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="116" column="23" lean-forward="true" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
+        <state relative-caret-position="-975">
+          <caret line="20" column="21" lean-forward="false" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
           <folding>
             <element signature="e#335#348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mnist_loader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="40" column="33" lean-forward="false" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+          <folding>
+            <element signature="e#348#361#0" expanded="true" />
           </folding>
         </state>
       </provider>
