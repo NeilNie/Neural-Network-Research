@@ -16,8 +16,6 @@
 @property (nonatomic, strong) NSMutableArray *labelArray;
 @property (nonatomic, strong) NSMutableArray *testImageArray;
 @property (nonatomic, strong) NSMutableArray *testLabelArray;
-
-@property (nonatomic, strong) id delegate;
 @property (nonatomic, strong) Mind *mind;
 
 -(instancetype)initTrainer;

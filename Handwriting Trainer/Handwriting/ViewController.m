@@ -14,20 +14,19 @@
     self.image.image = image;
 }
 
-- (IBAction)action:(id)sender {
-    self.image.image = self.wt.image;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.wt = [[WritingTrainer alloc] initTrainer];
-    [self.wt evaluate:5000];
-    self.wt.delegate = self;
-    [self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
-    float rate = [self.wt evaluate:10000] * 100;
-    NSLog(@"%.2f", rate);
+//    self.wt = [[WritingTrainer alloc] initTrainer];
+//    [self.wt evaluate:5000];
+//    [self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
+//    float rate = [self.wt evaluate:10000] * 100;
+//    NSLog(@"%.2f", rate);
     //[self.wt train:10000 epochs:20 correctRate:97.0];
+    
+    self.wl = [[WritingLearner alloc] initLearner];
+    NSLog(@"%f", [self.wl evaluate:5000]);
+    [self.wl train:10000 epochs:10 correctRate:100];
     
     // Do any additional setup after loading the view.
 }

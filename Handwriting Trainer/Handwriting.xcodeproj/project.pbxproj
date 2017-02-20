@@ -17,6 +17,7 @@
 		0017B6111E45079C002243D8 /* NeuralMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017B60F1E45079C002243D8 /* NeuralMath.m */; };
 		009CFBA01E46B1AF00CB4EAA /* WritingTrainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 009CFB9F1E46B1AF00CB4EAA /* WritingTrainer.m */; };
 		00DA229B1E48E13F0086BFE7 /* MindStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA229A1E48E13F0086BFE7 /* MindStorage.m */; };
+		2870C9F11E5B28CC0017023D /* WritingLearner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870C9F01E5B28CC0017023D /* WritingLearner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		009CFB9F1E46B1AF00CB4EAA /* WritingTrainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WritingTrainer.m; path = ../WritingTrainer.m; sourceTree = "<group>"; };
 		00DA22991E48E13F0086BFE7 /* MindStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MindStorage.h; sourceTree = "<group>"; };
 		00DA229A1E48E13F0086BFE7 /* MindStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MindStorage.m; sourceTree = "<group>"; };
+		2870C9EF1E5B28CC0017023D /* WritingLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingLearner.h; sourceTree = "<group>"; };
+		2870C9F01E5B28CC0017023D /* WritingLearner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingLearner.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,8 @@
 				0017B5E31E45067A002243D8 /* ViewController.m */,
 				009CFB9E1E46B1AF00CB4EAA /* WritingTrainer.h */,
 				009CFB9F1E46B1AF00CB4EAA /* WritingTrainer.m */,
+				2870C9EF1E5B28CC0017023D /* WritingLearner.h */,
+				2870C9F01E5B28CC0017023D /* WritingLearner.m */,
 				0017B5E71E45067A002243D8 /* Main.storyboard */,
 				0017B6121E4507A0002243D8 /* source */,
 				0017B5DF1E45067A002243D8 /* Supporting Files */,
@@ -287,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2870C9F11E5B28CC0017023D /* WritingLearner.m in Sources */,
 				0017B5E41E45067A002243D8 /* ViewController.m in Sources */,
 				0017B6101E45079C002243D8 /* Mind.m in Sources */,
 				009CFBA01E46B1AF00CB4EAA /* WritingTrainer.m in Sources */,

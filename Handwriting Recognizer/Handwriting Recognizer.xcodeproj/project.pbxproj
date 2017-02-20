@@ -11,8 +11,11 @@
 		2860F4A41E4DEDC90005283F /* white.png in Resources */ = {isa = PBXBuildFile; fileRef = 2860F4A31E4DEDC90005283F /* white.png */; };
 		2860F4A61E4DF2FA0005283F /* mindData in Resources */ = {isa = PBXBuildFile; fileRef = 2860F4A51E4DF2FA0005283F /* mindData */; };
 		2860F4AD1E4DF3380005283F /* WritingTrainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860F4AC1E4DF3380005283F /* WritingTrainer.m */; };
-		288442111E4D5DA000E09C0E /* Black.png in Resources */ = {isa = PBXBuildFile; fileRef = 2884420E1E4D5DA000E09C0E /* Black.png */; };
-		288442121E4D5DA000E09C0E /* Eraser.png in Resources */ = {isa = PBXBuildFile; fileRef = 2884420F1E4D5DA000E09C0E /* Eraser.png */; };
+		2870C9F41E5B2DE40017023D /* LearnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870C9F31E5B2DE40017023D /* LearnerViewController.m */; };
+		2870C9F71E5B303A0017023D /* Pixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870C9F61E5B303A0017023D /* Pixel.m */; };
+		2870C9FA1E5B94690017023D /* WritingLearner.m in Sources */ = {isa = PBXBuildFile; fileRef = 2870C9F91E5B94690017023D /* WritingLearner.m */; };
+		2870C9FC1E5B95100017023D /* mindData-learn in Resources */ = {isa = PBXBuildFile; fileRef = 2870C9FB1E5B95100017023D /* mindData-learn */; };
+		2870C9FF1E5B9D440017023D /* objc-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2870C9FE1E5B9D440017023D /* objc-icon.png */; };
 		28B1DDEC1E4C21580052A188 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDEB1E4C21580052A188 /* main.m */; };
 		28B1DDEF1E4C21580052A188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDEE1E4C21580052A188 /* AppDelegate.m */; };
 		28B1DDF21E4C21580052A188 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B1DDF11E4C21580052A188 /* ViewController.m */; };
@@ -51,8 +54,14 @@
 		2860F4A51E4DF2FA0005283F /* mindData */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = mindData; sourceTree = "<group>"; };
 		2860F4AB1E4DF3380005283F /* WritingTrainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingTrainer.h; sourceTree = "<group>"; };
 		2860F4AC1E4DF3380005283F /* WritingTrainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingTrainer.m; sourceTree = "<group>"; };
-		2884420E1E4D5DA000E09C0E /* Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Black.png; sourceTree = "<group>"; };
-		2884420F1E4D5DA000E09C0E /* Eraser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eraser.png; sourceTree = "<group>"; };
+		2870C9F21E5B2DE40017023D /* LearnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnerViewController.h; sourceTree = "<group>"; };
+		2870C9F31E5B2DE40017023D /* LearnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnerViewController.m; sourceTree = "<group>"; };
+		2870C9F51E5B303A0017023D /* Pixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pixel.h; sourceTree = "<group>"; };
+		2870C9F61E5B303A0017023D /* Pixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pixel.m; sourceTree = "<group>"; };
+		2870C9F81E5B94690017023D /* WritingLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingLearner.h; sourceTree = "<group>"; };
+		2870C9F91E5B94690017023D /* WritingLearner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingLearner.m; sourceTree = "<group>"; };
+		2870C9FB1E5B95100017023D /* mindData-learn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "mindData-learn"; sourceTree = "<group>"; };
+		2870C9FE1E5B9D440017023D /* objc-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "objc-icon.png"; sourceTree = "<group>"; };
 		28B1DDE71E4C21580052A188 /* Handwriting Recognizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Handwriting Recognizer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B1DDEB1E4C21580052A188 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28B1DDED1E4C21580052A188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,11 +113,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2884420D1E4D5C1C00E09C0E /* Classes */ = {
+		2870C9FD1E5B96820017023D /* Obj-C AI */ = {
 			isa = PBXGroup;
 			children = (
-				2860F4AB1E4DF3380005283F /* WritingTrainer.h */,
-				2860F4AC1E4DF3380005283F /* WritingTrainer.m */,
 				28B1DE1F1E4C21740052A188 /* Mind.h */,
 				28B1DE201E4C21740052A188 /* Mind.m */,
 				28B1DE211E4C21740052A188 /* MindStorage.h */,
@@ -116,18 +123,20 @@
 				28B1DE231E4C21740052A188 /* NeuralMath.h */,
 				28B1DE241E4C21740052A188 /* NeuralMath.m */,
 			);
-			name = Classes;
+			name = "Obj-C AI";
 			sourceTree = "<group>";
 		};
-		288442141E4D5DCC00E09C0E /* Media */ = {
+		2884420D1E4D5C1C00E09C0E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2860F4A31E4DEDC90005283F /* white.png */,
-				28B1DDF61E4C21580052A188 /* Assets.xcassets */,
-				2884420E1E4D5DA000E09C0E /* Black.png */,
-				2884420F1E4D5DA000E09C0E /* Eraser.png */,
+				2860F4AB1E4DF3380005283F /* WritingTrainer.h */,
+				2860F4AC1E4DF3380005283F /* WritingTrainer.m */,
+				2870C9F81E5B94690017023D /* WritingLearner.h */,
+				2870C9F91E5B94690017023D /* WritingLearner.m */,
+				2870C9F51E5B303A0017023D /* Pixel.h */,
+				2870C9F61E5B303A0017023D /* Pixel.m */,
 			);
-			name = Media;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		28B1DDDE1E4C21580052A188 = {
@@ -157,8 +166,10 @@
 				28B1DDEE1E4C21580052A188 /* AppDelegate.m */,
 				28B1DDF01E4C21580052A188 /* ViewController.h */,
 				28B1DDF11E4C21580052A188 /* ViewController.m */,
+				2870C9F21E5B2DE40017023D /* LearnerViewController.h */,
+				2870C9F31E5B2DE40017023D /* LearnerViewController.m */,
 				28B1DDF31E4C21580052A188 /* Main.storyboard */,
-				288442141E4D5DCC00E09C0E /* Media */,
+				2870C9FD1E5B96820017023D /* Obj-C AI */,
 				2884420D1E4D5C1C00E09C0E /* Classes */,
 				28B1DDEA1E4C21580052A188 /* Supporting Files */,
 			);
@@ -168,9 +179,13 @@
 		28B1DDEA1E4C21580052A188 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2870C9FE1E5B9D440017023D /* objc-icon.png */,
+				2860F4A31E4DEDC90005283F /* white.png */,
+				28B1DDF61E4C21580052A188 /* Assets.xcassets */,
 				28EFF0431E5A68D80023817B /* 4.png */,
 				28EFF0441E5A68D80023817B /* 6.png */,
 				283909091E5A51BA007BBDE6 /* mnist.png */,
+				2870C9FB1E5B95100017023D /* mindData-learn */,
 				2860F4A51E4DF2FA0005283F /* mindData */,
 				28B1DDF81E4C21580052A188 /* LaunchScreen.storyboard */,
 				28B1DDFB1E4C21580052A188 /* Info.plist */,
@@ -306,15 +321,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2870C9FC1E5B95100017023D /* mindData-learn in Resources */,
 				28EFF0451E5A68D80023817B /* 4.png in Resources */,
+				2870C9FF1E5B9D440017023D /* objc-icon.png in Resources */,
 				28B1DDFA1E4C21580052A188 /* LaunchScreen.storyboard in Resources */,
 				2860F4A61E4DF2FA0005283F /* mindData in Resources */,
-				288442111E4D5DA000E09C0E /* Black.png in Resources */,
 				28EFF0461E5A68D80023817B /* 6.png in Resources */,
 				28B1DDF71E4C21580052A188 /* Assets.xcassets in Resources */,
 				28B1DDF51E4C21580052A188 /* Main.storyboard in Resources */,
 				2860F4A41E4DEDC90005283F /* white.png in Resources */,
-				288442121E4D5DA000E09C0E /* Eraser.png in Resources */,
 				2839090A1E5A51BA007BBDE6 /* mnist.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,12 +355,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2870C9F71E5B303A0017023D /* Pixel.m in Sources */,
 				28B1DDF21E4C21580052A188 /* ViewController.m in Sources */,
 				28B1DE261E4C21740052A188 /* MindStorage.m in Sources */,
+				2870C9F41E5B2DE40017023D /* LearnerViewController.m in Sources */,
 				28B1DE251E4C21740052A188 /* Mind.m in Sources */,
 				28B1DDEF1E4C21580052A188 /* AppDelegate.m in Sources */,
 				2860F4AD1E4DF3380005283F /* WritingTrainer.m in Sources */,
 				28B1DE271E4C21740052A188 /* NeuralMath.m in Sources */,
+				2870C9FA1E5B94690017023D /* WritingLearner.m in Sources */,
 				28B1DDEC1E4C21580052A188 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

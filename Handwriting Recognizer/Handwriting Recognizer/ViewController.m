@@ -25,7 +25,7 @@
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
-    brush = 20;
+    brush = 15;
     opacity = 1.0;
     
     self.wt = [[WritingTrainer alloc] init];
@@ -88,9 +88,9 @@
     NSMutableArray *pixelsArray = [NSMutableArray array];
     
     // Extract drawing from canvas and remove surrounding whitespace
-    UIImage *croppedImage = [self cropImage:self.mainImage.image toRect:self.boundingBox];
+    //UIImage *croppedImage = [self cropImage:self.mainImage.image toRect:self.boundingBox];
     // Scale character to max 20px in either dimension
-    UIImage *scaledImage = [self imageWithImage:croppedImage convertToSize:CGSizeMake(20, 20)];
+    UIImage *scaledImage = [self imageWithImage:self.mainImage.image convertToSize:CGSizeMake(23, 23)];
     // Center character in 28x28 white box
     UIImage *character = [self addBorderToImage:scaledImage];
     
@@ -163,7 +163,7 @@
 -(void)countTimer{
     
     time++;
-    if (time >= 15) {
+    if (time >= 20) {
         [self recognize:nil];
         [timer invalidate];
     }
