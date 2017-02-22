@@ -136,7 +136,7 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jKn-E0-q6p">
-                                <rect key="frame" x="16" y="159" width="343" height="319"/>
+                                <rect key="frame" x="16" y="159" width="343" height="359"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                         </subviews>
@@ -146,7 +146,7 @@
                             <constraint firstItem="fzR-fB-MxP" firstAttribute="centerX" secondItem="fVU-0B-ylE" secondAttribute="centerX" id="GRk-wx-eYP"/>
                             <constraint firstItem="jKn-E0-q6p" firstAttribute="trailing" secondItem="fVU-0B-ylE" secondAttribute="trailingMargin" id="YBW-g1-Alj"/>
                             <constraint firstItem="jKn-E0-q6p" firstAttribute="top" secondItem="fzR-fB-MxP" secondAttribute="bottom" constant="8" id="anP-e6-Eqy"/>
-                            <constraint firstItem="2EJ-QH-Ohr" firstAttribute="top" secondItem="jKn-E0-q6p" secondAttribute="bottom" constant="140" id="lo2-e4-N1q"/>
+                            <constraint firstItem="2EJ-QH-Ohr" firstAttribute="top" secondItem="jKn-E0-q6p" secondAttribute="bottom" constant="100" id="lo2-e4-N1q"/>
                             <constraint firstItem="jKn-E0-q6p" firstAttribute="leading" secondItem="fVU-0B-ylE" secondAttribute="leadingMargin" id="xza-r6-YVe"/>
                         </constraints>
                     </view>
@@ -155,7 +155,9 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="YKe-3g-qOr">
                                 <rect key="frame" x="276" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Clear"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="recognize:" destination="wte-MP-3vp" eventType="touchUpInside" id="ejv-Gh-0il"/>
                                 </connections>
@@ -195,7 +197,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bu0-Z6-0Ml" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Recognizer" id="JEr-qE-9Jp"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wba-4l-q0f">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wba-4l-q0f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.01458225027" green="0.50795674319999995" blue="0.79042166469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -218,7 +220,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="95U-BM-mVS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Learner" id="zgd-Xj-apW"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wlX-qI-geL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wlX-qI-geL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.01458225027" green="0.50795674319999995" blue="0.79042166469999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

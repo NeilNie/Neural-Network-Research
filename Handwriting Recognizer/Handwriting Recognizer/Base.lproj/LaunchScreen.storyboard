@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="biQ-cR-RDa" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PRD-Ap-j6O"/>
                             <constraint firstItem="biQ-cR-RDa" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cil-5O-vx5"/>

@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *labelArray;
 @property (nonatomic, strong) NSMutableArray *testImageArray;
 @property (nonatomic, strong) NSMutableArray *testLabelArray;
-
+@property (nonatomic, strong) id delegate;
 @property (nonatomic, strong) Mind *mind;
 
 -(instancetype)initTrainer;
@@ -27,6 +27,12 @@
 -(float)evaluate:(int)ntest;
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate;
+
+@end
+
+@protocol WritingTrainerDelegate <NSObject>
+
+-(void)updateLogText:(NSString *)string;
 
 @end
 

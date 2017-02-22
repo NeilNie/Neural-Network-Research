@@ -10,23 +10,40 @@
 
 @implementation ViewController
 
--(void)updateImage:(NSImage *)image{
-    self.image.image = image;
+#pragma mark - WriteTrainer Delegate
+
+-(void)updateLogText:(NSString *)string{
+    self.textField.string = [self.textField.string stringByAppendingString:string];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+#pragma mark - IBActions
 
-//    self.wt = [[WritingTrainer alloc] initTrainer];
-//    [self.wt evaluate:5000];
-//    [self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
-//    float rate = [self.wt evaluate:10000] * 100;
-//    NSLog(@"%.2f", rate);
-    //[self.wt train:10000 epochs:20 correctRate:97.0];
+-(IBAction)train:(id)sender{
+    
+    self.wt = [[WritingTrainer alloc] initTrainer];
+    [self.wt evaluate:5000];
+    self.wt.delegate = self;
+    float rate = [self.wt evaluate:10000] * 100;
+    NSLog(@"%.2f", rate);
+    [self.wt train:10000 epochs:0 correctRate:96.0];
+}
+
+-(IBAction)loadData:(id)sender{
+    [self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
+}
+
+-(IBAction)learn:(id)sender{
     
     self.wl = [[WritingLearner alloc] initLearner];
     NSLog(@"%f", [self.wl evaluate:5000]);
-    [self.wl train:10000 epochs:10 correctRate:100];
+    [self.wl train:10000 epochs:30 correctRate:0];
+}
+
+#pragma mark - Life Cycle
+
+- (void)viewDidLoad {
+    
+    [super viewDidLoad];
     
     // Do any additional setup after loading the view.
 }

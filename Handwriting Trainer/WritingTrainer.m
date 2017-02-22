@@ -47,7 +47,7 @@
         for (int i = 0; i < 60000; i++) {
             
             if (i%10000 == 0 || i == 60000 - 1)
-                NSLog(@"%.2f %%", (float)i / 600.0);
+                [self.delegate updateLogText:[NSString stringWithFormat:@"%.2f %%", (float)i / 600.0]];
             
             //extract images
             uint8 *ints = calloc(nPixels, sizeof(uint8));
@@ -94,10 +94,9 @@
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate{
     
-    int cnt = 0;
     float rate = 0.00;
     while (rate < correctRate) {
-
+        
         [self shuffle:self.imageArray withArray:self.labelArray];
         
         for (int i = 0; i < batchSize; i++) {
@@ -110,7 +109,6 @@
         }
         rate = [self evaluate:10000] * 100;
         MDLog(@"%.2f", rate);
-        cnt ++;
     }
     [self showNotification];
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];

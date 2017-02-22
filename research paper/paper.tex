@@ -1,0 +1,421 @@
+\documentclass[]{article}
+
+%%use packages%%
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{lmodern}
+\usepackage{titling}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{multicol}
+\usepackage[a4paper, total={6in, 9in}]{geometry} %margin
+\usepackage{fixltx2e} % provides \textsubscript
+\usepackage{listings}
+\usepackage{color}
+
+\setlength{\columnsep}{0.7cm}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage[]{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%define subtitle
+\newcommand{\subtitle}[1]{%
+  \posttitle{%
+    \par\end{center}
+    \begin{center}\large#1\end{center}
+    \vskip0.5em}%
+}
+
+%define indentations & sections spacing
+\setlength{\parindent}{4em}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 4pt minus 2pt}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\title{Understanding \& Developing Artificial Neural Network with Objective-C and Python}
+\subtitle{Deerfield Academy Advance Computer Science Research}
+
+\author{Yongyang (Neil) Nie}
+
+\date{Feb, 2016}
+
+\maketitle
+
+\tableofcontents
+
+\vspace{0.7cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{multicols}{2}
+
+\section{Abstract:}
+
+Machine learning~is a subset of artificial intelligence that provides
+computers with the ability to learn without being explicitly
+programmed.~Machine learning~focuses on the development of computer
+programs that can change when exposed to new data.
+
+There are many methods and algorithms for learning algorithms, from Support Vector
+Machine\footnote{https://en.wikipedia.org/wiki/Support\_vector\_machine}
+to Artificial Neural Networks\footnote{https://en.wikipedia.org/wiki/Artificial\_neural\_network}.
+The purpose of them are similar, they can all be used to classify
+complex data, such as images and DNA samples.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction:}
+
+	There are two types of machine learning, one is supervised machine
+learning\footnote{Mehryar Mohri, Afshin Rostamizadeh, Ameet Talwalkar
+  (2012)~\emph{Foundations of Machine Learning}, The MIT
+  Press~\href{https://en.wikipedia.org/wiki/Special:BookSources/9780262018258}{ISBN
+  9780262018258}.}. In this research, we will mainly focus on artificial neural networks and
+supervised machine learning. Supervised learning~is the~machine learning~task of
+inferring a function from labeled training data. The training data
+consist of a set of training examples. In~supervised learning, each
+example is a pair consisting of an input object (typically a vector) and
+a desired output value (also called the supervisory signal).
+
+You will discover that machine learning is beautiful and can be very
+simple. We will be able to implement a simple algorithm that can
+recognize hand written digits in less than a hundred lines of code. Only
+a small amount of mathematical proves and equations will be covered. The
+paper will discuss the principles behind designing, building, and
+debugging an artificial neural network. The projects will be written
+mainly in Objective-C or Python. You can find the resources on
+\href{https://github.com/NeilNie/Neural-Network-Research}{Github}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Forward Feed:}
+
+The neural network will begin be taking in some inputs and making some
+predictions based on the inputs and the weights between nodes. We can
+think of it like a one by two matrix. There will be a weight connecting
+every input layer node to every output layer node, therefore, there are
+six weights between the input layer and the second layer. The matrix
+calculation should yield us some result
+
+\[\begin{bmatrix}
+0 \\
+1 \\
+\end{bmatrix}\ \lbrack{w_{0}}^{0}\ {w_{0}}^{1}\ {w_{0}}^{2}\ {w_{1}}^{0}\ {w_{1}}^{1}{w_{1}}^{2}\rbrack = \begin{bmatrix}
+z \\
+z \\
+z \\
+\end{bmatrix}\]
+
+If we give the matrices some names, call inputs \emph{x}, weights
+\emph{w\textsubscript{(l)}} and output \emph{z\textsubscript{(l)}.} In
+our case, \emph{l} indicate the layer, for example, the first layer
+weights are \emph{w\textsubscript{(1)}}. \emph{z\textsubscript{(l)}}
+represent the output matrix with layer \emph{l}, in this case, the
+output z is the hidden layer output.
+
+\begin{equation}
+	\text{\ x}w_{\left( n \right)} = \ z_{(n)}\
+\end{equation}
+
+Afterwards, we have to apply an activation function\footnote{https://en.wikipedia.org/wiki/Activation\_function}.
+The activation function that I used in this research and this paper will
+be the sigmoid function. This is a complete cycle, there is one more
+layer to go in order to yield a result. Note, in a multilayer neural
+network, this process will be repeated until we yield some output. In
+our case, we only have to do this twice. The activation function is
+shown as below.
+
+\[\sigma\left( z \right) = \ \frac{1}{1 + e^{- z}}\]
+\begin{equation}
+	{\text{\ a}}_{\left( 2 \right)} = f(z_{\left( 2 \right)})\
+\end{equation}
+
+
+By applying the same process as before, this time, the inputs will be
+\emph{a\textsubscript{(2)} then, z\textsubscript{(3)}} will be our final
+result. This process is known as forward feed. It's relatively
+straightforward.
+
+\[z_{\left( 3 \right)} = \ \text{\ a}_{\left( 2 \right)}w_{(2)}\]
+
+After we yield some result, we can more on and look at how far off we
+are from the expected result. We need some methods to quantify this and
+so adjustments to the network to minimize error.
+
+\[\sigma'\left( z \right) = \ \sigma\left( x \right)(1 - \sigma(z))\]
+
+\section{Quantifying and Minimizing Cost:}
+
+Now the neural network can make calculation/predictions, however, the
+result is far from desired. In almost all learning algorithms, the input
+data cannot be altered, therefore the x term is constant in equation
+one. In order to change the output \emph{z} the only option is to change
+the weights \emph{w}.
+
+First of all, we have to come up with ways to quantify the cost.
+
+\begin{equation}
+\left( 3 \right)\ C = \sum_{j}^{}{\frac{1}{2}{(\hat{y} - y)}^{2}}\
+\end{equation}
+
+C is the cost, which equals to the sum of all the differences between
+calculated result and actual result squared and times one half. We can
+take advantage of the equation derived above and substitute for some of
+the variable.
+
+\[\ (4)\ C = \ \sum_{J}^{}{\frac{1}{2}\left( y - f\left( f\left( xw_{\left( 1 \right)} \right)w_{\left( 2 \right)} \right) \right)^{2}}\]
+
+Here we have it, a way to quantify the cost of the neural network. This
+function will be referred to as the cost function. Now, we have to solve
+the problem, how do we minimize C, will brute force work? It turns out,
+no, because in a three-node neural network we have to compute more than
+a million possible weights, which will be gruesome.
+
+We can think of the equation above as a function of cost in terms of all
+possible weights. There will be one set of weights that will bring the
+cost to the lowest. Then, this becomes a minimization problem.
+
+\section{Gradient Descent:}
+
+The best way to minimization the cost is to use gradient descent, a very
+fast and classic way to solve problems like this. In fact, gradient
+descent is widely used in math, image process and machine learning.
+
+Gradient descent~is a~first-order~iterative~optimization~algorithm. To
+find a~local minimum~of a function using gradient descent, one takes
+steps proportional to the~\emph{negative}~of
+the~\href{https://en.wikipedia.org/wiki/Gradient}{gradient}~(or of the
+approximate gradient) of the function at the current point.
+
+Gradient descent is also known as~steepest descent, or the~method of
+steepest descent. The process can be seen as a ball rolling down a
+hill\footnote{\url{https://iamtrask.github.io/2015/07/27/python-network-part2/}
+  by Andrew}
+and trying to find the lowest point. Note that actual physics doesn't
+apply here and we will define our own movement of the ball.
+
+There are limitations to this method. First of all, what if we are stuck
+in a local minimum, our goal is to find the global minimum for the cost
+function. In another word, this method will not work for a non-convex
+function. In fact, this problem is solved in equation (3), by squaring
+the difference in \({(\hat{y} - y)}^{2}\), we transformed this function
+to a convex function\footnote{Proof and definition of convex functions:
+  http://mathworld.wolfram.com/ConvexFunction.html}. Even though there
+are tens of thousands of variables (dimension), the function will still
+be convex, thus, we can apply gradient descent to find the global
+minimum.
+
+There are other types and variation of gradient descent as well. One of
+the most commonly used one is Stochastic gradient descent~(SGD), also
+known as~incremental~gradient descent, is a~stochastic approximation~of
+the~gradient descent optimization method~for minimizing an~objective
+function~that is written as a sum of~differentiable functions. In other
+words, SGD tries to find minima or maxima by iteration. \footnote{\url{http://www.mit.edu/~dimitrib/Incremental_Survey_LIDS.pdf}
+  Dimitri P. Bertsekas Report LIDS - 2848}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Back propagation:}
+
+With gradient descent, we can create a set of routines that can help us
+to change the weights of the network to minimize the cost.
+
+{\texorpdfstring \emph{Phase 1: Propagation: Each propagation
+involves the following steps:\footnote{The steps are referenced from
+  Wikipedia who referenced:
+  \href{http://numericinsight.com/uploads/A_Gentle_Introduction_to_Backpropagation.pdf}{A
+  Gentle Introduction to Backpropagation - An intuitive tutorial by
+  Shashi Sathyanarayana}~The article contains pseudocode ("Training
+  Wheels for Training Neural Networks") for implementing the algorithm.}}{Phase 1: Propagation: Each propagation involves the following steps:}}\label{phase-1-propagation-each-propagation-involves-the-following-steps}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Forward propagation of a training pattern's input through the neural
+  network in order to generate the network's output value(s).
+\item
+  Backward propagation of the propagation's output activations through
+  the neural network using the training pattern target in order to
+  generate the deltas (the difference between the targeted and actual
+  output values) of all output and hidden neurons.
+\end{enumerate}
+
+\emph{Phase 2: Weight update: For each weight, the following
+steps must be
+followed:}\label{phase-2-weight-update-for-each-weight-the-following-steps-must-be-followed}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  The weight's output delta and input activation are multiplied to find
+  the gradient of the weight.
+\item
+  A ratio (percentage) of the weight's gradient is subtracted from the
+  weight.
+\end{enumerate}
+
+Backpropagation is based around four fundamental equations. Together,
+those equations give us a way of computing both the error
+\(\delta^{L}\)and the gradient cost of the function. In fact, the
+backpropagation equations are so rich that understanding them well
+requires considerable times and patience. \footnote{The equations were
+  created by Michael A. Neilson "Neural Networks and Deep Learning",
+  Determination Press, 2015~}
+
+\subsubsection{
+  An equation for the error in the output layer \(\delta^{L}\)}
+
+\begin{equation} \tag{BP1}
+	{\delta}_{J}^{L} = \frac{\partial C}{\partial a_{J}^{L}}\sigma'(z_{J}^{L})\
+\end{equation}
+
+The first term on the right, \(\frac{\partial J}{\partial a_{J}^{L}}\)
+measures how fast the cost is changing as a function of
+j\textsuperscript{th} output activation. Everything in (BP1) is easily
+calculated. We computed \(z_{J}^{L}\) while computing the behavior of
+the network. Depending on the cost function, in our case, the quadratic
+cost function is relatively easy to compute.
+
+Equation (BP1) is a perfectly good expression, however, it's not matrix
+based, form that backpropagation desires. The fully matrix form becomes.
+
+\begin{equation}
+	\delta^{L} = (a^{l} - y)(\sigma'(z^{l})\
+\end{equation}
+
+\subsubsection{
+  An equation for the error \(\delta^{l}\) in terms of the error in the
+  next layer, \(\delta^{l + 1}\) in particular:}
+
+\begin{equation} \tag{BP2}
+	{\delta}^{l} = (\left( w^{l + 1} \right)^{T}\delta^{l + 1})\bigodot\sigma'(z^{l})\
+\end{equation}
+
+where \(\left( w^{l + 1} \right)^{T}\) is the transpose of the weight
+matrix \(\left( w^{l + 1} \right)\) for the
+\emph{(l+1)\textsuperscript{th}} layer. Suppose we know the error
+\(\delta^{l + 1}\) at the \emph{(l+1)\textsuperscript{th }}layer. When
+the transpose weight matrix is applied \(\left( w^{l + 1} \right)^{T}\),
+we can think of this as moving the error backward through the network,
+giving us some sort of measure of the error at the output of the
+l\textsuperscript{th} layer. Finally, we take the Hadamard
+product\(\ \bigodot\sigma'(z^{l})\).
+
+By combining (BP1) with (BP2), the error \(\delta^{l}\) for any
+layer in the network can by computed. We start by using~(BP1)~to
+compute~\(\delta^{l}\), then apply Equation~(BP2)~to
+compute~\(\delta^{L - 1}\), then Equation~(BP2)~again to
+compute~\(\delta^{L - 1}\), and so on, all the way back through the
+network.
+
+\subsubsection{An equation for the rate of change of the cost with respect to any bias in the network} 
+\begin{equation} \tag{BP3}
+	\frac{\partial C}{\partial b^l_{j}} = \delta^l_{j}\footnote{The equation was 
+		reference from Michael A. Neilson "Neural Networks and Deep Learning",
+		Determination Press, 2015~}
+\end{equation}
+
+This is the error \(\delta^l_{j}\) is exactly equal to the rate of change \(\frac{\partial C}{\partial b^l_{j}}\). This equation can be rewritten as 
+\[\frac{\partial C}{\partial b} = \delta\]
+
+\subsubsection{An equation for the rate of change of the cost with respect to any weights in the network}
+
+\begin{equation} \tag{BP4}
+	\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_{k} \delta^l_{j}\footnote{The equation was
+		referenced from Michael A. Neilson "Neural Networks and Deep Learning",
+		Determination Press, 2015~}
+\end{equation}
+
+This equation can help us to compute the partial derivative \(\frac{\partial C}{\partial w^l_{jk}}\) in terms of the quantity \(\delta^l\) and \(a^{l-1}\). It can be rewritten in a less index-heavy notation:
+
+\begin{equation}
+	\frac{\partial C}{\partial w} = a_{in}\delta_{out}\
+\end{equation}
+
+\subsubsection{Backpropagation with simple neural network example}
+
+In a simple three-layer neural network, below are the four equations
+that we derive with the principle of gradient descend that will help us
+minimize the error.\footnote{The equation was referenced from Michael A. Neilson "Neural Networks and Deep Learning", Determination Press, 2015~}
+\[\delta_{(3)} = - (y - \hat{y})(\sigma'(z_{(3)}))\]
+
+Calculate the \(\delta\) for the third layer of the network.
+\[\frac{\partial J}{\partial w_{(2)}} = {{(a}^{(2)})}^{T}\delta_{(3)}\]
+
+Use the calculated result to help us modify the second layer of weights
+in the network.
+\[\delta_{(2)} = \delta_{\left( 3 \right)}\left( w_{\left( 2 \right)} \right)^{T}\sigma'(z_{(2)})\]
+
+Calculate the \(\delta\) for the second layer of the network.
+\[\frac{\partial J}{\partial w_{(1)}} = \ x^{T}\delta_{(2)}\]
+
+Finally, we can modify the first layer of weights in the network. This
+process is often repeated until the accuracy of the network reaches a
+threshold.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Examples and Applications:}
+\lipsum[4]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Overfitting and Regularization:}
+\lipsum[2]
+\end{multicols}
+
+\end{document}
