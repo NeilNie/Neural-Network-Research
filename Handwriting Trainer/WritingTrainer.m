@@ -87,15 +87,16 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:30 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:200 outputs:10 learningRate:0.3 momentum:0.3 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate{
     
+    int count = 0;
     float rate = 0.00;
-    while (rate < correctRate) {
+    while (count < 70) {
         
         [self shuffle:self.imageArray withArray:self.labelArray];
         
@@ -109,6 +110,7 @@
         }
         rate = [self evaluate:10000] * 100;
         MDLog(@"%.2f", rate);
+        count ++;
     }
     [self showNotification];
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];

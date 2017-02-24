@@ -3,6 +3,7 @@
 %%use packages%%
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage[export]{adjustbox}
 \usepackage{lipsum}
 \usepackage{titlesec}
 \usepackage{lmodern}
@@ -14,60 +15,32 @@
 \usepackage{fixltx2e} % provides \textsubscript
 \usepackage{listings}
 \usepackage{color}
+\usepackage{caption}
+\usepackage[]{microtype}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\graphicspath{ {images/}}
 
 \setlength{\columnsep}{0.7cm}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[T1]{fontenc}
-  \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-\fi
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
 % use microtype if available
 \IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
+
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 \PassOptionsToPackage{hyphens}{url} % url is loaded by hyperref
-\usepackage[unicode=true]{hyperref}
+\usepackage{xcolor}
+\usepackage[colorlinks = true,
+linkcolor = blue,
+urlcolor  = blue,
+citecolor = blue,
+anchorcolor = blue]{hyperref}
+\hypersetup{linkcolor=black}
+\newcommand{\MYhref}[3][blue]{\href{#2}{\color{#1}{#3}}}%
 \hypersetup{
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
 
 %define subtitle
 \newcommand{\subtitle}[1]{%
@@ -80,11 +53,6 @@
 %define indentations & sections spacing
 \setlength{\parindent}{4em}
 \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 4pt minus 2pt}
-
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
@@ -277,6 +245,8 @@ words, SGD tries to find minima or maxima by iteration. \footnote{\url{http://ww
 With gradient descent, we can create a set of routines that can help us
 to change the weights of the network to minimize the cost.
 
+\subsection{Back propagation overview}
+
 {\texorpdfstring \emph{Phase 1: Propagation: Each propagation
 involves the following steps:\footnote{The steps are referenced from
   Wikipedia who referenced:
@@ -311,6 +281,8 @@ followed:}\label{phase-2-weight-update-for-each-weight-the-following-steps-must-
   weight.
 \end{enumerate}
 
+\subsection{Mathematics behind backpropagation}
+
 Backpropagation is based around four fundamental equations. Together,
 those equations give us a way of computing both the error
 \(\delta^{L}\)and the gradient cost of the function. In fact, the
@@ -319,8 +291,7 @@ requires considerable times and patience. \footnote{The equations were
   created by Michael A. Neilson "Neural Networks and Deep Learning",
   Determination Press, 2015~}
 
-\subsubsection{
-  An equation for the error in the output layer \(\delta^{L}\)}
+\subsubsection{An equation for the error in the output layer \(\delta^{L}\)}
 
 \begin{equation} \tag{BP1}
 	{\delta}_{J}^{L} = \frac{\partial C}{\partial a_{J}^{L}}\sigma'(z_{J}^{L})\
@@ -408,14 +379,70 @@ Calculate the \(\delta\) for the second layer of the network.
 
 Finally, we can modify the first layer of weights in the network. This
 process is often repeated until the accuracy of the network reaches a
-threshold.
+threshold. Here is a visualization of how individual output node is approaching the desired output.
+
+\centerline{\includegraphics[width=1\linewidth]{graph1} }
+
+Line 0-3 are lowering as we train the network. Line 4, is approaching 1 as we keep train the network. This figure displayed that the error of the network \(C\) is being minimized. 
+
+Here is a graph of the correction of the neural network over times of training. Each time the network will train with 1000 out of 60,000 training data. After, The program will shuffle the training data and repeat the training process for 197 times, or until the network reaches 95\% accuracy. 
+
+\centerline{\includegraphics[width=1\linewidth]{graph2}}
+\centerline {Figure 1}
+\vspace{0.3cm}
+
+The neural network is trained four times with the same training and testing data. The results are similar and the network is steadily improving, thanks to gradient descent. There are many factors that contribute to a successful learning process. If these things are ignored or incorrect, the network will not be able to learn as well. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Improve neural network training result}
+Not all neural network behaves flawlessly. Generally, there are a few factors that will effect the training result of the network: hyperparameter, number of hidden nodes, human error, training data/testing data problem and more. Among them, hyperparameter, number of hidden nodes and be determined by estimation and trial and error. Huamn error can be eliminated by debugging. Training data and testing data problem is not easy to solve. That often contributes to the source of your data and the quality of your data, which are beyond the scope of this research. It's safe to assume that the training data and testing data that we are using are carefully chosen and considered.  
+\subsection{Making good decision}
+In a pre-trained network, there are several critical hyperparameters and numbers that will help the network to improve. I mainly focused on learning rate and number of hidden nodes. 
+\subsubsection{Hyperparameters}
+Learning rate is the hyperparameter that we will focus on. To make gradient descent work correctly, we need to choose the learning rate \(r\) to be small enough that Equation (9) is a good approximation. If we don't, we might end up with \(\Delta C \textgreater 0\), which will take us to the opposite of minimizing. Meanwhile,  \(r\) can't be too small, since that will make the changes \(\Delta v\) tiny, and thus the gradient descent algorithm will work very slowly. In practical implementations, \(r\) is often varied so that Equation (9) remains a good approximation, but the algorithm isn't too slow. \footnote{Michael A. Nielsen, "Neural Networks and Deep Learning", Determination Press, 2015. \href{http://neuralnetworksanddeeplearning.com/chap1.html}{Chapter 1 Using neural nets to recognize handwritten digits}}
+
+This is a graph of the training result with a different learning rate. The batch size is 1000 and the training is repeated 100 times. 
+
+\centerline{\includegraphics[width=1\linewidth]{graph5}}
+\centerline{Figure 2}
+\vspace{0.3cm}
+
+The range of the learning rate that I chose is from [0.1, 5]. When the learning rate is relatively low, the network began at a lower accuracy comparing to higher training rates. However, especially when the learning rate is 0.9, the training result became unstable, and the graph starts to oscillate. 
+
+On the other hand, when we set the training rate to 5.0, the network doesn't improve after 40\%-50\%. Then general rule of thumb for choosing the learning rate is somewhere between [0.1-1]. 
+
+With this observation in mind, we might be able to alter the learning rate as the network progress. The training rate should we high in the beginning to quickly bring us to the desired place. Then, we can lower the rate so the network learning result will not have oscillation.  
+\subsubsection{Hidden nodes}
+In a multilayer neural network, you will likely encounter the problem of how many hidden layers and hidden nodes should the network have. Seemingly simple, but complex question will help you improve the learning rate of the network. In this research, we will only focus on one hidden layer. Multiple hidden layer is known as deep learning, which is out of our scope. 
+So those few factors to keep in mind in order to finalize the number of layers and size (neurons/layer) for both the input and output layers. 
+
+It's difficult to form a good network topology just from the number of inputs and outputs. It depends critically on the number of training examples and the complexity of the classification you are trying to learn. There are problems with one input and one output that require millions of hidden units, and problems with a million inputs and a million outputs that require only one hidden unit, or none at all.
+
+Some books and articles offer "rules of thumb" for choosing a topopology -- inputs plus outputs divided by two, maybe with a square root in there somewhere -- but such rules are are not recommended. Other rules relate to the number of examples available: Use at most so many hidden units that the number of weights in the network times 10 is smaller than the number of examples. Such rules are only concerned with overfitting and are unreliable as well.
+
+\subsection{Methods to improve training result}
+
+There are many ways to improve the network's performance. In fact, gradient descent is a great optimization method to speed up the learning process. Here are some common ways to improve the accuracy. 
+
+\begin{itemize}
+	\item Cross-entropy
+	\item Overfitting and regularization
+	\item Altering the hyperparameters
+\end{itemize}
+
+In section 7.1.1, I stated that the learning rate will effect how the network learns in the beginning the fluctuation of the learning curve. This observation gives us the possibility to change the learning rate as the network learns. In the beginning, we will set the learning rate 0.9, then slowly lower the number as the network improves. 
+This concept will seem intuitive in that you want the network slow down the learning rate when it's close to the desired result. Otherwise, a high learning rate will likely create some fluctuation like we have seen figure 2. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Examples and Applications:}
 \lipsum[4]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Overfitting and Regularization:}
-\lipsum[2]
+\subsection{Create an application with Xcode to recognize handwritten digits}
+\lipsum[4]
+\subsubsection{Introduction}
+\lipsum[4]
+\subsubsection{Building the application}
+\lipsum[4]
+
 \end{multicols}
 
 \end{document}

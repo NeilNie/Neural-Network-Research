@@ -25,7 +25,7 @@
     self.wt.delegate = self;
     float rate = [self.wt evaluate:10000] * 100;
     NSLog(@"%.2f", rate);
-    [self.wt train:10000 epochs:0 correctRate:96.0];
+    [self.wt train:1000 epochs:0 correctRate:95.0];
 }
 
 -(IBAction)loadData:(id)sender{
