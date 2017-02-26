@@ -24,10 +24,10 @@
     self = [super init];
     if (self) {
         
-        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-images-idx3-ubyte"];
-        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-labels-idx1-ubyte"];
-        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-images-idx3-ubyte"];
-        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-labels-idx1-ubyte"];
+        NSData *trainImages = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-images-idx3-ubyte"];
+        NSData *trainLabels = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/train-labels-idx1-ubyte"];
+        NSData *testImages = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-images-idx3-ubyte"];
+        NSData *testLabels = [NSData dataWithContentsOfFile:@"/Users/YongyangNie/Desktop/Neural Network Research/Handwriting Trainer/MNIST Data/t10k-labels-idx1-ubyte"];
         
         if (!trainLabels || !trainImages || !testImages || !testLabels)
             @throw [NSException exceptionWithName:@"Constructor Failed" reason:@"Error retrieving data" userInfo:nil];
@@ -87,19 +87,20 @@
             imagePosition += nPixels;
             labelPosition++;
         }
-        self.mind = [[Mind alloc] initWith:784 hidden:200 outputs:10 learningRate:0.3 momentum:0.3 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
+        self.mind = [[Mind alloc] initWith:784 hidden:40 outputs:10 learningRate:0.8 momentum:0.0 hiddenWeights:nil outputWeights:nil];
     }
     return self;
 }
 
 -(void)train:(int)batchSize epochs:(int)epochs correctRate:(float)correctRate{
     
+    TICK;
     int count = 0;
     float rate = 0.00;
-    while (count < 70) {
+    while (rate < correctRate) {
         
         [self shuffle:self.imageArray withArray:self.labelArray];
-        
+
         for (int i = 0; i < batchSize; i++) {
             
             NSMutableArray *batch = [NSMutableArray arrayWithArray:self.imageArray[i]];
@@ -111,7 +112,11 @@
         rate = [self evaluate:10000] * 100;
         MDLog(@"%.2f", rate);
         count ++;
+//        if (rate >= 93 && count%2 == 0)
+//            [self.mind resetLearningRate:self.mind.learningRate * 0.9];
     }
+    TOCK;
+    NSLog(@"%i", count);
     [self showNotification];
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
 }

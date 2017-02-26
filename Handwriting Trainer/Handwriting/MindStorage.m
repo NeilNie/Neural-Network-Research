@@ -21,8 +21,7 @@
                           @"hiddenCount" : [NSNumber numberWithInt:mind.numHidden],
                           @"outputCount": [NSNumber numberWithInt:mind.numOutputs],
                           @"rate": [NSNumber numberWithFloat:mind.learningRate],
-                          @"momentum": [NSNumber numberWithInt:mind.momentumFactor],
-                          @"lmbda": [NSNumber numberWithInt:mind.lmbda]};
+                          @"momentum": [NSNumber numberWithInt:mind.momentumFactor]};
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:dic];
     NSError *error;
@@ -49,7 +48,6 @@
                                 outputs:[[dic objectForKey:@"outputCount"] intValue]
                            learningRate:[[dic objectForKey:@"rate"] floatValue]
                                momentum:[[dic objectForKey:@"momentum"] floatValue]
-                                 lmbda:[[dic objectForKey:@"lmbda"] floatValue]
                           hiddenWeights:hws
                           outputWeights:opws];
     return mind;

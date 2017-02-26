@@ -68,38 +68,33 @@ typedef struct {
 #pragma mark - Properties
 
 /*! The number of input nodes to the network (read only). */
-@property int numInputs;
+@property (nonatomic) int numInputs;
 /*! The number of hidden nodes in the network (read only). */
-@property int numHidden;
+@property (nonatomic) int numHidden;
 /*! The number of output nodes from the network (read only). */
-@property int numOutputs;
+@property (nonatomic) int numOutputs;
 
 /*! The 'learning rate' parameter to apply during backpropagation. */
 /*! This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
 @property (nonatomic) float learningRate;
 
 /*! The 'momentum factor' to apply during backpropagation. This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
-@property float momentumFactor;
-
-/*! (1 - momentumFactor) * learningRate. Used frequently during backpropagation. */
-@property float mfLR;
+@property (nonatomic) float momentumFactor;
 
 /*! The number of input nodes, INCLUDING the bias node. */
-@property int numInputNodes;
+@property (nonatomic) int numInputNodes;
 /*! The number of hidden nodes, INCLUDING the bias node. */
-@property int numHiddenNodes;
+@property (nonatomic) int numHiddenNodes;
 /*! The total number of weights connecting all input nodes to all hidden nodes. */
-@property int numHiddenWeights;
+@property (nonatomic) int numHiddenWeights;
 /*! The total number of weights connecting all hidden nodes to all output nodes. */
-@property int numOutputWeights;
+@property (nonatomic) int numOutputWeights;
 
-@property IOs *io;
+@property (nonatomic) IOs *io;
 
-@property Weights *weights;
+@property (nonatomic) Weights *weights;
 
-@property Errors *errors;
-
-@property float lmbda;
+@property (nonatomic) Errors *errors;
 
 /*! The output error indices corresponding to each output weight.  = [Int]() */
 @property (strong, nonatomic) NSMutableArray <NSNumber *>* outputErrorIndices;
@@ -131,7 +126,6 @@ typedef struct {
                  outputs:(int)outputs
             learningRate:(float)learningRate
                 momentum:(float)momentum
-                  lmbda:(float)lmbda
            hiddenWeights:(float *)hws
            outputWeights:(float *)opws;
 
@@ -170,13 +164,18 @@ typedef struct {
 /*!
  Set random weights for all weights. The random weights are between {1, -1}
  */
-
 -(void)randomWeightAllLayers;
 
+/*!
+ This method allows you to modify the learning rate during training.
+*/
+-(void)resetLearningRate:(float)learningRate;
+
+/*!
+ This method allows you to modify the momentum during training.
+ */
+-(void)resetMomentum:(float)momentum;
+
 -(void)print:(float *)array count:(int)count;
-
--(void)ResetLearningRate:(float)learningRate;
-
--(void)ResetMomentum:(float)momentum;
 
 @end

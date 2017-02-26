@@ -88,7 +88,11 @@
             imagePosition += nPixels;
             labelPosition++;
         }
+<<<<<<< Updated upstream:Handwriting Recognizer/Handwriting Recognizer/WritingTrainer.m
         self.mind = [[Mind alloc] initWith:784 hidden:30 outputs:10 learningRate:0.1 momentum:0.9 lmbda:0.00 hiddenWeights:nil outputWeights:nil];
+=======
+        self.mind = [[Mind alloc] initWith:784 hidden:50 outputs:10 learningRate:0.05 momentum:0.95 weights:nil];
+>>>>>>> Stashed changes:Handwriting Obj-C AI/WritingTrainer.m
     }
     return self;
 }
@@ -114,12 +118,20 @@
             [answer replaceObjectAtIndex:[self.labelArray[i] intValue] withObject:@1];
             [self.mind backwardPropagation:answer];
         }
+<<<<<<< Updated upstream:Handwriting Recognizer/Handwriting Recognizer/WritingTrainer.m
         rate = [self evaluate:10000] * 100;
         cnt ++;
 
         TOCK;
     }
     [MindStorage storeMind:self.mind path:@"/Users/Neil/Desktop/mindData"];
+=======
+        x++;
+        rate = [self evaluate:200] * 100;
+        MDLog(@"%.1f%%", rate);
+    }
+    [MindStorage storeMind:self.mind path:@"/Users/YongyangNie/Desktop"];
+>>>>>>> Stashed changes:Handwriting Obj-C AI/WritingTrainer.m
 }
 
 

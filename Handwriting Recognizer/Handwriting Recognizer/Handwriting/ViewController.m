@@ -24,9 +24,13 @@
     self.wt = [[WritingTrainer alloc] initTrainer];
     NSLog(@"%f", [self.wt evaluate:5000] * 100);
     self.wt.delegate = self;
+<<<<<<< Updated upstream:Handwriting Recognizer/Handwriting Recognizer/Handwriting/ViewController.m
     //[self.wt getMindWithPath:@"/Users/Neil/Desktop/mindData"];
     [self.wt train:100 epochs:0 correctRate:92.0];
     
+=======
+    [self.wt train:2000 epochs:0 correctRate:92.0];
+>>>>>>> Stashed changes:Handwriting Obj-C AI/Handwriting/ViewController.m
     // Do any additional setup after loading the view.
 }
 

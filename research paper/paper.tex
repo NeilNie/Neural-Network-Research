@@ -97,19 +97,27 @@ learning\footnote{Mehryar Mohri, Afshin Rostamizadeh, Ameet Talwalkar
   Press~\href{https://en.wikipedia.org/wiki/Special:BookSources/9780262018258}{ISBN
   9780262018258}.}. In this research, we will mainly focus on artificial neural networks and
 supervised machine learning. Supervised learning~is the~machine learning~task of
-inferring a function from labeled training data. The training data
-consist of a set of training examples. In~supervised learning, each
-example is a pair consisting of an input object (typically a vector) and
-a desired output value (also called the supervisory signal).
+inferring a function from labeled training data. Each example is a pair consisting of an input object and
+a desired output value. By doing some calculation, the network can make rudimentary predictions and correct itself based on the training data to make more desired prediction. 
 
 You will discover that machine learning is beautiful and can be very
-simple. We will be able to implement a simple algorithm that can
-recognize hand written digits in less than a hundred lines of code. Only
-a small amount of mathematical proves and equations will be covered. The
-paper will discuss the principles behind designing, building, and
-debugging an artificial neural network. The projects will be written
-mainly in Objective-C or Python. You can find the resources on
+simple. The paper will discuss the principles behind designing, building, and
+debugging an artificial neural network. All of the data are collect from a project I built that can recognize handwritten digits. The projects is written mainly in Objective-C and Python. You can find the resources on
 \href{https://github.com/NeilNie/Neural-Network-Research}{Github}.
+
+\subsection{What's neural network}
+
+\centerline{\includegraphics[width=1\linewidth]{nn} }
+\centerline{Figure 1}
+\vspace{0.5cm}
+
+In the diagram above, you can find the most important components in a neural network. First of all, all neural networks have input and output layer(s). Many neural networks will have hidden layer(s), when there are plenty of hidden layers, we consider that as deep learning, which is out of our scope. 
+
+Secondly, there are synapses connecting every node to every node in the next layer. All synapses have weights, a floating point number that will govern how the network behaves. Since the input is often static, the most effective way to improve the prediction of the network is to modify the weights. Below, we will discuss extensively about how to adjust the weights and why. 
+
+Thirdly, there is one bias node connected to every layer in the network except the first layer. The bias will help the network to learn flexibly. Later on, we will discuss activation function, and bias will help us manipulate them, so the network can improve most efficiently. 
+
+\subsection{Why neural networks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -123,12 +131,9 @@ six weights between the input layer and the second layer. The matrix
 calculation should yield us some result
 
 \[\begin{bmatrix}
-0 \\
-1 \\
-\end{bmatrix}\ \lbrack{w_{0}}^{0}\ {w_{0}}^{1}\ {w_{0}}^{2}\ {w_{1}}^{0}\ {w_{1}}^{1}{w_{1}}^{2}\rbrack = \begin{bmatrix}
-z \\
-z \\
-z \\
+a
+\end{bmatrix}\ \lbrack w \rbrack = \begin{bmatrix}
+z
 \end{bmatrix}\]
 
 If we give the matrices some names, call inputs \emph{x}, weights
@@ -167,7 +172,9 @@ After we yield some result, we can more on and look at how far off we
 are from the expected result. We need some methods to quantify this and
 so adjustments to the network to minimize error.
 
-\[\sigma'\left( z \right) = \ \sigma\left( x \right)(1 - \sigma(z))\]
+\begin{equation}
+	\sigma'\left( z \right) = \ \sigma\left( x \right)(1 - \sigma(z))\
+\end{equation}
 
 \section{Quantifying and Minimizing Cost:}
 
@@ -188,7 +195,10 @@ calculated result and actual result squared and times one half. We can
 take advantage of the equation derived above and substitute for some of
 the variable.
 
-\[\ (4)\ C = \ \sum_{J}^{}{\frac{1}{2}\left( y - f\left( f\left( xw_{\left( 1 \right)} \right)w_{\left( 2 \right)} \right) \right)^{2}}\]
+\begin{equation}
+	\ C = \ \sum_{J}^{}{\frac{1}{2}\left( y - f\left( f\left( xw_{\left( 1 \right)} \right)w_{\left( 2 \right)} \right) \right)^{2}}
+\end{equation}
+
 
 Here we have it, a way to quantify the cost of the neural network. This
 function will be referred to as the cost function. Now, we have to solve
@@ -208,8 +218,7 @@ descent is widely used in math, image process and machine learning.
 
 Gradient descent~is a~first-order~iterative~optimization~algorithm. To
 find a~local minimum~of a function using gradient descent, one takes
-steps proportional to the~\emph{negative}~of
-the~\href{https://en.wikipedia.org/wiki/Gradient}{gradient}~(or of the
+steps proportional to the gradient (or of the
 approximate gradient) of the function at the current point.
 
 Gradient descent is also known as~steepest descent, or the~method of
@@ -219,16 +228,28 @@ hill\footnote{\url{https://iamtrask.github.io/2015/07/27/python-network-part2/}
 and trying to find the lowest point. Note that actual physics doesn't
 apply here and we will define our own movement of the ball.
 
+\centerline{\includegraphics[width=1\linewidth]{gd} }
+\centerline{Figure 2}
+\vspace{0.5cm}
+
 There are limitations to this method. First of all, what if we are stuck
 in a local minimum, our goal is to find the global minimum for the cost
-function. In another word, this method will not work for a non-convex
-function. In fact, this problem is solved in equation (3), by squaring
-the difference in \({(\hat{y} - y)}^{2}\), we transformed this function
-to a convex function\footnote{Proof and definition of convex functions:
-  http://mathworld.wolfram.com/ConvexFunction.html}. Even though there
-are tens of thousands of variables (dimension), the function will still
-be convex, thus, we can apply gradient descent to find the global
-minimum.
+function. In another word, this method will not work properly for a non-convex
+function. 
+
+\centerline{\includegraphics[width=0.9\linewidth]{non-convex} }
+\centerline{Figure 3}
+\vspace{0.5cm}
+
+In fact, this problem is solved in equation (3), by squaring
+the difference in \({(\hat{y} - y)}^{2}\), we are using the quadratic cost function, which is a convex function for any number of dimensions. 
+
+\centerline{\includegraphics[width=0.9\linewidth]{convex} }
+\centerline{Figure 4}
+\vspace{0.5cm}
+
+Thus, we can apply gradient descent without worrying about local minimums \footnote{Proof and definition of convex functions:
+	http://mathworld.wolfram.com/ConvexFunction.html}. 
 
 There are other types and variation of gradient descent as well. One of
 the most commonly used one is Stochastic gradient descent~(SGD), also
@@ -243,17 +264,18 @@ words, SGD tries to find minima or maxima by iteration. \footnote{\url{http://ww
 \section{Back propagation:}
 
 With gradient descent, we can create a set of routines that can help us
-to change the weights of the network to minimize the cost.
+to change the weights of the network to minimize the cost. This is call backprogation, which is the core of most of the  sophisticated learning algorithms. 
 
 \subsection{Back propagation overview}
 
-{\texorpdfstring \emph{Phase 1: Propagation: Each propagation
-involves the following steps:\footnote{The steps are referenced from
-  Wikipedia who referenced:
-  \href{http://numericinsight.com/uploads/A_Gentle_Introduction_to_Backpropagation.pdf}{A
-  Gentle Introduction to Backpropagation - An intuitive tutorial by
-  Shashi Sathyanarayana}~The article contains pseudocode ("Training
-  Wheels for Training Neural Networks") for implementing the algorithm.}}{Phase 1: Propagation: Each propagation involves the following steps:}}\label{phase-1-propagation-each-propagation-involves-the-following-steps}
+\emph{Phase 1: Propagation: Each propagation
+involves the following steps:}
+\footnote{The steps are referenced from
+Wikipedia who referenced:
+\href{http://numericinsight.com/uploads/A_Gentle_Introduction_to_Backpropagation.pdf}{A
+Gentle Introduction to Backpropagation - An intuitive tutorial by
+Shashi Sathyanarayana}~The article contains pseudocode ("Training
+Wheels for Training Neural Networks") for implementing the algorithm.}  
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -267,9 +289,10 @@ involves the following steps:\footnote{The steps are referenced from
   output values) of all output and hidden neurons.
 \end{enumerate}
 
-\emph{Phase 2: Weight update: For each weight, the following
+\emph{
+Phase 2: Weight update: For each weight, the following
 steps must be
-followed:}\label{phase-2-weight-update-for-each-weight-the-following-steps-must-be-followed}
+followed:}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -360,7 +383,11 @@ This equation can help us to compute the partial derivative \(\frac{\partial C}{
 	\frac{\partial C}{\partial w} = a_{in}\delta_{out}\
 \end{equation}
 
-\subsubsection{Backpropagation with simple neural network example}
+\subsection{Backpropagation with simple neural network example}
+
+\centerline{\includegraphics[width=1\linewidth]{nn} }
+\centerline{Figure 5}
+\vspace{0.5cm}
 
 In a simple three-layer neural network, below are the four equations
 that we derive with the principle of gradient descend that will help us
@@ -379,16 +406,24 @@ Calculate the \(\delta\) for the second layer of the network.
 
 Finally, we can modify the first layer of weights in the network. This
 process is often repeated until the accuracy of the network reaches a
-threshold. Here is a visualization of how individual output node is approaching the desired output.
+threshold. The backpropagation process above can be represented with this simple diagram of a neural network with one hidden layer. 
+
+\centerline{\includegraphics[width=1\linewidth]{nnbp} }
+\centerline{Figure 6}
+\vspace{0.5cm}
+
+Here is a visualization of how individual output node is approaching the desired output.
 
 \centerline{\includegraphics[width=1\linewidth]{graph1} }
+\centerline{Figure 7}
+\vspace{0.5cm}
 
 Line 0-3 are lowering as we train the network. Line 4, is approaching 1 as we keep train the network. This figure displayed that the error of the network \(C\) is being minimized. 
 
 Here is a graph of the correction of the neural network over times of training. Each time the network will train with 1000 out of 60,000 training data. After, The program will shuffle the training data and repeat the training process for 197 times, or until the network reaches 95\% accuracy. 
 
 \centerline{\includegraphics[width=1\linewidth]{graph2}}
-\centerline {Figure 1}
+\centerline {Figure 8}
 \vspace{0.3cm}
 
 The neural network is trained four times with the same training and testing data. The results are similar and the network is steadily improving, thanks to gradient descent. There are many factors that contribute to a successful learning process. If these things are ignored or incorrect, the network will not be able to learn as well. 
@@ -404,21 +439,25 @@ Learning rate is the hyperparameter that we will focus on. To make gradient desc
 This is a graph of the training result with a different learning rate. The batch size is 1000 and the training is repeated 100 times. 
 
 \centerline{\includegraphics[width=1\linewidth]{graph5}}
-\centerline{Figure 2}
+\centerline{Figure 9}
 \vspace{0.3cm}
 
 The range of the learning rate that I chose is from [0.1, 5]. When the learning rate is relatively low, the network began at a lower accuracy comparing to higher training rates. However, especially when the learning rate is 0.9, the training result became unstable, and the graph starts to oscillate. 
 
 On the other hand, when we set the training rate to 5.0, the network doesn't improve after 40\%-50\%. Then general rule of thumb for choosing the learning rate is somewhere between [0.1-1]. 
 
-With this observation in mind, we might be able to alter the learning rate as the network progress. The training rate should we high in the beginning to quickly bring us to the desired place. Then, we can lower the rate so the network learning result will not have oscillation.  
+With this observation in mind, we might be able to alter the learning rate as the network progress. The training rate should we high in the beginning to quickly bring us to the desired place. Then, we can lower the rate so the network learning result will not have oscillation. 
+ 
 \subsubsection{Hidden nodes}
 In a multilayer neural network, you will likely encounter the problem of how many hidden layers and hidden nodes should the network have. Seemingly simple, but complex question will help you improve the learning rate of the network. In this research, we will only focus on one hidden layer. Multiple hidden layer is known as deep learning, which is out of our scope. 
-So those few factors to keep in mind in order to finalize the number of layers and size (neurons/layer) for both the input and output layers. 
 
 It's difficult to form a good network topology just from the number of inputs and outputs. It depends critically on the number of training examples and the complexity of the classification you are trying to learn. There are problems with one input and one output that require millions of hidden units, and problems with a million inputs and a million outputs that require only one hidden unit, or none at all.
 
-Some books and articles offer "rules of thumb" for choosing a topopology -- inputs plus outputs divided by two, maybe with a square root in there somewhere -- but such rules are are not recommended. Other rules relate to the number of examples available: Use at most so many hidden units that the number of weights in the network times 10 is smaller than the number of examples. Such rules are only concerned with overfitting and are unreliable as well.
+Below if a graph of a neural network with different number of hidden nodes. There is a healthy range of number of hidden nodes. If there is one hidden node, the accuracy will not be more than 25\% and also defeat the purpose of the neural network. If there are too many nodes, calculation becomes gruesome and the accuracy is similar to lower number of nodes. Therefore, the number of hidden nodes highly depend your data, network, situation and needs. 
+
+\centerline{\includegraphics[width=1\linewidth]{graph6}}
+\centerline{Figure 10}
+\vspace{0.5cm}
 
 \subsection{Methods to improve training result}
 
@@ -433,15 +472,37 @@ There are many ways to improve the network's performance. In fact, gradient desc
 In section 7.1.1, I stated that the learning rate will effect how the network learns in the beginning the fluctuation of the learning curve. This observation gives us the possibility to change the learning rate as the network learns. In the beginning, we will set the learning rate 0.9, then slowly lower the number as the network improves. 
 This concept will seem intuitive in that you want the network slow down the learning rate when it's close to the desired result. Otherwise, a high learning rate will likely create some fluctuation like we have seen figure 2. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Examples and Applications:}
-\lipsum[4]
-\subsection{Create an application with Xcode to recognize handwritten digits}
-\lipsum[4]
-\subsubsection{Introduction}
-\lipsum[4]
-\subsubsection{Building the application}
-\lipsum[4]
+Below is a graph of the accuracy of a neural network with 0.8 learning rate. The network is trained with batches of 1000 data and shuffled before the next training. Training is stopped after the accuracy on test data reaches 95\%. All of its hyparameters were static during training. 
+
+\centerline{\includegraphics[width=1\linewidth]{graph7} }
+\centerline{Figure 11}
+\vspace{0.5cm}
+
+The training time is mediocre comparing to a well optimized network. The average training time is around 360 second and the number of epoch is around 110. In another word, the network took 6 minutes and 12,000 data to reach 95\% accuracy. 
+
+This is a accuracy graph of a network with 0.8 initial learning rate. The rate is lowered when the accuracy reaches 93\%. The new accuracy is calculated by 
+
+\begin{equation}
+	r_{(new)} = r_{(old)} * 0.9\
+\end{equation}
+
+Everything else is the same as the training process above. The network is trained with batches of 1000 data and shuffled before the next training. Training is stopped after the accuracy on test data reaches 95\%.
+
+\centerline{\includegraphics[width=1\linewidth]{graph8} }
+\centerline{Figure 12}
+\vspace{0.5cm}
+
+Clearly, the network took much less time and epoch to reach 95\%. If we calculate a \(ln\) LBF (line of best fit) for figure (), the coefficient of the function will be greater.  Therefore, the grow curve will larger.   
+
+\centerline{\includegraphics[width=1\linewidth]{graph10} }
+\centerline{Figure 13}
+\vspace{0.5cm}
+
+The training time difference between dynamic and static learning rate is more than 300 seconds. 
+
+\centerline{\includegraphics[width=1\linewidth]{graph11} }
+\centerline{Figure 14}
+\vspace{0.5cm}
 
 \end{multicols}
 

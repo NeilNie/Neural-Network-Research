@@ -21,7 +21,7 @@
 
 #pragma mark - Constructors
 
-- (instancetype)initWith:(int)inputs hidden:(int)hidden outputs:(int)outputs learningRate:(float)learningRate momentum:(float)momentum lmbda:(float)lmbda hiddenWeights:(float *)hws outputWeights:(float *)opws
+- (instancetype)initWith:(int)inputs hidden:(int)hidden outputs:(int)outputs learningRate:(float)learningRate momentum:(float)momentum hiddenWeights:(float *)hws outputWeights:(float *)opws
 {
     self = [super init];
     if (self) {
@@ -38,8 +38,6 @@
         
         self.learningRate = learningRate;
         self.momentumFactor = momentum;
-        self.mfLR = (1.0 - momentum) * learningRate;
-        self.lmbda = lmbda;
         
         self.io = calloc(self.numInputNodes + self.numOutputs + self.numHiddenNodes, sizeof(float));
         self.io->inputs = calloc(self.numInputNodes, sizeof(float));
@@ -234,14 +232,12 @@
 
 #pragma mark - Private Helper
 
--(void)ResetLearningRate:(float)learningRate{
+-(void)resetLearningRate:(float)learningRate{
     self.learningRate = learningRate;
-    self.mfLR = (1.0 - self.momentumFactor) * learningRate;
 }
 
--(void)ResetMomentum:(float)momentum{
+-(void)resetMomentum:(float)momentum{
     self.momentumFactor = momentum;
-    self.mfLR = (1.0 - self.momentumFactor) * self.learningRate;
 }
 
 -(void)applyActivitionIsOutput:(BOOL)isOutput{
@@ -286,14 +282,14 @@
 #pragma mark - Override
 
 -(NSString *)description{
-    return nil;
+    return [NSString stringWithFormat:@"inputs: %i \n hidden: %i \n output: %i", self.numInputs, self.numHidden, self.numOutputs];
 }
 
 #pragma mark - Dealloc
 
 -(void)deallocMind{
-    self.io = NULL;
-    self.weights = NULL;
+    free(self.io);
+    free(self.weights);
 }
 
 @end

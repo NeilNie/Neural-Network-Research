@@ -1,22 +1,20 @@
 \BOOKMARK [1][-]{section.1}{Abstract:}{}% 1
 \BOOKMARK [1][-]{section.2}{Introduction:}{}% 2
-\BOOKMARK [1][-]{section.3}{Forward Feed:}{}% 3
-\BOOKMARK [1][-]{section.4}{Quantifying and Minimizing Cost:}{}% 4
-\BOOKMARK [1][-]{section.5}{Gradient Descent:}{}% 5
-\BOOKMARK [1][-]{section.6}{Back propagation:}{}% 6
-\BOOKMARK [2][-]{subsection.6.1}{Back propagation overview}{section.6}% 7
-\BOOKMARK [2][-]{subsection.6.2}{Mathematics behind backpropagation}{section.6}% 8
-\BOOKMARK [3][-]{subsubsection.6.2.1}{An equation for the error in the output layer L}{subsection.6.2}% 9
-\BOOKMARK [3][-]{subsubsection.6.2.2}{ An equation for the error l in terms of the error in the next layer, l + 1 in particular:}{subsection.6.2}% 10
-\BOOKMARK [3][-]{subsubsection.6.2.3}{An equation for the rate of change of the cost with respect to any bias in the network}{subsection.6.2}% 11
-\BOOKMARK [3][-]{subsubsection.6.2.4}{An equation for the rate of change of the cost with respect to any weights in the network}{subsection.6.2}% 12
-\BOOKMARK [3][-]{subsubsection.6.2.5}{Backpropagation with simple neural network example}{subsection.6.2}% 13
-\BOOKMARK [1][-]{section.7}{Improve neural network training result}{}% 14
-\BOOKMARK [2][-]{subsection.7.1}{Making good decision}{section.7}% 15
-\BOOKMARK [3][-]{subsubsection.7.1.1}{Hyperparameters}{subsection.7.1}% 16
-\BOOKMARK [3][-]{subsubsection.7.1.2}{Hidden nodes}{subsection.7.1}% 17
-\BOOKMARK [2][-]{subsection.7.2}{Methods to improve training result}{section.7}% 18
-\BOOKMARK [1][-]{section.8}{Examples and Applications:}{}% 19
-\BOOKMARK [2][-]{subsection.8.1}{Create an application with Xcode to recognize handwritten digits}{section.8}% 20
-\BOOKMARK [3][-]{subsubsection.8.1.1}{Introduction}{subsection.8.1}% 21
-\BOOKMARK [3][-]{subsubsection.8.1.2}{Building the application}{subsection.8.1}% 22
+\BOOKMARK [2][-]{subsection.2.1}{What's neural network}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Why neural networks}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Forward Feed:}{}% 5
+\BOOKMARK [1][-]{section.4}{Quantifying and Minimizing Cost:}{}% 6
+\BOOKMARK [1][-]{section.5}{Gradient Descent:}{}% 7
+\BOOKMARK [1][-]{section.6}{Back propagation:}{}% 8
+\BOOKMARK [2][-]{subsection.6.1}{Back propagation overview}{section.6}% 9
+\BOOKMARK [2][-]{subsection.6.2}{Mathematics behind backpropagation}{section.6}% 10
+\BOOKMARK [3][-]{subsubsection.6.2.1}{An equation for the error in the output layer L}{subsection.6.2}% 11
+\BOOKMARK [3][-]{subsubsection.6.2.2}{ An equation for the error l in terms of the error in the next layer, l + 1 in particular:}{subsection.6.2}% 12
+\BOOKMARK [3][-]{subsubsection.6.2.3}{An equation for the rate of change of the cost with respect to any bias in the network}{subsection.6.2}% 13
+\BOOKMARK [3][-]{subsubsection.6.2.4}{An equation for the rate of change of the cost with respect to any weights in the network}{subsection.6.2}% 14
+\BOOKMARK [2][-]{subsection.6.3}{Backpropagation with simple neural network example}{section.6}% 15
+\BOOKMARK [1][-]{section.7}{Improve neural network training result}{}% 16
+\BOOKMARK [2][-]{subsection.7.1}{Making good decision}{section.7}% 17
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Hyperparameters}{subsection.7.1}% 18
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Hidden nodes}{subsection.7.1}% 19
+\BOOKMARK [2][-]{subsection.7.2}{Methods to improve training result}{section.7}% 20
