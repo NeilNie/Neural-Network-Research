@@ -57,7 +57,7 @@ anchorcolor = blue]{hyperref}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 
-\title{Understanding \& Developing Artificial Neural Network with Objective-C and Python}
+\title{Understanding \& Developing Artificial Neural Networks}
 \subtitle{Deerfield Academy Advance Computer Science Research}
 
 \author{Yongyang (Neil) Nie}
@@ -68,7 +68,7 @@ anchorcolor = blue]{hyperref}
 
 \tableofcontents
 
-\vspace{0.7cm}
+\vspace{2.0cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -76,16 +76,15 @@ anchorcolor = blue]{hyperref}
 
 \section{Abstract:}
 
-Machine learning~is a subset of artificial intelligence that provides
+Machine learning~is a subset of artificial intelligence \footnote{Artificial Intelligence A Modern Approach http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.259.8854\&rep=rep1\&type=pdf} that provides
 computers with the ability to learn without being explicitly
-programmed.~Machine learning~focuses on the development of computer
+programmed. \footnote{ Samuel, Arthur L. (1959). "Some studies in machine learning using the game of checkers". IBM Journal of research and development.} Machine learning~focuses on the development of computer
 programs that can change when exposed to new data.
 
-There are many methods and algorithms for learning algorithms, from Support Vector
+There are many methods and algorithms for machine learning, from Support Vector
 Machine\footnote{https://en.wikipedia.org/wiki/Support\_vector\_machine}
 to Artificial Neural Networks\footnote{https://en.wikipedia.org/wiki/Artificial\_neural\_network}.
-The purpose of them are similar, they can all be used to classify
-complex data, such as images and DNA samples.
+One of the common purpose for learning algorithms is to classify complex data. It can be used in analyzing human genetics and genomics. \footnote{Machine learning applications in genetics and genomics, Libbrecht, Maxwell W. http://dx.doi.org/10.1038/nrg3920}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -95,29 +94,30 @@ complex data, such as images and DNA samples.
 learning\footnote{Mehryar Mohri, Afshin Rostamizadeh, Ameet Talwalkar
   (2012)~\emph{Foundations of Machine Learning}, The MIT
   Press~\href{https://en.wikipedia.org/wiki/Special:BookSources/9780262018258}{ISBN
-  9780262018258}.}. In this research, we will mainly focus on artificial neural networks and
-supervised machine learning. Supervised learning~is the~machine learning~task of
-inferring a function from labeled training data. Each example is a pair consisting of an input object and
-a desired output value. By doing some calculation, the network can make rudimentary predictions and correct itself based on the training data to make more desired prediction. 
+  9780262018258}.}. Supervised learning~is the~machine learning~task of
+inferring a function from labeled training data. Each example is a pair consisting of an input object and a desired output value. By doing some calculation, the network can make rudimentary predictions and correct itself based on the training data to make more desired prediction. In this research, we will mainly focus on artificial neural networks and
+supervised machine learning. 
 
-You will discover that machine learning is beautiful and can be very
-simple. The paper will discuss the principles behind designing, building, and
+This paper will discuss the principles behind designing, building, and
 debugging an artificial neural network. All of the data are collect from a project I built that can recognize handwritten digits. The projects is written mainly in Objective-C and Python. You can find the resources on
 \href{https://github.com/NeilNie/Neural-Network-Research}{Github}.
 
-\subsection{What's neural network}
+\subsection{What's neural networks}
 
 \centerline{\includegraphics[width=1\linewidth]{nn} }
 \centerline{Figure 1}
 \vspace{0.5cm}
 
-In the diagram above, you can find the most important components in a neural network. First of all, all neural networks have input and output layer(s). Many neural networks will have hidden layer(s), when there are plenty of hidden layers, we consider that as deep learning, which is out of our scope. 
+In the diagram above, you can find the important components in a neural network. First of all, most neural networks have a input and a output layer. Many neural networks will have hidden layer(s), when there numerous hidden layers, we consider that as deep learning \footnote{Deep learning Yann LeCun,	Yoshua Bengio \& Geoffrey Hinton http://dx.doi.org/10.1038/nature14539}, which is out of our scope. 
 
-Secondly, there are synapses connecting every node to every node in the next layer. All synapses have weights, a floating point number that will govern how the network behaves. Since the input is often static, the most effective way to improve the prediction of the network is to modify the weights. Below, we will discuss extensively about how to adjust the weights and why. 
+Secondly for neural networks in this paper, there are synapses connecting every node to every node in the next layer. All synapses have weights, a floating point number that will govern how the network behaves. Since the input is often static, the commonly used way to improve the prediction of a network is to modify the weights on synapses. 
 
-Thirdly, there is one bias node connected to every layer in the network except the first layer. The bias will help the network to learn flexibly. Later on, we will discuss activation function, and bias will help us manipulate them, so the network can improve most efficiently. 
+Thirdly, there is one bias node connected to every layer in the network except the first layer. The bias will horizontally shift the activation function. This behavior will likely help the network learn more accurately. \footnote{Role of Bias in Neural  networks http://stackoverflow.com/questions/2480650/role-of-bias-in-neural-networks}
 
 \subsection{Why neural networks}
+
+Neural networks, with their remarkable ability to derive meaning from complicated or imprecise data, can be used to extract patterns and detect trends that are too complex to be noticed by either humans or other computer techniques. A trained neural network can be thought of as an "expert" in the category of information it has been given to analyze. \footnote{This section is reference from NEURAL NETWORKS 
+	by Christos Stergiou and Dimitrios Siganos  https://www.doc.ic.ac.uk/~nd/surprise\_96/journal/vol4/cs11/report.html\#Why\%20use\%20neural\%20networks}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -173,7 +173,7 @@ are from the expected result. We need some methods to quantify this and
 so adjustments to the network to minimize error.
 
 \begin{equation}
-	\sigma'\left( z \right) = \ \sigma\left( x \right)(1 - \sigma(z))\
+	\sigma'\left( z \right) = \ \sigma\left( z \right)(1 - \sigma(z))\
 \end{equation}
 
 \section{Quantifying and Minimizing Cost:}
@@ -431,9 +431,12 @@ The neural network is trained four times with the same training and testing data
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Improve neural network training result}
 Not all neural network behaves flawlessly. Generally, there are a few factors that will effect the training result of the network: hyperparameter, number of hidden nodes, human error, training data/testing data problem and more. Among them, hyperparameter, number of hidden nodes and be determined by estimation and trial and error. Huamn error can be eliminated by debugging. Training data and testing data problem is not easy to solve. That often contributes to the source of your data and the quality of your data, which are beyond the scope of this research. It's safe to assume that the training data and testing data that we are using are carefully chosen and considered.  
+
 \subsection{Making good decision}
+
 In a pre-trained network, there are several critical hyperparameters and numbers that will help the network to improve. I mainly focused on learning rate and number of hidden nodes. 
 \subsubsection{Hyperparameters}
+
 Learning rate is the hyperparameter that we will focus on. To make gradient descent work correctly, we need to choose the learning rate \(r\) to be small enough that Equation (9) is a good approximation. If we don't, we might end up with \(\Delta C \textgreater 0\), which will take us to the opposite of minimizing. Meanwhile,  \(r\) can't be too small, since that will make the changes \(\Delta v\) tiny, and thus the gradient descent algorithm will work very slowly. In practical implementations, \(r\) is often varied so that Equation (9) remains a good approximation, but the algorithm isn't too slow. \footnote{Michael A. Nielsen, "Neural Networks and Deep Learning", Determination Press, 2015. \href{http://neuralnetworksanddeeplearning.com/chap1.html}{Chapter 1 Using neural nets to recognize handwritten digits}}
 
 This is a graph of the training result with a different learning rate. The batch size is 1000 and the training is repeated 100 times. 
@@ -449,6 +452,7 @@ On the other hand, when we set the training rate to 5.0, the network doesn't imp
 With this observation in mind, we might be able to alter the learning rate as the network progress. The training rate should we high in the beginning to quickly bring us to the desired place. Then, we can lower the rate so the network learning result will not have oscillation. 
  
 \subsubsection{Hidden nodes}
+
 In a multilayer neural network, you will likely encounter the problem of how many hidden layers and hidden nodes should the network have. Seemingly simple, but complex question will help you improve the learning rate of the network. In this research, we will only focus on one hidden layer. Multiple hidden layer is known as deep learning, which is out of our scope. 
 
 It's difficult to form a good network topology just from the number of inputs and outputs. It depends critically on the number of training examples and the complexity of the classification you are trying to learn. There are problems with one input and one output that require millions of hidden units, and problems with a million inputs and a million outputs that require only one hidden unit, or none at all.
@@ -459,20 +463,13 @@ Below if a graph of a neural network with different number of hidden nodes. Ther
 \centerline{Figure 10}
 \vspace{0.5cm}
 
-\subsection{Methods to improve training result}
+\subsection{Improve training result with dynamic hyperparameter}
 
-There are many ways to improve the network's performance. In fact, gradient descent is a great optimization method to speed up the learning process. Here are some common ways to improve the accuracy. 
+In section 7.1.1, I stated that the learning rate will effect how the network learns in the beginning. Higher learning rate means that it will start at a higher success rate and gradually improve. However, high learning rate will lead to noticeable fluctuations in the learning rate. This observation gives us the possibility to change the learning rate as the network learns. In the beginning, we will set the learning rate 0.8, then slowly lower the the learning rate as the network improves. 
 
-\begin{itemize}
-	\item Cross-entropy
-	\item Overfitting and regularization
-	\item Altering the hyperparameters
-\end{itemize}
-
-In section 7.1.1, I stated that the learning rate will effect how the network learns in the beginning the fluctuation of the learning curve. This observation gives us the possibility to change the learning rate as the network learns. In the beginning, we will set the learning rate 0.9, then slowly lower the number as the network improves. 
 This concept will seem intuitive in that you want the network slow down the learning rate when it's close to the desired result. Otherwise, a high learning rate will likely create some fluctuation like we have seen figure 2. 
 
-Below is a graph of the accuracy of a neural network with 0.8 learning rate. The network is trained with batches of 1000 data and shuffled before the next training. Training is stopped after the accuracy on test data reaches 95\%. All of its hyparameters were static during training. 
+Below is a accuracy graph of a neural network with 0.8 learning rate. The network is trained with batches of 1000 data and shuffled before the next training. Training is stopped after the accuracy on test data reaches 95\%. All of its hyparameters were static during training. 
 
 \centerline{\includegraphics[width=1\linewidth]{graph7} }
 \centerline{Figure 11}
@@ -480,20 +477,19 @@ Below is a graph of the accuracy of a neural network with 0.8 learning rate. The
 
 The training time is mediocre comparing to a well optimized network. The average training time is around 360 second and the number of epoch is around 110. In another word, the network took 6 minutes and 12,000 data to reach 95\% accuracy. 
 
-This is a accuracy graph of a network with 0.8 initial learning rate. The rate is lowered when the accuracy reaches 93\%. The new accuracy is calculated by 
+We can improve this result by lowering the learning rate of the network as it improves. Specially, the network begins to lower the learning rate when the accuracy reaches 93\%. The new accuracy is calculated by 
 
 \begin{equation}
 	r_{(new)} = r_{(old)} * 0.9\
 \end{equation}
 
-Everything else is the same as the training process above. The network is trained with batches of 1000 data and shuffled before the next training. Training is stopped after the accuracy on test data reaches 95\%.
+Once again, the network is trained with batches of 1000 data and shuffled before the next training. Training is stopped after the accuracy on test data reaches 95\%.
 
 \centerline{\includegraphics[width=1\linewidth]{graph8} }
 \centerline{Figure 12}
 \vspace{0.5cm}
 
-Clearly, the network took much less time and epoch to reach 95\%. If we calculate a \(ln\) LBF (line of best fit) for figure (), the coefficient of the function will be greater.  Therefore, the grow curve will larger.   
-
+Clearly, the network took much less time and epoch to reach 95\%. 
 \centerline{\includegraphics[width=1\linewidth]{graph10} }
 \centerline{Figure 13}
 \vspace{0.5cm}
@@ -503,6 +499,18 @@ The training time difference between dynamic and static learning rate is more th
 \centerline{\includegraphics[width=1\linewidth]{graph11} }
 \centerline{Figure 14}
 \vspace{0.5cm}
+
+Comparing two results, we can calculate a LBF (line of best fit) for the accuracy rate. By comparing the two \(ln\) functions, the function in Figure (12) has a higher coefficient, which means that the growth of the curve will be greater. In another word, by adjusting the learning rate, the network was able to learn more quickly and efficiently. 
+
+\section{Future studies}
+
+Finally, you have made it to the end. Thank you for staying with me throughout the paper. I hope you find neural networks amazing. It will bring tremendous change and power to computing technologies. The current computing power is far from simulating a biological brain. However, our understanding of it has helped us to develop technologies such as neural network and deep learning. 
+
+Specifically, in this research, I only touched the surface of neural networks. The field is enormous and requires all types of scientist to improve it. I avoided topics such as: different types of activation functions, some mathematical proves, details on improving neural network and finally, deep learning. Further development in the areas above will enhance current technologies and open doors to new opportunities. 
+
+In fact, many of my dedicated friends and colleges are working on these hard problems. Mr. Meng focused deeply on the mathematics behind neural networks. Mr. McAvoy developed other learning algorithms. In the larger realm, Google DeepMind is trying to create a comprehensive A.I. system; Google translate team made important breakthroughs in 2016 on their multilingual neural machine translation system. 
+
+Thank you again for taking your time to read this paper. I hope you are also excited to jump into the field and be apart of this great journey of studying, developing and exploring the world of machine learning, and eventually artificial intelligence. 
 
 \end{multicols}
 
