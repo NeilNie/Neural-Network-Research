@@ -15,7 +15,6 @@
 }
 
 +(float)sigmoidPrime:(float)y{
-    //return [NeuralMath sigmoid:y] * (1 - [NeuralMath sigmoid:y]);
     return y * (1 - y);
 }
 

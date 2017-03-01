@@ -1,18 +1,8 @@
-/*!
- @header Mind.h
+/*
  
- @brief This is the header file where the super-code is contained.
+ Mind.h
+ (c) Yongyang Nie 2017
  
- The following  properties are allocated once during initializtion, in order to prevent frequent
- memory allocations for temporary variables during the update and backpropagation cycles.
- Some known properties are computed in advance in order to to avoid casting, integer division
- and modulus operations inside loops.
- 
- There are also methods declared in this file. Refer to their documentations.
- 
- @author Yongyang Nie
- @copyright  2017 Yongyang Nie
- @version    17.01.31
  */
 
 #import <Foundation/Foundation.h>
@@ -21,93 +11,128 @@
 #import <math.h>
 #import "NeuralMath.h"
 
-/*! @brief weights struct help us to create, modify all the weights which are float[] arrays. Accelerate framework doesn't allow NSMutableArray to other array types, therefore, weights is a nice wraper in memory */
-typedef struct {
+/**
+ @typedef Errors
+ 
+ weights struct help us to create, modify all the weights which are float[] arrays. Accelerate framework doesn't allow NSMutableArray to other array types, therefore, weights is a nice wraper in memory.
+ 
+ @discussion
+ The values of this structure represent how many sunny, cloudy, rainy, and snowy days existed over the last year. If this was a real app, they could be perfectly used.
+ 
+ */
+typedef struct Weights {
     
-    /*! The current weights leading into all of the hidden nodes, serialized in a single array. float[] */
+    /// The current weights leading into all of the hidden nodes, serialized in a single array. float[]
     float* hiddenWeights;
-    /*! The weights leading into all of the hidden nodes from the previous round of training, serialized in a single array. Used for applying momentum during backpropagation. [Float] */
+    /// The weights leading into all of the hidden nodes from the previous round of training, serialized in a single array. Used for applying momentum during backpropagation. [Float]
     float* previousHiddenWeights;
-    /*! The current weights leading into all of the output nodes, serialized in a single array. [Float] */
+    /// The current weights leading into all of the output nodes, serialized in a single array. [Float]
     float* outputWeights;
-    /*! The weights leading into all of the output nodes from the previous round of training, serialized in a single array. [Float]. Used for applying momentum during backpropagation. */
+    /// The weights leading into all of the output nodes from the previous round of training, serialized in a single array. [Float]. Used for applying momentum during backpropagation.
     float* previousOutputWeights;
-    /*! Temporary storage while updating hidden weights, for use during backpropagation. [Float] */
-    float* hiddenWeightsNew; ///new hidden weights
-    /*! Temporary storage while updating output weights, for use during backpropagation.  [Float] */
-    float* outputWeightsNew; ///new hidden weights
+    /// Temporary storage while updating hidden weights, for use during backpropagation. [Float]
+    float* hiddenWeightsNew;
+    /// Temporary storage while updating output weights, for use during backpropagation.  [Float]
+    float* outputWeightsNew;
     
 } Weights;
 
-/*! @brief IOs, or inputs and outpus struct help us to create, modify all the i/o which are float[] arrays. Accelerate framework doesn't allow NSMutableArray to other array types, therefore, IOs is a nice wraper in memory*/
-typedef struct {
+/**
+ @typedef IOs
+ 
+ inputs and outpus struct help us to create, modify all the i/o which are float[] arrays. Accelerate framework doesn't allow NSMutableArray to other array types, therefore, IOs is a nice wraper in memory
+ 
+ */
+typedef struct IOs {
     
-    /*! The most recent set of inputs applied to the network.  [Float] */
+    /// The most recent set of inputs applied to the network.  [Float]
     float* inputs;
-    /*! The most recent output of all hidden nodes.  [Float] */
+    /// The most recent output of all hidden nodes.  [Float]
     float* hiddenOutputs;
-    /*! The most recent output from the network. [Float] */
+    /// The most recent output from the network. [Float]
     float* outputs;
 } IOs;
 
-typedef struct {
+/**
+ Struct containing all the error arrays for the neural network.
+*/
+typedef struct Error {
     
-    /*! @name hiddenErrorSums
-     Temporary storage while calculating hidden errors, for use during backpropagation.  [Float] */
+    /// Temporary storage while calculating hidden errors, for use during backpropagation. [Float]
     float *hiddenErrorSums;
-    /*! Temporary storage while calculating hidden errors, for use during backpropagation.  [Float] */
+    /// Temporary storage while calculating hidden errors, for use during backpropagation. [Float]
     float* hiddenErrors;
-    /*! Temporary storage while calculating output errors, for use during backpropagation.  [Float] */
+    /// Temporary storage while calculating output errors, for use during backpropagation. [Float]
     float* outputErrors;
-    
-    
 } Errors;
 
+/**
+ 
+ brief: This is the header file where the super-code is contained. <br>
+ 
+ superclass: NSObject <br>
+ classdesign    No special design is applied here. <br>
+ helper  `MindStorage`, `NeuralMath` <br>
+ 
+ The following  properties are allocated once during initializtion, in order to prevent frequent
+ memory allocations for temporary variables during the update and backpropagation cycles.
+ Some known properties are computed in advance in order to to avoid casting, integer division
+ and modulus operations inside loops.
+ 
+ There are also methods declared in this file. Refer to their documentations.
+ 
+ author: Yongyang Nie <br>
+ copyright  (c) 2017 Yongyang Nie <br>
+ version    1.0.0 <br>
+ */
 @interface Mind : NSObject
 
 #pragma mark - Properties
 
-/*! The number of input nodes to the network (read only). */
+/** The number of input nodes to the network (read only). */
 @property (nonatomic) int numInputs;
-/*! The number of hidden nodes in the network (read only). */
+/** The number of hidden nodes in the network (read only). */
 @property (nonatomic) int numHidden;
-/*! The number of output nodes from the network (read only). */
+/** The number of output nodes from the network (read only). */
 @property (nonatomic) int numOutputs;
 
-/*! The 'learning rate' parameter to apply during backpropagation. */
-/*! This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
+/** The 'learning rate' parameter to apply during backpropagation. */
+/** This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
 @property (nonatomic) float learningRate;
 
-/*! The 'momentum factor' to apply during backpropagation. This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
+/** The 'momentum factor' to apply during backpropagation. This parameter may be safely tuned at any time, except for during a backpropagation cycle. */
 @property (nonatomic) float momentumFactor;
 
-/*! The number of input nodes, INCLUDING the bias node. */
+/** The number of input nodes, INCLUDING the bias node. */
 @property (nonatomic) int numInputNodes;
-/*! The number of hidden nodes, INCLUDING the bias node. */
+/** The number of hidden nodes, INCLUDING the bias node. */
 @property (nonatomic) int numHiddenNodes;
-/*! The total number of weights connecting all input nodes to all hidden nodes. */
+/** The total number of weights connecting all input nodes to all hidden nodes. */
 @property (nonatomic) int numHiddenWeights;
-/*! The total number of weights connecting all hidden nodes to all output nodes. */
+/** The total number of weights connecting all hidden nodes to all output nodes. */
 @property (nonatomic) int numOutputWeights;
 
+/** The output error indices corresponding to each output weight.  */
+@property (strong, nonatomic) NSMutableArray *outputErrorIndices;
+/** The hidden output indices corresponding to each output weight.  */
+@property (strong, nonatomic) NSMutableArray *hiddenOutputIndices;
+/** The hidden error indices corresponding to each hidden weight.  */
+@property (nonatomic) NSMutableArray *hiddenErrorIndices;
+/// The input indices corresponding to each hidden weight.
+@property (nonatomic) NSMutableArray *inputIndices;
+
+/** Pointer to IOs struct */
 @property (nonatomic) IOs *io;
 
+/** Pointer to Weights struct */
 @property (nonatomic) Weights *weights;
 
+/** Pointer to Errors struct */
 @property (nonatomic) Errors *errors;
-
-/*! The output error indices corresponding to each output weight.  = [Int]() */
-@property (strong, nonatomic) NSMutableArray <NSNumber *>* outputErrorIndices;
-/*! The hidden output indices corresponding to each output weight.  = [Int]() */
-@property (strong, nonatomic) NSMutableArray <NSNumber *>* hiddenOutputIndices;
-/*! The hidden error indices corresponding to each hidden weight.  = [Int]() */
-@property (strong, nonatomic) NSMutableArray <NSNumber *>* hiddenErrorIndices;
-/*! The input indices corresponding to each hidden weight.  = [Int]() */
-@property (strong, nonatomic) NSMutableArray <NSNumber *>* inputIndices;
 
 #pragma mark - Instance Methods
 
-/*!
+/**
  @brief This is the constructor for the neural network.
  
  @param inputs number of inputs
@@ -129,7 +154,7 @@ typedef struct {
            hiddenWeights:(float *)hws
            outputWeights:(float *)opws;
 
-/*!
+/**
  @brief Use the network to evaluate some output.
  @param inputs An array of `Float`s. Each element corresponding to one input node. Note: inputs.count has == to self.numInputNodes
  @return float* as an array of `Float`s
@@ -138,14 +163,14 @@ typedef struct {
  */
 -(float *)forwardPropagation:(NSMutableArray <NSNumber *>*)inputs;
 
-/*!
+/**
  Backward propagation method in this feed forward neural network. Trains the network by comparing its most recent output to the given 'answers', adjusting the network's weights as needed.
  @param answer The desired output for the most recent update to the network, as an array<nsnumber<float>>.
  @exception Answer and self.numOutputs has to be the same.
  */
 -(void)backwardPropagation:(NSMutableArray <NSNumber *>*)answer;
 
-/*!
+/**
  Train the network with data that you provides.
  @param inputs inputs to train the network
  @param answer the expected answer from the network. Used to backprop
@@ -161,21 +186,27 @@ typedef struct {
    threshold:(float)threshold;
 
 
-/*!
+/**
  Set random weights for all weights. The random weights are between {1, -1}
  */
 -(void)randomWeightAllLayers;
 
-/*!
+/**
  This method allows you to modify the learning rate during training.
 */
 -(void)resetLearningRate:(float)learningRate;
 
-/*!
+/**
  This method allows you to modify the momentum during training.
  */
 -(void)resetMomentum:(float)momentum;
 
+/**
+ Print a C float array. 
+ 
+ @param array array to print
+ @param count items in array
+ */
 -(void)print:(float *)array count:(int)count;
 
 @end

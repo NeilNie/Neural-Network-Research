@@ -59,6 +59,7 @@
 		009CFB9F1E46B1AF00CB4EAA /* WritingTrainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WritingTrainer.m; path = ../WritingTrainer.m; sourceTree = "<group>"; };
 		00DA22991E48E13F0086BFE7 /* MindStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MindStorage.h; sourceTree = "<group>"; };
 		00DA229A1E48E13F0086BFE7 /* MindStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MindStorage.m; sourceTree = "<group>"; };
+		284059FB1E6703C200BB4EAC /* NeuralNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeuralNetwork.h; sourceTree = "<group>"; };
 		2870C9EF1E5B28CC0017023D /* WritingLearner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WritingLearner.h; sourceTree = "<group>"; };
 		2870C9F01E5B28CC0017023D /* WritingLearner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WritingLearner.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +154,7 @@
 				00DA229A1E48E13F0086BFE7 /* MindStorage.m */,
 				0017B60E1E45079C002243D8 /* NeuralMath.h */,
 				0017B60F1E45079C002243D8 /* NeuralMath.m */,
+				284059FB1E6703C200BB4EAC /* NeuralNetwork.h */,
 			);
 			name = source;
 			sourceTree = "<group>";

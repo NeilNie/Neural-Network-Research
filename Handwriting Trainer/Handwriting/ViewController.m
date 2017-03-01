@@ -22,6 +22,7 @@
     
     self.wt = [[WritingTrainer alloc] initTrainer];
     [self.wt evaluate:5000];
+    
     self.wt.delegate = self;
     float rate = [self.wt evaluate:10000] * 100;
     NSLog(@"%.2f", rate);
