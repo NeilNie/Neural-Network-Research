@@ -8,13 +8,13 @@
 \contentsline {section}{\numberline {5}Gradient Descent:}{3}{section.5}
 \contentsline {section}{\numberline {6}Back propagation:}{4}{section.6}
 \contentsline {subsection}{\numberline {6.1}Back propagation overview}{4}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Mathematics behind backpropagation}{5}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.2}Mathematics behind backpropagation}{4}{subsection.6.2}
 \contentsline {subsubsection}{\numberline {6.2.1}An equation for the error in the output layer \(\delta ^{L}\)}{5}{subsubsection.6.2.1}
 \contentsline {subsubsection}{\numberline {6.2.2} An equation for the error \(\delta ^{l}\) in terms of the error in the next layer, \(\delta ^{l + 1}\) in particular:}{5}{subsubsection.6.2.2}
 \contentsline {subsubsection}{\numberline {6.2.3}An equation for the rate of change of the cost with respect to any bias in the network}{5}{subsubsection.6.2.3}
 \contentsline {subsubsection}{\numberline {6.2.4}An equation for the rate of change of the cost with respect to any weights in the network}{5}{subsubsection.6.2.4}
-\contentsline {subsection}{\numberline {6.3}Backpropagation with simple neural network example}{6}{subsection.6.3}
-\contentsline {section}{\numberline {7}Improve neural network training result}{7}{section.7}
+\contentsline {subsection}{\numberline {6.3}Backpropagation with simple neural network example}{5}{subsection.6.3}
+\contentsline {section}{\numberline {7}Improve neural network training result}{6}{section.7}
 \contentsline {subsection}{\numberline {7.1}Making good decision}{7}{subsection.7.1}
 \contentsline {subsubsection}{\numberline {7.1.1}Hyperparameters}{7}{subsubsection.7.1.1}
 \contentsline {subsubsection}{\numberline {7.1.2}Hidden nodes}{7}{subsubsection.7.1.2}

@@ -2,7 +2,8 @@
 
 %%use packages%%
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage [english]{babel}
+\usepackage [autostyle, english = american]{csquotes}
 \usepackage[export]{adjustbox}
 \usepackage{lipsum}
 \usepackage{titlesec}
@@ -42,6 +43,7 @@ anchorcolor = blue]{hyperref}
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 
+\MakeOuterQuote{"}
 %define subtitle
 \newcommand{\subtitle}[1]{%
   \posttitle{%
@@ -84,7 +86,7 @@ programs that can change when exposed to new data.
 There are many methods and algorithms for machine learning, from Support Vector
 Machine\footnote{https://en.wikipedia.org/wiki/Support\_vector\_machine}
 to Artificial Neural Networks\footnote{https://en.wikipedia.org/wiki/Artificial\_neural\_network}.
-One of the common purpose for learning algorithms is to classify complex data. It can be used in analyzing human genetics and genomics. \footnote{Machine learning applications in genetics and genomics, Libbrecht, Maxwell W. http://dx.doi.org/10.1038/nrg3920}
+One of the common purpose for learning algorithms is to classify complex data. For example, It can be used in analyzing human genetics and genomics. \footnote{Machine learning applications in genetics and genomics, Libbrecht, Maxwell W. http://dx.doi.org/10.1038/nrg3920}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -108,7 +110,7 @@ debugging an artificial neural network. All of the data are collect from a proje
 \centerline{Figure 1}
 \vspace{0.5cm}
 
-In the diagram above, you can find the important components in a neural network. First of all, most neural networks have a input and a output layer. Many neural networks will have hidden layer(s), when there numerous hidden layers, we consider that as deep learning \footnote{Deep learning Yann LeCun,	Yoshua Bengio \& Geoffrey Hinton http://dx.doi.org/10.1038/nature14539}, which is out of our scope. 
+In the diagram above, you can find the important components in a neural network. First of all, most neural networks have a input and a output layer. Many neural networks will have hidden layer(s), when there numerous hidden layers, we consider that as deep learning \footnote{Deep learning Yann LeCun, Yoshua Bengio \& Geoffrey Hinton http://dx.doi.org/10.1038/nature14539}, which is out of our scope. 
 
 Secondly for neural networks in this paper, there are synapses connecting every node to every node in the next layer. All synapses have weights, a floating point number that will govern how the network behaves. Since the input is often static, the commonly used way to improve the prediction of a network is to modify the weights on synapses. 
 
@@ -116,32 +118,27 @@ Thirdly, there is one bias node connected to every layer in the network except t
 
 \subsection{Why neural networks}
 
-Neural networks, with their remarkable ability to derive meaning from complicated or imprecise data, can be used to extract patterns and detect trends that are too complex to be noticed by either humans or other computer techniques. A trained neural network can be thought of as an "expert" in the category of information it has been given to analyze. \footnote{This section is reference from NEURAL NETWORKS 
-	by Christos Stergiou and Dimitrios Siganos  https://www.doc.ic.ac.uk/~nd/surprise\_96/journal/vol4/cs11/report.html\#Why\%20use\%20neural\%20networks}
+According to Christos Stergiou and Dimitrios Siganos' Neural Networks\footnote{This section is reference from NEURAL NETWORKS 
+	by Christos Stergiou and Dimitrios Siganos  https://www.doc.ic.ac.uk/~nd/surprise\_96/journal/vol4/cs11/report.html\#Why\%20use\%20neural\%20networks} "Neural networks, with their remarkable ability to derive meaning from complicated or imprecise data, can be used to extract patterns and detect trends that are too complex to be noticed by either humans or other computer techniques. A trained neural network can be thought of as an "expert" in the category of information it has been given to analyze."
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Forward Feed:}
 
 The neural network will begin be taking in some inputs and making some
-predictions based on the inputs and the weights between nodes. We can
-think of it like a one by two matrix. There will be a weight connecting
-every input layer node to every output layer node, therefore, there are
-six weights between the input layer and the second layer. The matrix
+predictions based on the inputs and the weights between nodes. We can treat the inputs and weights as matrices. This process can be seen as consecutive matrices multiplications. The matrix
 calculation should yield us some result
 
 \[\begin{bmatrix}
-a
-\end{bmatrix}\ \lbrack w \rbrack = \begin{bmatrix}
-z
+input
+\end{bmatrix}\ \lbrack weights \rbrack = \begin{bmatrix}
+output
 \end{bmatrix}\]
 
 If we give the matrices some names, call inputs \emph{x}, weights
-\emph{w\textsubscript{(l)}} and output \emph{z\textsubscript{(l)}.} In
-our case, \emph{l} indicate the layer, for example, the first layer
-weights are \emph{w\textsubscript{(1)}}. \emph{z\textsubscript{(l)}}
-represent the output matrix with layer \emph{l}, in this case, the
-output z is the hidden layer output.
+\emph{w\textsubscript{(l)}} and product of the matrix multiplication \emph{z\textsubscript{(l)}.} In our case, \emph{l} indicate the layer, for example, the first layer
+weights are \emph{w\textsubscript{(1)}}. \emph{z\textsubscript{(1)}}
+represent the output matrix with layer \emph{1}.
 
 \begin{equation}
 	\text{\ x}w_{\left( n \right)} = \ z_{(n)}\
@@ -149,32 +146,16 @@ output z is the hidden layer output.
 
 Afterwards, we have to apply an activation function\footnote{https://en.wikipedia.org/wiki/Activation\_function}.
 The activation function that I used in this research and this paper will
-be the sigmoid function. This is a complete cycle, there is one more
-layer to go in order to yield a result. Note, in a multilayer neural
-network, this process will be repeated until we yield some output. In
-our case, we only have to do this twice. The activation function is
-shown as below.
+be the sigmoid function. 
 
 \[\sigma\left( z \right) = \ \frac{1}{1 + e^{- z}}\]
 \begin{equation}
-	{\text{\ a}}_{\left( 2 \right)} = f(z_{\left( 2 \right)})\
+{\text{\ a}}_{\left( l \right)} = \sigma(z_{\left( l \right)})\
 \end{equation}
 
-
-By applying the same process as before, this time, the inputs will be
-\emph{a\textsubscript{(2)} then, z\textsubscript{(3)}} will be our final
-result. This process is known as forward feed. It's relatively
-straightforward.
-
-\[z_{\left( 3 \right)} = \ \text{\ a}_{\left( 2 \right)}w_{(2)}\]
-
-After we yield some result, we can more on and look at how far off we
-are from the expected result. We need some methods to quantify this and
-so adjustments to the network to minimize error.
-
-\begin{equation}
-	\sigma'\left( z \right) = \ \sigma\left( z \right)(1 - \sigma(z))\
-\end{equation}
+Multiplying \(a_{previous}\) with connection weights, then applying activation function is one complete cycle. In a multilayer neural
+network, this process will be repeated until we reach the output layer. In
+a simple three layer neural network, this process only have to execute twice. 
 
 \section{Quantifying and Minimizing Cost:}
 
@@ -191,20 +172,20 @@ First of all, we have to come up with ways to quantify the cost.
 \end{equation}
 
 C is the cost, which equals to the sum of all the differences between
-calculated result and actual result squared and times one half. We can
+calculated result and actual result squared and times one half. 
+
+In a simple three layer neural network, we can
 take advantage of the equation derived above and substitute for some of
 the variable.
-
+\[\hat{y} = f\left( f\left( xw_{\left( 1 \right)} \right)w_{\left( 2 \right)} \right)\]
 \begin{equation}
 	\ C = \ \sum_{J}^{}{\frac{1}{2}\left( y - f\left( f\left( xw_{\left( 1 \right)} \right)w_{\left( 2 \right)} \right) \right)^{2}}
-\end{equation}
-
+\end{equation}t
 
 Here we have it, a way to quantify the cost of the neural network. This
-function will be referred to as the cost function. Now, we have to solve
-the problem, how do we minimize C, will brute force work? It turns out,
-no, because in a three-node neural network we have to compute more than
-a million possible weights, which will be gruesome.
+function will be referred to as the \textbf{cost function}. Now, we have to solve
+the problem of minimizing C. Will brute force work? It turns out,
+no, because in a three-node neural network, there are millions of possible weights that we have to compute. But there are better solutions. 
 
 We can think of the equation above as a function of cost in terms of all
 possible weights. There will be one set of weights that will bring the
@@ -216,13 +197,12 @@ The best way to minimization the cost is to use gradient descent, a very
 fast and classic way to solve problems like this. In fact, gradient
 descent is widely used in math, image process and machine learning.
 
-Gradient descent~is a~first-order~iterative~optimization~algorithm. To
-find a~local minimum~of a function using gradient descent, one takes
+Gradient descent~is "a~first-order~iterative~optimization~algorithm". To
+find a~local/global minimum~of a function using gradient descent, we have to take
 steps proportional to the gradient (or of the
 approximate gradient) of the function at the current point.
 
-Gradient descent is also known as~steepest descent, or the~method of
-steepest descent. The process can be seen as a ball rolling down a
+The starting point of gradient descent in our case is random, since the initial set of weights are randomly generated. Then, the algorithm can take steps toward the minimum The process can be seen as a ball rolling down a
 hill\footnote{\url{https://iamtrask.github.io/2015/07/27/python-network-part2/}
   by Andrew}
 and trying to find the lowest point. Note that actual physics doesn't
@@ -269,7 +249,7 @@ to change the weights of the network to minimize the cost. This is call backprog
 \subsection{Back propagation overview}
 
 \emph{Phase 1: Propagation: Each propagation
-involves the following steps:}
+includes forward and backward propagation:}
 \footnote{The steps are referenced from
 Wikipedia who referenced:
 \href{http://numericinsight.com/uploads/A_Gentle_Introduction_to_Backpropagation.pdf}{A
@@ -281,18 +261,16 @@ Wheels for Training Neural Networks") for implementing the algorithm.}
 \def\labelenumi{\arabic{enumi}.}
 \item
   Forward propagation of a training pattern's input through the neural
-  network in order to generate the network's output value(s).
+  network in order to generate the network's output value(s). 
 \item
   Backward propagation of the propagation's output activations through
-  the neural network using the training pattern target in order to
-  generate the deltas (the difference between the targeted and actual
-  output values) of all output and hidden neurons.
+  the neural network using the target result in order to
+  calculate the deltas (the difference between targeted and actual
+  outputs) of all output and hidden neurons.
 \end{enumerate}
 
 \emph{
-Phase 2: Weight update: For each weight, the following
-steps must be
-followed:}
+Phase 2: Weight update: For each weight:}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -308,11 +286,9 @@ followed:}
 
 Backpropagation is based around four fundamental equations. Together,
 those equations give us a way of computing both the error
-\(\delta^{L}\)and the gradient cost of the function. In fact, the
-backpropagation equations are so rich that understanding them well
-requires considerable times and patience. \footnote{The equations were
+\(\delta^{L}\)and the gradient cost of the function. \footnote{The equations were
   created by Michael A. Neilson "Neural Networks and Deep Learning",
-  Determination Press, 2015~}
+  Determination Press, 2015~} I didn't create these equations, in fact, a machine learning expert explained these commonly accepted equations in his book -- Neural Networks and Deep Learning. 
 
 \subsubsection{An equation for the error in the output layer \(\delta^{L}\)}
 
@@ -322,16 +298,14 @@ requires considerable times and patience. \footnote{The equations were
 
 The first term on the right, \(\frac{\partial J}{\partial a_{J}^{L}}\)
 measures how fast the cost is changing as a function of
-j\textsuperscript{th} output activation. Everything in (BP1) is easily
-calculated. We computed \(z_{J}^{L}\) while computing the behavior of
-the network. Depending on the cost function, in our case, the quadratic
+j\textsuperscript{th} output activation. In simpler terms, this term calculates the derivative of C (cost) with respect to \(a\) (equation 2) at layer \(J\). The terms in (BP1) are easily
+calculated. We computed \(z_{J}^{L}\) during forward feeding. Depending on the cost function, in our case, the quadratic
 cost function is relatively easy to compute.
 
-Equation (BP1) is a perfectly good expression, however, it's not matrix
-based, form that backpropagation desires. The fully matrix form becomes.
-
+Equation (BP1) is a good expression, however, it's not matrix
+based, form that backpropagation desires. But, we can transform it into a matrix form, which becomes: 
 \begin{equation}
-	\delta^{L} = (a^{l} - y)(\sigma'(z^{l})\
+	\delta_{J}^{L} = (a_{(l)} - y)(\sigma'(z_{(l)})\
 \end{equation}
 
 \subsubsection{
@@ -342,22 +316,22 @@ based, form that backpropagation desires. The fully matrix form becomes.
 	{\delta}^{l} = (\left( w^{l + 1} \right)^{T}\delta^{l + 1})\bigodot\sigma'(z^{l})\
 \end{equation}
 
-where \(\left( w^{l + 1} \right)^{T}\) is the transpose of the weight
+In the equation above, \(\left( w^{l + 1} \right)^{T}\) is the transpose of the weight
 matrix \(\left( w^{l + 1} \right)\) for the
-\emph{(l+1)\textsuperscript{th}} layer. Suppose we know the error
-\(\delta^{l + 1}\) at the \emph{(l+1)\textsuperscript{th }}layer. When
+\emph{(l+1)\textsuperscript{th}} layer. We can calculate the error
+\(\delta^{l + 1}\) at the \emph{(l+1)\textsuperscript{th }}layer by using (BP1). When
 the transpose weight matrix is applied \(\left( w^{l + 1} \right)^{T}\),
 we can think of this as moving the error backward through the network,
 giving us some sort of measure of the error at the output of the
 l\textsuperscript{th} layer. Finally, we take the Hadamard
 product\(\ \bigodot\sigma'(z^{l})\).
 
-By combining (BP1) with (BP2), the error \(\delta^{l}\) for any
-layer in the network can by computed. We start by using~(BP1)~to
+Micheal Nilsson praises the power of (BP1) and (BP2): "By combining (BP1) with (BP2), the error \(\delta^{l}\) for any
+layer in the network can by computed." We start by using~(BP1)~to
 compute~\(\delta^{l}\), then apply Equation~(BP2)~to
 compute~\(\delta^{L - 1}\), then Equation~(BP2)~again to
-compute~\(\delta^{L - 1}\), and so on, all the way back through the
-network.
+compute~\(\delta^{L - 2}\), and so on, all the way back through the
+network. In the subsection below, there will be an example of using (BP1) with (BP2) in a simple three layer neural network. 
 
 \subsubsection{An equation for the rate of change of the cost with respect to any bias in the network} 
 \begin{equation} \tag{BP3}
@@ -370,19 +344,16 @@ This is the error \(\delta^l_{j}\) is exactly equal to the rate of change \(\fra
 \[\frac{\partial C}{\partial b} = \delta\]
 
 \subsubsection{An equation for the rate of change of the cost with respect to any weights in the network}
-
 \begin{equation} \tag{BP4}
-	\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_{k} \delta^l_{j}\footnote{The equation was
-		referenced from Michael A. Neilson "Neural Networks and Deep Learning",
-		Determination Press, 2015~}
+	\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_{k} \delta^l_{j}
 \end{equation}
 
 This equation can help us to compute the partial derivative \(\frac{\partial C}{\partial w^l_{jk}}\) in terms of the quantity \(\delta^l\) and \(a^{l-1}\). It can be rewritten in a less index-heavy notation:
-
 \begin{equation}
 	\frac{\partial C}{\partial w} = a_{in}\delta_{out}\
 \end{equation}
 
+Equation (6) is another critical component of backpropagation. Now, we know exactly how much to change the cost regarding the weights. If we apply the gradient to current weights, then, cost of the network should decrease, and we are closer to the global minimum of the cost function. 
 \subsection{Backpropagation with simple neural network example}
 
 \centerline{\includegraphics[width=1\linewidth]{nn} }
