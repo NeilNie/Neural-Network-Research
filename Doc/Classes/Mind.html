@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mind Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/Mind" class="dashAnchor"></a>
+    <a title="Mind Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://github.com/NeilNie/Neural-Network-Research"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Mind Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Mind.html">Mind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MindStorage.html">MindStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NeuralMath.html">NeuralMath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions/Errors.html">Errors</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions/IOs.html">IOs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions/Weights.html">Weights</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Error.html">Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IOs.html">IOs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Weights.html">Weights</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Mind</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Mind</span></code></pre>
+
+                </div>
+              </div>
+            <p>brief: This is the header file where the super-code is contained. <br></p>
+
+<p>superclass: NSObject <br>
+classdesign    No special design is applied here. <br>
+helper  <code><a href="../Classes/MindStorage.html">MindStorage</a></code>, <code><a href="../Classes/NeuralMath.html">NeuralMath</a></code> <br></p>
+
+<p>The following  properties are allocated once during initializtion, in order to prevent frequent
+memory allocations for temporary variables during the update and backpropagation cycles.
+Some known properties are computed in advance in order to to avoid casting, integer division
+and modulus operations inside loops.</p>
+
+<p>There are also methods declared in this file. Refer to their documentations.</p>
+
+<p>author: Yongyang Nie <br>
+copyright  &copy; 2017 Yongyang Nie <br>
+version    1.0.0 <br></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Properties"></a>
+                <a name="//apple_ref/objc/Section/Properties" class="dashAnchor"></a>
+                <a href="#/Properties">
+                  <h3 class="section-name">Properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)numInputs"></a>
+                    <a name="//apple_ref/objc/Property/numInputs" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)numInputs">numInputs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of input nodes to the network (read only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">numInputs</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numInputs</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)numHidden"></a>
+                    <a name="//apple_ref/objc/Property/numHidden" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)numHidden">numHidden</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of hidden nodes in the network (read only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">numHidden</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numHidden</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)numOutputs"></a>
+                    <a name="//apple_ref/objc/Property/numOutputs" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)numOutputs">numOutputs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of output nodes from the network (read only).</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">numOutputs</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numOutputs</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)learningRate"></a>
+                    <a name="//apple_ref/objc/Property/learningRate" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)learningRate">learningRate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &lsquo;learning rate&rsquo; parameter to apply during backpropagation. 
+This parameter may be safely tuned at any time, except for during a backpropagation cycle.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">float</span> <span class="n">learningRate</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">learningRate</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)momentumFactor"></a>
+                    <a name="//apple_ref/objc/Property/momentumFactor" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)momentumFactor">momentumFactor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The &lsquo;momentum factor&rsquo; to apply during backpropagation. This parameter may be safely tuned at any time, except for during a backpropagation cycle.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">float</span> <span class="n">momentumFactor</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">momentumFactor</span><span class="p">:</span> <span class="kt">Float</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)numInputNodes"></a>
+                    <a name="//apple_ref/objc/Property/numInputNodes" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)numInputNodes">numInputNodes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of input nodes, INCLUDING the bias node.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">numInputNodes</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numInputNodes</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)numHiddenNodes"></a>
+                    <a name="//apple_ref/objc/Property/numHiddenNodes" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)numHiddenNodes">numHiddenNodes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The number of hidden nodes, INCLUDING the bias node.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">numHiddenNodes</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numHiddenNodes</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)numHiddenWeights"></a>
+                    <a name="//apple_ref/objc/Property/numHiddenWeights" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)numHiddenWeights">numHiddenWeights</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The total number of weights connecting all input nodes to all hidden nodes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">numHiddenWeights</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numHiddenWeights</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)numOutputWeights"></a>
+                    <a name="//apple_ref/objc/Property/numOutputWeights" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)numOutputWeights">numOutputWeights</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The total number of weights connecting all hidden nodes to all output nodes.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="n">numOutputWeights</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">numOutputWeights</span><span class="p">:</span> <span class="kt">Int32</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)outputErrorIndices"></a>
+                    <a name="//apple_ref/objc/Property/outputErrorIndices" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)outputErrorIndices">outputErrorIndices</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The output error indices corresponding to each output weight.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">outputErrorIndices</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">outputErrorIndices</span><span class="p">:</span> <span class="kt">NSMutableArray</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)hiddenOutputIndices"></a>
+                    <a name="//apple_ref/objc/Property/hiddenOutputIndices" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)hiddenOutputIndices">hiddenOutputIndices</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The hidden output indices corresponding to each output weight.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">strong</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">hiddenOutputIndices</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">hiddenOutputIndices</span><span class="p">:</span> <span class="kt">NSMutableArray</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)hiddenErrorIndices"></a>
+                    <a name="//apple_ref/objc/Property/hiddenErrorIndices" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)hiddenErrorIndices">hiddenErrorIndices</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The hidden error indices corresponding to each hidden weight.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="o">*</span><span class="n">hiddenErrorIndices</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">hiddenErrorIndices</span><span class="p">:</span> <span class="kt">NSMutableArray</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)inputIndices"></a>
+                    <a name="//apple_ref/objc/Property/inputIndices" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)inputIndices">inputIndices</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The input indices corresponding to each hidden weight.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="kt">int</span> <span class="o">*</span><span class="n">inputIndices</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">inputIndices</span><span class="p">:</span> <span class="kt">NSMutableArray</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)io"></a>
+                    <a name="//apple_ref/objc/Property/io" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)io">io</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pointer to IOs struct</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Structs/IOs.html">IOs</a></span> <span class="o">*</span><span class="n">io</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">io</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)weights"></a>
+                    <a name="//apple_ref/objc/Property/weights" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)weights">weights</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pointer to Weights struct</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Structs/Weights.html">Weights</a></span> <span class="o">*</span><span class="n">weights</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">weights</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(py)errors"></a>
+                    <a name="//apple_ref/objc/Property/errors" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(py)errors">errors</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pointer to Errors struct</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Type Definitions/Errors.html">Errors</a></span> <span class="o">*</span><span class="n">errors</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">errors</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Instance%20Methods"></a>
+                <a name="//apple_ref/objc/Section/Instance Methods" class="dashAnchor"></a>
+                <a href="#/Instance%20Methods">
+                  <h3 class="section-name">Instance Methods</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)initWith:hidden:outputs:learningRate:momentum:hiddenWeights:outputWeights:"></a>
+                    <a name="//apple_ref/objc/Method/-initWith:hidden:outputs:learningRate:momentum:hiddenWeights:outputWeights:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)initWith:hidden:outputs:learningRate:momentum:hiddenWeights:outputWeights:">-initWith:hidden:outputs:learningRate:momentum:hiddenWeights:outputWeights:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>@brief This is the constructor for the neural network.</p>
+
+<p>@discussion This is a comprehensive constructor. Further improve this parameter so that it can reinitialize neural networks from the past. Also be able to add multiple hidden layers in the middle.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWith</span><span class="p">:(</span><span class="kt">int</span><span class="p">)</span><span class="nv">inputs</span>
+                  <span class="nf">hidden</span><span class="p">:(</span><span class="kt">int</span><span class="p">)</span><span class="nv">hidden</span>
+                 <span class="nf">outputs</span><span class="p">:(</span><span class="kt">int</span><span class="p">)</span><span class="nv">outputs</span>
+            <span class="nf">learningRate</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">learningRate</span>
+                <span class="nf">momentum</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">momentum</span>
+           <span class="nf">hiddenWeights</span><span class="p">:(</span><span class="kt">float</span> <span class="o">*</span><span class="p">)</span><span class="nv">hws</span>
+           <span class="nf">outputWeights</span><span class="p">:(</span><span class="kt">float</span> <span class="o">*</span><span class="p">)</span><span class="nv">opws</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">init</span><span class="o">!</span><span class="p">(</span><span class="n">_</span> <span class="nv">inputs</span><span class="p">:</span> <span class="kt">Int32</span><span class="p">,</span> <span class="nv">hidden</span><span class="p">:</span> <span class="kt">Int32</span><span class="p">,</span> <span class="nv">outputs</span><span class="p">:</span> <span class="kt">Int32</span><span class="p">,</span> <span class="nv">learningRate</span><span class="p">:</span> <span class="kt">Float</span><span class="p">,</span> <span class="nv">momentum</span><span class="p">:</span> <span class="kt">Float</span><span class="p">,</span> <span class="n">hiddenWeights</span> <span class="nv">hws</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>number of inputs</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hidden</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>number of hidden neurons</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>outputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>number of outpus</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>learningRate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the learning rate of the network, a good start is 0.7</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>momentum</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the momentum of the learing, play around with this number, a good estimate is</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hws</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>initialize the network with weights from other network or from the past. If initializing new network, set it as null</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>instancetype</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)forwardPropagation:"></a>
+                    <a name="//apple_ref/objc/Method/-forwardPropagation:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)forwardPropagation:">-forwardPropagation:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>@brief Use the network to evaluate some output.
+- parameter: inputs An array of <code>Float</code>s. Each element corresponding to one input node. Note: inputs.count has == to self.numInputNodes
+- returns: float* as an array of <code>Float</code>s
+@exception inputs has to equal to self.numInputs
+@discussion Propagates the given inputs through the neural network, returning the network&rsquo;s output. While the network is evaluating, it will add a bias node. The result will be cached.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">float</span> <span class="o">*</span><span class="p">)</span><span class="nf">forwardPropagation</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">inputs</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">forwardPropagation</span><span class="p">(</span><span class="n">_</span> <span class="nv">inputs</span><span class="p">:</span> <span class="kt">NSMutableArray</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UnsafeMutablePointer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An array of <code>Float</code>s. Each element corresponding to one input node. Note: inputs.count has == to self.numInputNodes</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>float* as an array of <code>Float</code>s</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)backwardPropagation:"></a>
+                    <a name="//apple_ref/objc/Method/-backwardPropagation:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)backwardPropagation:">-backwardPropagation:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Backward propagation method in this feed forward neural network. Trains the network by comparing its most recent output to the given &lsquo;answers&rsquo;, adjusting the network&rsquo;s weights as needed.
+- parameter: answer The desired output for the most recent update to the network, as an array<nsnumber<float>&gt;.
+@exception Answer and self.numOutputs has to be the same.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">backwardPropagation</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">answer</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">backwardPropagation</span><span class="p">(</span><span class="n">_</span> <span class="nv">answer</span><span class="p">:</span> <span class="kt">NSMutableArray</span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>answer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The desired output for the most recent update to the network, as an array
+&lt;nsnumber
+&lt;float</p>
+
+<blockquote>
+<blockquote>
+<p>.</p>
+</blockquote>
+</blockquote>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)train:answer:testInputs:testOutputs:threshold:"></a>
+                    <a name="//apple_ref/objc/Method/-train:answer:testInputs:testOutputs:threshold:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)train:answer:testInputs:testOutputs:threshold:">-train:answer:testInputs:testOutputs:threshold:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Train the network with data that you provides.
+- parameter: inputs inputs to train the network
+- parameter: answer the expected answer from the network. Used to backprop
+- parameter: testInputs test inputs that will evaluate the errors
+- parameter: testOutput expected output from the neural network, this will evaluate the errors
+- parameter: threshold When the network&rsquo;s error eaches this point, training will stop.
+@exception inputs, answer, testInputs and testOutputs all have to correspond to the amount of neurons in the network. The error margin can not be &gt; 0</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">train</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">inputs</span>
+         <span class="nf">answer</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">answer</span>
+     <span class="nf">testInputs</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">testInputs</span>
+    <span class="nf">testOutputs</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">testOutput</span>
+      <span class="nf">threshold</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">threshold</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">train</span><span class="p">(</span><span class="n">_</span> <span class="nv">inputs</span><span class="p">:</span> <span class="p">[[</span><span class="kt">NSNumber</span><span class="p">]]</span><span class="o">!</span><span class="p">,</span> <span class="nv">answer</span><span class="p">:</span> <span class="p">[[</span><span class="kt">NSNumber</span><span class="p">]]</span><span class="o">!</span><span class="p">,</span> <span class="nv">testInputs</span><span class="p">:</span> <span class="p">[[</span><span class="kt">NSNumber</span><span class="p">]]</span><span class="o">!</span><span class="p">,</span> <span class="n">testOutputs</span> <span class="nv">testOutput</span><span class="p">:</span> <span class="p">[[</span><span class="kt">NSNumber</span><span class="p">]]</span><span class="o">!</span><span class="p">,</span> <span class="nv">threshold</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>inputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>inputs to train the network</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>answer</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the expected answer from the network. Used to backprop</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>testInputs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>test inputs that will evaluate the errors</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>testOutput</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>expected output from the neural network, this will evaluate the errors</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>threshold</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>When the network&rsquo;s error eaches this point, training will stop.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)randomWeightAllLayers"></a>
+                    <a name="//apple_ref/objc/Method/-randomWeightAllLayers" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)randomWeightAllLayers">-randomWeightAllLayers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set random weights for all weights. The random weights are between {1, -1}</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">randomWeightAllLayers</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">randomWeightAllLayers</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)resetLearningRate:"></a>
+                    <a name="//apple_ref/objc/Method/-resetLearningRate:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)resetLearningRate:">-resetLearningRate:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method allows you to modify the learning rate during training.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">resetLearningRate</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">learningRate</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">resetLearningRate</span><span class="p">(</span><span class="n">_</span> <span class="nv">learningRate</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)resetMomentum:"></a>
+                    <a name="//apple_ref/objc/Method/-resetMomentum:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)resetMomentum:">-resetMomentum:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method allows you to modify the momentum during training.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">resetMomentum</span><span class="p">:(</span><span class="kt">float</span><span class="p">)</span><span class="nv">momentum</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">resetMomentum</span><span class="p">(</span><span class="n">_</span> <span class="nv">momentum</span><span class="p">:</span> <span class="kt">Float</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)Mind(im)print:count:"></a>
+                    <a name="//apple_ref/objc/Method/-print:count:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)Mind(im)print:count:">-print:count:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Print a C float array. </p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">print</span><span class="p">:(</span><span class="kt">float</span> <span class="o">*</span><span class="p">)</span><span class="nv">array</span> <span class="nf">count</span><span class="p">:(</span><span class="kt">int</span><span class="p">)</span><span class="nv">count</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">print</span><span class="p">(</span><span class="n">_</span> <span class="nv">array</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>array</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>array to print</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>count</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>items in array</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">Neil</a>. All rights reserved. (Last updated: 2017-03-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

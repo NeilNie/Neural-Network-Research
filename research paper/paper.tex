@@ -213,7 +213,7 @@ apply here and we will define our own movement of the ball.
 \vspace{0.5cm}
 
 There are limitations to this method. First of all, what if we are stuck
-in a local minimum, our goal is to find the global minimum for the cost
+in a local minimum? Our goal is to find the global minimum for the cost
 function. In another word, this method will not work properly for a non-convex
 function. 
 
@@ -250,10 +250,7 @@ to change the weights of the network to minimize the cost. This is call backprog
 
 \emph{Phase 1: Propagation: Each propagation
 includes forward and backward propagation:}
-\footnote{The steps are referenced from
-Wikipedia who referenced:
-\href{http://numericinsight.com/uploads/A_Gentle_Introduction_to_Backpropagation.pdf}{A
-Gentle Introduction to Backpropagation - An intuitive tutorial by
+\footnote{\href{http://numericinsight.com/uploads/A_Gentle_Introduction_to_Backpropagation.pdf}{A Gentle Introduction to Backpropagation - An intuitive tutorial by
 Shashi Sathyanarayana}~The article contains pseudocode ("Training
 Wheels for Training Neural Networks") for implementing the algorithm.}  
 
@@ -313,21 +310,36 @@ based, form that backpropagation desires. But, we can transform it into a matrix
   next layer, \(\delta^{l + 1}\) in particular:}
 
 \begin{equation} \tag{BP2}
-	{\delta}^{l} = (\left( w^{l + 1} \right)^{T}\delta^{l + 1})\bigodot\sigma'(z^{l})\
+	{\delta}^{l} = (\left( w_{(l + 1)} \right)^{T}\delta_{(l + 1)})\odot\sigma'(z_{(l)})\
 \end{equation}
 
-In the equation above, \(\left( w^{l + 1} \right)^{T}\) is the transpose of the weight
-matrix \(\left( w^{l + 1} \right)\) for the
-\emph{(l+1)\textsuperscript{th}} layer. We can calculate the error
-\(\delta^{l + 1}\) at the \emph{(l+1)\textsuperscript{th }}layer by using (BP1). When
-the transpose weight matrix is applied \(\left( w^{l + 1} \right)^{T}\),
-we can think of this as moving the error backward through the network,
+In the equation above, \(\left( w_{(l + 1)} \right)^{T}\) is the transpose of the weight
+matrix \(\left( w_{(l + 1)} \right)\) for the
+\emph{(l+1)\textsuperscript{th}} layer. When
+the transpose weight matrix is applied, this can be seem as moving the error backward through the network,
 giving us some sort of measure of the error at the output of the
 l\textsuperscript{th} layer. Finally, we take the Hadamard
-product\(\ \bigodot\sigma'(z^{l})\).
+product \footnote{https://en.wikipedia.org/wiki/Hadamard\_product\_(matrices)} \(\ \odot\sigma'(z^{l})\). 
 
-Micheal Nilsson praises the power of (BP1) and (BP2): "By combining (BP1) with (BP2), the error \(\delta^{l}\) for any
-layer in the network can by computed." We start by using~(BP1)~to
+Equation (5) above can help us calculate (BP2), which is matrix based. Hadamard product can be understood as: 
+\[
+\begin{bmatrix}
+	a_1 & b_1 \\
+	c_1 & d_1
+\end{bmatrix}
+\odot
+\begin{bmatrix}
+	a_2 & b_2 \\
+	c_2 & d_2
+\end{bmatrix}
+= 
+\begin{bmatrix}
+	a_1 * a_2 & b_1 * b_2 \\
+	c_1 * c_2 & d_1 * d_2
+\end{bmatrix}
+\]
+
+The incredible power of the equation above becomes apparent when (BP1) and (BP2) are working together. We start by using~(BP1)~to
 compute~\(\delta^{l}\), then apply Equation~(BP2)~to
 compute~\(\delta^{L - 1}\), then Equation~(BP2)~again to
 compute~\(\delta^{L - 2}\), and so on, all the way back through the
@@ -343,6 +355,8 @@ network. In the subsection below, there will be an example of using (BP1) with (
 This is the error \(\delta^l_{j}\) is exactly equal to the rate of change \(\frac{\partial C}{\partial b^l_{j}}\). This equation can be rewritten as 
 \[\frac{\partial C}{\partial b} = \delta\]
 
+Bias nodes are not necessary in neural networks. However, they are helpful in improving the network's learning. In a linear function, \(y = mx + b\), the b term will effect the vertical shift of the function. Bias nodes for neural networks behaves similarly. It can translate the sigmoid function on the coordinate plane. \footnote{Make Your Own Neural Network -- Tariq Rashid}
+
 \subsubsection{An equation for the rate of change of the cost with respect to any weights in the network}
 \begin{equation} \tag{BP4}
 	\frac{\partial C}{\partial w^l_{jk}} = a^{l-1}_{k} \delta^l_{j}
@@ -352,6 +366,12 @@ This equation can help us to compute the partial derivative \(\frac{\partial C}{
 \begin{equation}
 	\frac{\partial C}{\partial w} = a_{in}\delta_{out}\
 \end{equation}
+
+In equation (6), \(a_{in}\) is the output with weights \(w\). And \(delta_{out}\) is the error of the neural output from the weight w. 
+
+\centerline{\includegraphics[width=0.6\linewidth]{bp4} }
+%\centerline{Figure 5}
+\vspace{0.5cm}
 
 Equation (6) is another critical component of backpropagation. Now, we know exactly how much to change the cost regarding the weights. If we apply the gradient to current weights, then, cost of the network should decrease, and we are closer to the global minimum of the cost function. 
 \subsection{Backpropagation with simple neural network example}
@@ -365,15 +385,14 @@ that we derive with the principle of gradient descend that will help us
 minimize the error.\footnote{The equation was referenced from Michael A. Neilson "Neural Networks and Deep Learning", Determination Press, 2015~}
 \[\delta_{(3)} = - (y - \hat{y})(\sigma'(z_{(3)}))\]
 
-Calculate the \(\delta\) for the third layer of the network.
-\[\frac{\partial J}{\partial w_{(2)}} = {{(a}^{(2)})}^{T}\delta_{(3)}\]
+Calculate the \(\delta\) for the third layer of the network. This looks quite similar to Equation (6).
+\[\frac{\partial C}{\partial w_{(2)}} = {{(a}_{(2)})}^{T}\delta_{(3)}\]
 
-Use the calculated result to help us modify the second layer of weights
-in the network.
+The equation yields the partial derivative of C in terms of second layer weights \(w_{(2)}\), which connect the hidden layer to the output layer. Transposing the hidden layer output, \(a_{(2)}\) and multiplying \(\delta_{(3)}\) we can calculate the rate of change, which will be applied to \(w_{(2)}\)
 \[\delta_{(2)} = \delta_{\left( 3 \right)}\left( w_{\left( 2 \right)} \right)^{T}\sigma'(z_{(2)})\]
 
 Calculate the \(\delta\) for the second layer of the network.
-\[\frac{\partial J}{\partial w_{(1)}} = \ x^{T}\delta_{(2)}\]
+\[\frac{\partial C}{\partial w_{(1)}} = \ x^{T}\delta_{(2)}\]
 
 Finally, we can modify the first layer of weights in the network. This
 process is often repeated until the accuracy of the network reaches a
@@ -383,14 +402,11 @@ threshold. The backpropagation process above can be represented with this simple
 \centerline{Figure 6}
 \vspace{0.5cm}
 
-Here is a visualization of how individual output node is approaching the desired output.
+Here is a visualization of the change in weight effect the cost of output nodes. Line 0-3 are lowering as we train the network. This figure displayed that the error of the network \(C\) is being minimized. 
 
 \centerline{\includegraphics[width=1\linewidth]{graph1} }
 \centerline{Figure 7}
 \vspace{0.5cm}
-
-Line 0-3 are lowering as we train the network. Line 4, is approaching 1 as we keep train the network. This figure displayed that the error of the network \(C\) is being minimized. 
-
 Here is a graph of the correction of the neural network over times of training. Each time the network will train with 1000 out of 60,000 training data. After, The program will shuffle the training data and repeat the training process for 197 times, or until the network reaches 95\% accuracy. 
 
 \centerline{\includegraphics[width=1\linewidth]{graph2}}

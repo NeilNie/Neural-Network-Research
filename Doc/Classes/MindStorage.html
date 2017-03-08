@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MindStorage Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/MindStorage" class="dashAnchor"></a>
+    <a title="MindStorage Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://github.com/NeilNie/Neural-Network-Research"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        MindStorage Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Mind.html">Mind</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/MindStorage.html">MindStorage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NeuralMath.html">NeuralMath</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Type Definitions.html">Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Type Definitions/Errors.html">Errors</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions/IOs.html">IOs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Type Definitions/Weights.html">Weights</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Error.html">Error</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/IOs.html">IOs</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Weights.html">Weights</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>MindStorage</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="k">@interface</span> <span class="nc">MindStorage</span></code></pre>
+
+                </div>
+              </div>
+            <p>@header MindStorage.h
+@class MindStorage</p>
+
+<p>If you have a trained neural network you can store it with MindStore. Stored information can be retrieved as well.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)MindStorage(cm)storeMind:path:"></a>
+                    <a name="//apple_ref/objc/Method/+storeMind:path:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)MindStorage(cm)storeMind:path:">+storeMind:path:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>@brief Store information from an instance of the Mind class to a given path. </p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">storeMind</span><span class="p">:(</span><span class="n"><a href="../Classes/Mind.html">Mind</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">mind</span> <span class="nf">path</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">path</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">store</span><span class="p">(</span><span class="n">_</span> <span class="nv">mind</span><span class="p">:</span> <span class="kt"><a href="../Classes/Mind.html">Mind</a></span><span class="o">!</span><span class="p">,</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mind</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An instance of mind</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The path to store the mind data.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>BOOL If unable to store, return NO</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)MindStorage(cm)getMind:"></a>
+                    <a name="//apple_ref/objc/Method/+getMind:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)MindStorage(cm)getMind:">+getMind:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>@brief Retrieve the stored mind from a given path.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight"><code><span class="k">+</span> <span class="p">(</span><span class="n"><a href="../Classes/Mind.html">Mind</a></span> <span class="o">*</span><span class="p">)</span><span class="nf">getMind</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">path</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">class</span> <span class="kd">func</span> <span class="nf">getMind</span><span class="p">(</span><span class="n">_</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Mind.html">Mind</a></span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>path</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Path for the stored mind.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Mind return an instance of Mind from the path.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="" target="_blank" rel="external">Neil</a>. All rights reserved. (Last updated: 2017-03-01)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

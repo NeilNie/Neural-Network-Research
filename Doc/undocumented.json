@@ -1,0 +1,26 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/Handwriting/Mind.h",
+      "line": 23,
+      "symbol": "Weights",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/Handwriting/Mind.h",
+      "line": 46,
+      "symbol": "IOs",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/Neil/Desktop/Neural Network Research/Handwriting Trainer/Handwriting/Mind.h",
+      "line": 59,
+      "symbol": "Errors",
+      "symbol_kind": "sourcekitten.source.lang.objc.decl.typedef",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/Neil"
+}
